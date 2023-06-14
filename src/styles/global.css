@@ -67,6 +67,9 @@ blockquote {
     border-radius: 6px;
 	font-style: italic;
 }
+.content-svg {
+    fill: var(--color);
+}
 :root[data-theme="light"] {
 	--background-color: #fff;
 	--color: #444;

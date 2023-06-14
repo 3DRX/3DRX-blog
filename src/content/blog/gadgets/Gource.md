@@ -1,8 +1,9 @@
 ---
 title: "Introduction to Gource"
-description: ""
+description: "Gource —— git 可视化工具，从 git 记录生成视频"
 pubDate: "06/14/2023"
-heroImage: ""
+updatedDate: "06/14/2023"
+heroImage: "https://source.unsplash.com/EaB4Ml7C7fE"
 ---
 
 > https://gource.io/ a git visualization tool 
