@@ -26,10 +26,13 @@ const posts = (await getCollection('blog')).sort(
 			ul li :global(time) {
 				flex: 0 0 130px;
 				font-style: italic;
-				color: #595959;
+				color: var(--color);
 			}
+            ul li a:unvisited {
+                color: var(--link-color);
+            }
 			ul li a:visited {
-				color: #8e32dc;
+				color: var(--link-visited-color);
 			}
 		</style>
 	</head>
@@ -49,7 +52,10 @@ const posts = (await getCollection('blog')).sort(
 				</ul>
 			</section>
             <p>
-                Edit these posts at <a href="https://github.com/3DRX/3DRX-blog" target="_blank">github.com/3DRX/3DRX-blog</a>
+                Edit these posts at
+                <a href="https://github.com/3DRX/3DRX-blog" target="_blank">
+                    github.com/3DRX/3DRX-blog
+                </a>
             </p>
 		</main>
 		<Footer />
