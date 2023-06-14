@@ -8,11 +8,25 @@ heroImage: "https://source.unsplash.com/M5tzZtFCOfs"
 
 <!--toc:start-->
 - [Principles of network applications](#principles-of-network-applications)
+  - [Internet transport protocols services](#internet-transport-protocols-services)
 - [Web and HTTP](#web-and-http)
+  - [HTTP: two types](#http-two-types)
+  - [Web cache aka proxy server](#web-cache-aka-proxy-server)
+  - [HTTP generation](#http-generation)
+    - [HTTP/1](#http1)
+    - [HTTP/2](#http2)
+    - [HTTP/3](#http3)
 - [DNS](#dns)
+  - [DNS name resolution](#dns-name-resolution)
+    - [Iterated query](#iterated-query)
+    - [Recursive query](#recursive-query)
+  - [DNS records](#dns-records)
 - [P2P applications](#p2p-applications)
+  - [File distribution](#file-distribution)
+    - [Real-world example of P2P file distribution: BitTorrent](#real-world-example-of-p2p-file-distribution-bittorrent)
 - [Video streaming and CDN](#video-streaming-and-cdn)
-- [Socket programming with TCP and UDP](#socket-programming-with-tcp-and-udp)
+  - [Streaming stored video](#streaming-stored-video)
+  - [CDN](#cdn)
 <!--toc:end-->
 
 ## Principles of network applications
@@ -114,9 +128,68 @@ resource records (RR)
 (name, value, type, ttl)
 ```
 
+`type = A`
+- `name` is hostname
+- `value` is IP address
+
+`type = NS`
+- `name` is domain
+- `value` is hostname of authoritative name server for this domain
+
+`type = CNAME`
+- `name` is alias name for some "canonical"(the real) name
+- `www.ibm.com` is really `servereast.backup2.ibm.com`
+- `value` is canonical name
+
+`type = MX`
+- `value` is name of SMTP mail server associated with `name`
+
 ## P2P applications
+
+### File distribution
+
+> client-server vs P2P
+
+**client-server**
+- server side
+    - time to send 1 copy: $\frac{F}{u_s}$
+    - time to send N copy: $N\cdot \frac{F}{u_s}$
+- client side
+    - $d_{min}$: min client download rate
+    - min client download time: $\frac{F}{d_{min}}$
+- time to distribute F to N clients: $max(\frac{NF}{u_s}, \frac{F}{d_{min}})$
+increases linearly in N
+
+**P2P**
+- server side
+    - time to send 1 copy: $\frac{F}{u_s}$
+- client
+    - min client download time: $\frac{F}{d_{min}}$
+- clients: aggregate must download NF bits
+    - max upload rate: $u_s + \sum{u_i}$
+- time to distribute F to N clients:
+$max(\frac{F}{u_s}, \frac{F}{d_{min}}, \frac{NF}{u_s + \sum{u_i}})$
+which **does not** increases linearly in N
+
+![](../../../assets/computer_networking/p2p_vs_cs.png)
+
+#### Real-world example of P2P file distribution: BitTorrent
+
+- requesting chunks
+- sending chunks
 
 ## Video streaming and CDN
 
-## Socket programming with TCP and UDP
+### Streaming stored video
+
+challenges:
+- bandwidth vary over time
+- packet loss and delay
+
+### CDN
+
+- stores copies of content at CDN nodes
+- user request content, service provider returns manifest
+    - client then retrieves content at highest supportable rate
+    - may choose different rate or copy if network environment changed
 
