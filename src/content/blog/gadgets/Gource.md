@@ -11,7 +11,20 @@ heroImage: ""
 
 Generates beautiful video using git commit informations.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/bn2l7GpePtY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe
+    src="https://www.youtube.com/embed/bn2l7GpePtY"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+></iframe>
+<style>
+iframe {
+    max-width: 65ch;
+    height: 36.5ch;
+    width: 90vw;
+}
+</style>
 
 ## Installation
 
