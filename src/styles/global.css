@@ -64,7 +64,7 @@ blockquote {
 	color: var(--color);
 	padding: 2px 0px 2px 20px;
 	margin: 0px;
-    border-radius: 6px;
+    border-radius: 10px;
 	font-style: italic;
 }
 .content-svg {
