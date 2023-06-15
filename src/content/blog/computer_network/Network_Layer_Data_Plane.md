@@ -1,5 +1,5 @@
 ---
-title: "Computer Networking: Transport Layer Data Plane"
+title: "Computer Networking: Network Layer Data Plane"
 description: "计算机网络：网络层 数据平面"
 pubDate: "06/15/2023"
 updatedDate: "06/15/2023"
@@ -29,7 +29,7 @@ heroImage: "https://source.unsplash.com/M5tzZtFCOfs"
 
 - Data plane
     - local, per-router function
-- Control plane
+- [Control plane](/blog/computer_network/network_layer_control_plane/)
     - network-wide logic
 
 > Best effort service: simplicity of mechanism,
