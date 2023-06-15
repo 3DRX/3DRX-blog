@@ -6,6 +6,37 @@ updatedDate: "06/15/2023"
 heroImage: "https://source.unsplash.com/M5tzZtFCOfs"
 ---
 
+<!--toc:start-->
+- [Transport layer services](#transport-layer-services)
+- [Multiplexing and demultiplexing](#multiplexing-and-demultiplexing)
+- [Connectionless transport: UDP](#connectionless-transport-udp)
+  - [Why we need UDP?](#why-we-need-udp)
+  - [Use case of UDP](#use-case-of-udp)
+  - [Internet checksum](#internet-checksum)
+- [Principles of reliable data transfer](#principles-of-reliable-data-transfer)
+  - [rdt 1.0](#rdt-10)
+  - [rdt 2.0](#rdt-20)
+  - [rdt 2.1](#rdt-21)
+  - [rdt 2.2](#rdt-22)
+  - [rdt 3.0](#rdt-30)
+  - [Pipe lining: increased utilization](#pipe-lining-increased-utilization)
+- [Connection-oriented transport: TCP](#connection-oriented-transport-tcp)
+  - [rdt in TCP](#rdt-in-tcp)
+    - [TCP fast retransmit](#tcp-fast-retransmit)
+  - [Flow control](#flow-control)
+  - [Connection management](#connection-management)
+    - [Establishing TCP connection](#establishing-tcp-connection)
+      - [Why 2-way handshake don't work in all scenarios:](#why-2-way-handshake-dont-work-in-all-scenarios)
+      - [TCP 3-way handshake](#tcp-3-way-handshake)
+    - [Closing TCP connection](#closing-tcp-connection)
+- [TCP congestion control](#tcp-congestion-control)
+  - [Approaches towards congestion control](#approaches-towards-congestion-control)
+  - [*Throughput based* TCP congestion control: AIMD](#throughput-based-tcp-congestion-control-aimd)
+  - [*Delay based* TCP congestion control](#delay-based-tcp-congestion-control)
+  - [TCP fairness](#tcp-fairness)
+- [Evolution of transport-layer functionality](#evolution-of-transport-layer-functionality)
+<!--toc:end-->
+
 ## Transport layer services
 
 - provide **logical communication** between application processes running on different hosts
