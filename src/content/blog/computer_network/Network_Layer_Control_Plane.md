@@ -271,5 +271,20 @@ Router 3
 and destination Host B. Assuming a 20-byte IP header, how many datagrams would be required
 to send an MP3 consisting of 5 million bytes? Explain how you computed your answer.*
 
-// TODO
+MP3 file size = 5 million bytes.
+Assume the data is carried in TCP segments,
+with each TCP segment also having 20 bytes of header.
+Then each datagram can carry 1500 - 40 = 1460 bytes
+of the MP3 file.
+
+Number of datagrams required:
+$\lceil \frac{5 \times 10^6}{1460} \rceil = 3425$.
+
+All but the last datagram will be 1,500 bytes;
+the last datagram will be 960+40 = 1000 bytes.
+Note that here there is no fragmentation
+– the source host does not create datagrams
+larger than 1500 bytes,
+and these datagrams are smaller than
+the MTUs of the links.
 
