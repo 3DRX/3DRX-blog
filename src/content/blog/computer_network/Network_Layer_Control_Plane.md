@@ -6,6 +6,31 @@ updatedDate: "06/16/2023"
 heroImage: "https://source.unsplash.com/M5tzZtFCOfs"
 ---
 
+<!--toc:start-->
+- [Routing](#routing)
+  - [Link state](#link-state)
+    - [Oscillations possible](#oscillations-possible)
+  - [Distance vector](#distance-vector)
+    - [Link cost changes](#link-cost-changes)
+  - [Comparison of LS and DV](#comparison-of-ls-and-dv)
+- [Intra-ISP routing: OSPF](#intra-isp-routing-ospf)
+- [Routing among ISPs: BGP](#routing-among-isps-bgp)
+- [SDN control plane](#sdn-control-plane)
+  - [OpenFlow protocol](#openflow-protocol)
+- [ICMP](#icmp)
+- [Network management configuration](#network-management-configuration)
+  - [Components](#components)
+  - [SNMP protocol](#snmp-protocol)
+  - [NETCONF / YANG](#netconf-yang)
+- [Exercise](#exercise)
+  - [P12](#p12)
+  - [P15](#p15)
+  - [P16](#p16)
+  - [P18](#p18)
+  - [P19](#p19)
+  - [P20](#p20)
+<!--toc:end-->
+
 > Network layer functions
 > - forwarding: [**data** plane](/blog/computer_network/network_layer_data_plane/)
 > - routing: **control** plane
@@ -287,4 +312,92 @@ Note that here there is no fragmentation
 larger than 1500 bytes,
 and these datagrams are smaller than
 the MTUs of the links.
+
+### P16
+
+*Consider the network setup in Figure 4.25.
+Suppose that the ISP instead assigns the router
+the address 24.34.112.235 and that the network address
+of the home network is 192.168.1/24.*
+
+![](../../../assets/computer_networking/c4p16.png)
+
+*a. Assign addresses to all interfaces in the home network.*
+
+*b. Suppose each host has two ongoing TCP connections,
+all to port 80 at host 128.119.40.86.
+Provide the six corresponding entries in the
+NAT translation table.*
+
+a. Home addresses: 192.168.1.1, 192.168.1.2,
+192.168.1.3 with the router interface being 192.168.1.4
+
+b. NAT Translation Table
+
+| WAN side            | LAN side          |
+|---------------------|-------------------|
+| 24.34.112.235, 4000 | 192.168.1.1, 3345 |
+| 24.34.112.235, 4001 | 192.168.1.1, 3346 |
+| 24.34.112.235, 4002 | 192.168.1.2, 3345 |
+| 24.34.112.235, 4003 | 192.168.1.2, 3346 |
+| 24.34.112.235, 4004 | 192.168.1.3, 3345 |
+| 24.34.112.235, 4005 | 192.168.1.3, 3346 |
+
+### P18
+
+*In this problem we’ll explore the impact of NATs on P2P applications.
+Suppose a peer with username Arnold discovers through querying
+that a peer with username Bernard has a file it
+wants to download. Also suppose that Bernard and
+Arnold are both behind a NAT. Try to devise a technique
+that will allow Arnold to establish a TCP connection with
+Bernard without application specific NAT configuration.
+If you have difficulty devising such a technique,
+discuss why.*
+
+It is not possible to devise such a technique.
+In order to establish a direct TCP connection between
+Arnold and Bernard, either Arnold or Bob must initiate
+a connection to the other.
+But the NATs covering Arnold and Bob drop SYN packets
+arriving from the WAN side.
+Thus neither Arnold nor Bob can initiate a TCP
+connection to the other if they are both behind NATs.
+
+### P19
+
+*Consider the SDN OpenFlow network shown in Figure 4.30.
+Suppose that the desired forwarding behavior for
+datagrams arriving at s2 is as follows:*
+
+![](../../../assets/computer_networking/c4p19.png)
+
+- *any datagrams arriving on input port 1 from hosts
+h5 or h6 that are destined to hosts h1 or h2 should
+be forwarded over output port 2;*
+- *any datagrams arriving on input port 2 from hosts
+h1 or h2 that are destined to hosts h5 or h6 should
+be forwarded over output port 1;*
+- *any arriving datagrams on input ports 1 or 2 and
+destined to hosts h3 or h4 should be delivered
+to the host specified;*
+- *hosts h3 and h4 should be able to send datagrams to each other.*
+
+*Specify the flow table entries in s2 that implement this forwarding behavior.*
+
+![](../../../assets/computer_networking/c4p19_ans.png)
+
+### P20
+
+*Consider again the SDN OpenFlow network shown in Figure 4.30.
+Suppose that the desired forwarding behavior for
+datagrams arriving from hosts h3 or h4 at s2 is as
+follows:*
+
+- *any datagrams arriving from host h3 and destined for h1, h2, h5 or h6 should be forwarded in a clockwise direction in the network;*
+- *any datagrams arriving from host h4 and destined for h1, h2, h5 or h6 should be forwarded in a counter-clockwise direction in the network.*
+
+*Specify the flow table entries in s2 that implement this forwarding behavior.*
+
+![](../../../assets/computer_networking/c4p20_ans.png)
 
