@@ -23,12 +23,12 @@ heroImage: "https://source.unsplash.com/M5tzZtFCOfs"
   - [SNMP protocol](#snmp-protocol)
   - [NETCONF / YANG](#netconf-yang)
 - [Exercise](#exercise)
-  - [P12](#p12)
-  - [P15](#p15)
+  - [P3](#p3)
+  - [P7](#p7)
+  - [P11](#p11)
   - [P16](#p16)
-  - [P18](#p18)
-  - [P19](#p19)
-  - [P20](#p20)
+  - [P21](#p21)
+  - [P22](#p22)
 <!--toc:end-->
 
 > Network layer functions
@@ -233,171 +233,134 @@ ICMP message:
 
 > From [*Computer Networking: A Top Down Approach 7th Edition*](https://gaia.cs.umass.edu/kurose_ross/online_lectures.htm)
 
-Chapter 4
+Chapter 5
 
-### P12
+### P3
 
-*Consider the topology shown in Figure 4.20. Denote the three subnets with hosts (starting
-clockwise at 12:00) as Networks A, B, and C. Denote the subnets without hosts as Networks D,
-E, and F.*
+*Consider the following network. With the indicated link costs, use Dijkstra’s shortest-path
+algorithm to compute the shortest path from x to all network nodes. Show how the algorithm
+works by computing a table.*
 
-*a. Assign network addresses to each of these six subnets, with the following constraints: All
-addresses must be allocated from 214.97.254/23; Subnet A should have enough
-addresses to support 250 interfaces; Subnet B should have enough addresses to
-support 120 interfaces; and Subnet C should have enough addresses to support 120
-interfaces. Of course, subnets D, E and F should each be able to support two interfaces.
-For each subnet, the assignment should take the form a.b.c.d/x or a.b.c.d/x – e.f.g.h/y.*
+![](../../../assets/computer_networking/c5p3.png)
 
-*b. Using your answer to part (a), provide the forwarding tables (using longest prefix
-matching) for each of the three routers.*
+![](../../../assets/computer_networking/c5p3_ans.png)
 
-![](../../../assets/computer_networking/c4p12.png)
+### P7
 
-a.
+*Consider the network fragment shown below. x has only two attached neighbors, w and y. w
+has a minimum-cost path to destination u (not shown) of 5, and y has a minimum-cost path to u
+of 6. The complete paths from w and y to u (and between w and y) are not shown. All link costs
+in the network have strictly positive integer values.*
 
-Subnet A: 214.97.255/24 (256 addresses)  
-Subnet B: 214.97.254.0/25 - 214.97.254.0/29 (128-8 = 120 addresses)  
-Subnet C: 214.97.254.128/25 (128 addresses)  
-Subnet D: 214.97.254.0/31 (2 addresses)  
-Subnet E: 214.97.254.2/31 (2 addresses)  
-Subnet F: 214.97.254.4/30 (4 addresses)  
+![](../../../assets/computer_networking/c5p7.png)
 
-b. To simplify the solution, assume that no datagrams have router interfaces as
-ultimate destinations. Also, label D, E, F for the upper-right, bottom, and upper
-left interior subnets, respectively.
+*a. Give x’s distance vector for destinations w, y, and u.*
 
-Router 1
+*b. Give a link-cost change for either c(x, w) or c(x, y) such that x will inform its neighbors of
+a new minimum-cost path to u as a result of executing the distance-vector algorithm.*
 
-| Longest Prefix Match               | Outgoing Interface |
-|------------------------------------|--------------------|
-| 11010110 01100001 11111111         | Subnet A           |
-| 11010110 01100001 11111110 0000000 | Subnet D           |
-| 11010110 01100001 11111110 000001  | Subnet F           |
+*c. Give a link-cost change for either c(x, w) or c(x, y) such that x will not inform its neighbors
+of a new minimum-cost path to u as a result of executing the distance-vector algorithm.*
 
-Router 2
+a. $D_x(w) = 2$, $D_x(y) = 4$, $D_x(u) = 7$
 
-| Longest Prefix Match               | Outgoing Interface |
-|------------------------------------|--------------------|
-| 11010110 01100001 11111111 0000000 | Subnet D           |
-| 11010110 01100001 11111110 0       | Subnet B           |
-| 11010110 01100001 11111110 0000001 | Subnet E           |
+b. First consider what happens if $c(x,y)$ changes. If $c(x,y)$ becomes larger or smaller (as
+long as $c(x,y) \geq 1$) , the least cost path from x to u will still have cost at least 7. Thus,
+a change in $c(x,y)$ (if $c(x,y) \geq 1$) will not cause x to inform its neighbors of any
+changes.
+If $c(x,y)= \xi<1$, then the least cost path now passes through y and has cost $\xi + 6$.
+Now consider if $c(x,w)$ changes. If $c(x,w) = \epsilon \leq 1$, then the least-cost path to u
+continues to pass through w and its cost changes to $5 + \epsilon$; x will inform its neighbors
+of this new cost. If $c(x,w) = \xi > 6$, then the least cost path now passes through y and
+has cost 11; again x will inform its neighbors of this new cost.
 
-Router 3
+### P11
 
-| Longest Prefix Match               | Outgoing Interface |
-|------------------------------------|--------------------|
-| 11010110 01100001 11111111 000001  | Subnet F           |
-| 11010110 01100001 11111110 0000001 | Subnet E           |
-| 11010110 01100001 11111110 1       | Subnet C           |
+*Consider Figure 5.7. Suppose there is another router w, connected to router y and z. The
+costs of all links are given as follows: $c(x,y)=4$, $c(x,z)=50$, $c(y,w)=1$, $c(z,w)=1$,
+$c(y,z)=3$. Suppose that poisoned reverse is used in the distance-vector routing algorithm.*
 
-### P15
+![](../../../assets/computer_networking/c5p11.png)
 
-*Suppose datagrams are limited to 1,500 bytes (including header) between source Host A
-and destination Host B. Assuming a 20-byte IP header, how many datagrams would be required
-to send an MP3 consisting of 5 million bytes? Explain how you computed your answer.*
+*a. When the distance vector routing is stabilized, router w, y, and z inform their distances to
+x to each other. What distance values do they tell each other?*
 
-MP3 file size = 5 million bytes.
-Assume the data is carried in TCP segments,
-with each TCP segment also having 20 bytes of header.
-Then each datagram can carry 1500 - 40 = 1460 bytes
-of the MP3 file.
+*b. Now suppose that the link cost between x and y increases to 60. Will there be a count-to-
+infinity problem even if poisoned reverse is used? Why or why not? If there is a count-to-
+infinity problem, then how many iterations are needed for the distance-vector routing to
+reach a stable state again? Justify your answer.*
 
-Number of datagrams required:
-$\lceil \frac{5 \times 10^6}{1460} \rceil = 3425$.
+*c. How do you modify $c(y, z)$ such that there is no count-to-infinity problem at all if $c(y,x)$
+changes from 4 to 60?*
 
-All but the last datagram will be 1,500 bytes;
-the last datagram will be 960+40 = 1000 bytes.
-Note that here there is no fragmentation
-– the source host does not create datagrams
-larger than 1500 bytes,
-and these datagrams are smaller than
-the MTUs of the links.
+a. 
+
+![](../../../assets/computer_networking/c5p11a_ans.png)
+
+b. Yes, there will be a count-to-infinity problem. The following table shows the routing
+converging process. Assume that at time t0, link cost change happens. At time t1, y
+updates its distance vector and informs neighbors w and z. In the following table,
+"→" stands for "informs".
+
+![](../../../assets/computer_networking/c5p11b_ans1.png)
+
+We see that w, y, z form a loop in their computation of the costs to router x. If we
+continue the iterations shown in the above table, then we will see that, at t27, z detects
+that its least cost to x is 50, via its direct link with x. At t29, w learns its least cost to x is
+51 via z. At t30, y updates its least cost to x to be 52 (via w). Finally, at time t31, no
+updating, and the routing is stabilized.
+
+![](../../../assets/computer_networking/c5p11b_ans2.png)
+
+c. Cut the link between y and z.
 
 ### P16
 
-*Consider the network setup in Figure 4.25.
-Suppose that the ISP instead assigns the router
-the address 24.34.112.235 and that the network address
-of the home network is 192.168.1/24.*
+*Consider the following network. ISP B provides national backbone service to regional ISP
+A. ISP C provides national backbone service to regional ISP D. Each ISP consists of one AS. B
+and C peer with each other in two places using BGP. Consider traffic going from A to D. B would
+prefer to hand that traffic over to C on the West Coast (so that C would have to absorb the cost
+of carrying the traffic cross-country), while C would prefer to get the traffic via its East Coast
+peering point with B (so that B would have carried the traffic across the country). What BGP
+mechanism might C use, so that B would hand over A-to-D traffic at its East Coast peering
+point? To answer this question, you will need to dig into the BGP ­specification.*
 
-![](../../../assets/computer_networking/c4p16.png)
+![](../../../assets/computer_networking/c5p16.png)
 
-*a. Assign addresses to all interfaces in the home network.*
+One way for C to force B to hand over all of B’s traffic to D on the east coast is for C to
+only advertise its route to D via its east coast peering point with C.
 
-*b. Suppose each host has two ongoing TCP connections,
-all to port 80 at host 128.119.40.86.
-Provide the six corresponding entries in the
-NAT translation table.*
+### P21
 
-a. Home addresses: 192.168.1.1, 192.168.1.2,
-192.168.1.3 with the router interface being 192.168.1.4
+*Consider the two ways in which communication occurs between a managing entity and a
+managed device: request-response mode and trapping. What are the pros and cons of these two
+approaches, in terms of (1) overhead, (2) notification time when exceptional events occur, and
+(3) robustness with respect to lost messages between the managing entity and the device?*
 
-b. NAT Translation Table
+Request response mode will generally have more overhead (measured in terms of the
+number of messages exchanged) for several reasons. First, each piece of information
+received by the manager requires two messages: the poll and the response. Trapping
+generates only a single message to the sender. If the manager really only wants to be
+notified when a condition occurs, polling has more overhead, since many of the polling
+messages may indicate that the waited-for condition has not yet occurred. Trapping
+generates a message only when the condition occurs.
+Trapping will also immediately notify the manager when an event occurs. With polling,
+the manager needs will need to wait for half a polling cycle (on average) between when
+the event occurs and the manager discovers (via its poll message) that the event has
+occurred.
+If a trap message is lost, the managed device will not send another copy. If a poll
+message, or its response, is lost the manager would know there has been a lost message
+(since the reply never arrives). Hence, the manager could repoll, if needed.
 
-| WAN side            | LAN side          |
-|---------------------|-------------------|
-| 24.34.112.235, 4000 | 192.168.1.1, 3345 |
-| 24.34.112.235, 4001 | 192.168.1.1, 3346 |
-| 24.34.112.235, 4002 | 192.168.1.2, 3345 |
-| 24.34.112.235, 4003 | 192.168.1.2, 3346 |
-| 24.34.112.235, 4004 | 192.168.1.3, 3345 |
-| 24.34.112.235, 4005 | 192.168.1.3, 3346 |
+### P22
 
-### P18
+*In Section 5.7 we saw that it was preferable to transport SNMP messages in unreliable
+UDP datagrams. Why do you think the designers of SNMP chose UDP rather than TCP as the
+transport protocol of choice for SNMP?*
 
-*In this problem we’ll explore the impact of NATs on P2P applications.
-Suppose a peer with username Arnold discovers through querying
-that a peer with username Bernard has a file it
-wants to download. Also suppose that Bernard and
-Arnold are both behind a NAT. Try to devise a technique
-that will allow Arnold to establish a TCP connection with
-Bernard without application specific NAT configuration.
-If you have difficulty devising such a technique,
-discuss why.*
-
-It is not possible to devise such a technique.
-In order to establish a direct TCP connection between
-Arnold and Bernard, either Arnold or Bob must initiate
-a connection to the other.
-But the NATs covering Arnold and Bob drop SYN packets
-arriving from the WAN side.
-Thus neither Arnold nor Bob can initiate a TCP
-connection to the other if they are both behind NATs.
-
-### P19
-
-*Consider the SDN OpenFlow network shown in Figure 4.30.
-Suppose that the desired forwarding behavior for
-datagrams arriving at s2 is as follows:*
-
-![](../../../assets/computer_networking/c4p19.png)
-
-- *any datagrams arriving on input port 1 from hosts
-h5 or h6 that are destined to hosts h1 or h2 should
-be forwarded over output port 2;*
-- *any datagrams arriving on input port 2 from hosts
-h1 or h2 that are destined to hosts h5 or h6 should
-be forwarded over output port 1;*
-- *any arriving datagrams on input ports 1 or 2 and
-destined to hosts h3 or h4 should be delivered
-to the host specified;*
-- *hosts h3 and h4 should be able to send datagrams to each other.*
-
-*Specify the flow table entries in s2 that implement this forwarding behavior.*
-
-![](../../../assets/computer_networking/c4p19_ans.png)
-
-### P20
-
-*Consider again the SDN OpenFlow network shown in Figure 4.30.
-Suppose that the desired forwarding behavior for
-datagrams arriving from hosts h3 or h4 at s2 is as
-follows:*
-
-- *any datagrams arriving from host h3 and destined for h1, h2, h5 or h6 should be forwarded in a clockwise direction in the network;*
-- *any datagrams arriving from host h4 and destined for h1, h2, h5 or h6 should be forwarded in a counter-clockwise direction in the network.*
-
-*Specify the flow table entries in s2 that implement this forwarding behavior.*
-
-![](../../../assets/computer_networking/c4p20_ans.png)
+Often, the time when network management is most needed is in times of stress, when the
+network may be severely congested and packets are being lost. With SNMP running over
+TCP, TCP's congestion control would cause SNMP to back-off and stop sending
+messages at precisely the time when the network manager needs to send SNMP
+messages.
 
