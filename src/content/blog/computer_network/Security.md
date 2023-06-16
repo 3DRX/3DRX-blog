@@ -6,6 +6,26 @@ updatedDate: "06/16/2023"
 heroImage: "https://source.unsplash.com/M5tzZtFCOfs"
 ---
 
+<!--toc:start-->
+- [Principles](#principles)
+  - [Simple encryption scheme](#simple-encryption-scheme)
+    - [Symmetric key crypto](#symmetric-key-crypto)
+    - [Public Key Cryptography](#public-key-cryptography)
+- [Message integrity, authentication](#message-integrity-authentication)
+  - [1.0 No authentication](#10-no-authentication)
+  - [2.0 Alice provide her name](#20-alice-provide-her-name)
+  - [3.0 Alice provide her name and her IP address](#30-alice-provide-her-name-and-her-ip-address)
+  - [3.5 Alice provide an encrypted password in addition](#35-alice-provide-an-encrypted-password-in-addition)
+  - [4.0 Bob sends Alice a nonce: R, Alice must return K(R)](#40-bob-sends-alice-a-nonce-r-alice-must-return-kr)
+  - [5.0 Nonce with public key cryptography](#50-nonce-with-public-key-cryptography)
+  - [6.0 Public key Certification Authority](#60-public-key-certification-authority)
+- [Securing e-mail](#securing-e-mail)
+- [Securing TCP: TLS](#securing-tcp-tls)
+- [Network layer security: IPsec](#network-layer-security-ipsec)
+- [Security in wireless and mobile networks](#security-in-wireless-and-mobile-networks)
+- [Firewall and IDS](#firewall-and-ids)
+<!--toc:end-->
+
 > - Confidentiality 保密
 > - Authentication
 > - Message integrity
