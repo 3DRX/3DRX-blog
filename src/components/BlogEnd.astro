@@ -1,0 +1,34 @@
+---
+const { prev, next } = Astro.props;
+---
+
+<div class="blog-end">
+    {
+        prev === null
+            ? <></>
+            : <a class="left" href={`/blog/${prev.slug}`}>{prev.title}</div>
+    }
+    <a class="center" href="/blog">back to blog</a>
+    {
+        next === null
+            ? <></>
+            : <a class="right" href={`/blog/${next.slug}`}>{next.title}</a>
+    }
+</div>
+
+<style>
+    .blog-end {
+        display: flex;
+        justify-content: space-between;
+        margin: 2rem 0;
+    }
+    .blog-end .left {
+        text-align: left;
+    }
+    .blog-end .center {
+        text-align: center;
+    }
+    .blog-end .right {
+        text-align: right;
+    }
+</style>
