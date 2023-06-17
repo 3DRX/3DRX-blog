@@ -58,9 +58,61 @@ heroImage: "https://source.unsplash.com/jXd2FSvcRr8"
 | 读操作是破坏性的，需要写回 | 读操作不是破坏性的 |
 | 地址线分时复用 | 地址线不是分时复用 |
 
-## Cache
+## Cache 存储器
 
+> 一种高速缓冲存储器，解决 CPU 和主存速度不匹配。
+> 包括管理在内的全部功能由硬件实现，因此从软件角度来看，cache 是透明的。
 
+### 基本原理
+
+CPU 与 cache 之间的数据交换以字为单位，cache 与主存之间的数据交换以块为单位。
+当 CPU 读取内存中的一个字时，将这个字的内存地址发送到 cache，cache 控制逻辑判断次字是否在 cache 中：
+若是，则 cache 命中，此字立即传给 CPU，若非，则 cache 缺失，用主存读取周期把这个字从主存读出送到 CPU，
+同时，把含有这个字的整个数据块从主存读出送到 cache 中。
+
+Cache 的命中率为
+
+$$
+h = \frac{N_c}{N_c + N_m}
+$$
+- $N_c$: cache 完成存取的总次数
+- $N_m$: 主存完成存取的总次数
+
+Cache/主存系统的平均访问时间为
+
+$$
+t_a = h t_c + (1-h) t_m
+$$
+- $t_c$: 命中时的 cache 访问时间
+- $t_m$: 未命中时的主存访问时间
+
+访问效率为
+
+$$
+e = \frac{t_c}{t_a} = \frac{1}{r + (1-r)h}
+$$
+- $r = \frac{t_m}{t_c}$
+
+### 主存与 cache 的地址映射
+
+#### 全相联
+
+![](../../../assets/computer_organization/full_connect.png)
+
+#### 直接
+
+i = j mod m
+- i: cache 行号
+- j: 主存块号
+- m: cache 中总行数
+
+![](../../../assets/computer_organization/direct.png)
+
+#### 组相联
+
+![](../../../assets/computer_organization/group.png)
+
+### 习题
 
 
 
