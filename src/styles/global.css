@@ -48,6 +48,7 @@ img {
 	max-width: 100%;
 	height: auto;
     border-radius: 12px;
+    filter: brightness(var(--img-brightness));
 }
 code {
 	padding: 2px 5px;
@@ -73,9 +74,10 @@ blockquote {
     fill: var(--color);
 }
 :root[data-theme="light"] {
+    --img-brightness: 100%;
 	--background-color: #fff;
-	--color: #444;
-	--heading-color: #222;
+	--color: #111;
+	--heading-color: #111;
 	--link-color: #3273dc;
 	--link-visited-color: #193c75;
 	--code-background-color: #c7c7c7;
@@ -85,9 +87,10 @@ blockquote {
 }
 
 :root[data-theme="dark"] {
-	--background-color: #444;
-	--color: #fff;
-	--heading-color: #f1f1f1;
+    --img-brightness: 90%;
+	--background-color: #232323;
+	--color: #eee;
+	--heading-color: #eee;
 	--link-color: #de9906;
 	--link-visited-color: #966807;
 	--code-background-color: #252525;
