@@ -6,6 +6,25 @@ updatedDate: "06/18/2023"
 heroImage: "https://source.unsplash.com/jXd2FSvcRr8"
 ---
 
+<!--toc:start-->
+- [SRAM](#sram)
+- [DRAM](#dram)
+  - [重要参数](#重要参数)
+  - [DRAM 的刷新](#dram-的刷新)
+  - [习题](#习题)
+- [对比 SRAM 与 DRAM](#对比-sram-与-dram)
+- [Cache 存储器](#cache-存储器)
+  - [基本原理](#基本原理)
+  - [主存与 cache 的地址映射](#主存与-cache-的地址映射)
+    - [全相联](#全相联)
+    - [直接](#直接)
+    - [组相联](#组相联)
+  - [Cache 冲突缺失和容量缺失的处理](#cache-冲突缺失和容量缺失的处理)
+- [虚拟存储器](#虚拟存储器)
+  - [段式存储管理](#段式存储管理)
+  - [页式虚拟存储器](#页式虚拟存储器)
+<!--toc:end-->
+
 层次结构存储器系统
 1. 寄存器
 2. cache
