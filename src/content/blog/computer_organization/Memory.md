@@ -2,7 +2,7 @@
 title: "计算机组成原理：存储系统"
 description: "Computer Organization: Memory"
 pubDate: "06/16/2023"
-updatedDate: "06/17/2023"
+updatedDate: "06/18/2023"
 heroImage: "https://source.unsplash.com/jXd2FSvcRr8"
 ---
 
@@ -112,13 +112,26 @@ i = j mod m
 
 ![](../../../assets/computer_organization/group.png)
 
-### 习题
+### Cache 冲突缺失和容量缺失的处理
 
+- 随机替换
+- 先进先出
+- 最少使用
+- 最久未使用
 
+## 虚拟存储器
 
+### 段式存储管理
 
+> 给程序一个比实际内存大得多的编址空间
 
+用段表来指明各段在主存中的位置，各段都有名称、起点、段长等
 
+### 页式虚拟存储器
 
+把虚拟空间和主存空间都分成大小相同的页，以页为单位进行虚存与主存之间的信息交换。
+- 页号
+- 页内地址
 
+页号不同，页内地址相同。
 
