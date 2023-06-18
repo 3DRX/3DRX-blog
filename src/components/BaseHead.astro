@@ -41,5 +41,12 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<!-- Google -->
+<meta name="google-site-verification" content="K6U8xdL4WvOKgU4ZnlwVwo-6LDR2LudhSJW5cvh8WmU" />
+
+<!-- Markdown Rendering -->
 <script src="/lib/theme-util.js" type="text/javascript" is:inline></script>
+
+<!-- Vercel -->
 <script defer src="/_vercel/insights/script.js"></script>
