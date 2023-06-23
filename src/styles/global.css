@@ -55,21 +55,30 @@ code {
 	background-color: var(--code-background-color);
     border-radius: 3px;
 }
+.code-block-wrapper {
+    position: relative;
+}
 pre {
 	padding: 1rem;
     border-radius: 12px;
-    overflow: auto;
     padding: 1rem;
     border-radius: 0.5rem;
     position: relative;
 }
 pre > code {
 	all: unset;
+    overflow: auto;
 }
-pre copy-code-button {
+.code-block-wrapper > copy-code-button {
+    z-index: 99;
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
+    overflow: hidden;
+    visibility: hidden;
+}
+.code-block-wrapper:hover > copy-code-button {
+    visibility: visible;
 }
 blockquote {
 	border: 1px solid var(--color);

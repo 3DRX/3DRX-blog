@@ -19,10 +19,10 @@ export class CopyCodeButton extends LitElement {
         padding: 0.5rem;
         background: #e2e8f022;
         border: none;
-        border-radius: 0.25rem;
+        border-radius: 0.5rem;
         color: #fff;
         cursor: pointer;
-        font-weight: 600;
+        font-weight: 500;
       }
     `
     ];
