@@ -13,6 +13,10 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={description} />
+        <script>
+            import '../components/CopyCodeButton/CCB.js'
+            import '../components/CopyCodeButton/create_CCB.js'
+        </script>
 		<style>
 			.title {
 				font-size: 2em;

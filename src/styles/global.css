@@ -58,9 +58,18 @@ code {
 pre {
 	padding: 1rem;
     border-radius: 12px;
+    overflow: auto;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    position: relative;
 }
 pre > code {
 	all: unset;
+}
+pre copy-code-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
 }
 blockquote {
 	border: 1px solid var(--color);
