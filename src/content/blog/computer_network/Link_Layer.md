@@ -2,7 +2,7 @@
 title: "Computer Networking: Link Layer"
 description: "计算机网络：数据链路层"
 pubDate: "06/16/2023"
-updatedDate: "06/16/2023"
+updatedDate: "06/23/2023"
 heroImage: "https://source.unsplash.com/M5tzZtFCOfs"
 ---
 
@@ -273,11 +273,11 @@ Np(1−p)N−1. Find the value of p that maximizes this expression.*
 
 $$
 \begin{align}
-E(p) &= Np(1-p)^{N-1} \\
-E'(p) &= N(1-p)^{N-1} - Np(N-1)(1-p)^{N-2} \\
-      &= N(1-p)^{N-2}((1-p) - p(N-1)) \\
+E(p) &= Np(1-p)^{N-1} \nonumber\\
+E'(p) &= N(1-p)^{N-1} - Np(N-1)(1-p)^{N-2} \nonumber\\
+      &= N(1-p)^{N-2}((1-p) - p(N-1)) \nonumber\\
 
-E'(p) &= 0 \Rightarrow p^* = \frac{1}{N}
+E'(p) &= 0 \Rightarrow p^* = \frac{1}{N} \nonumber
 \end{align}
 $$
 
@@ -287,11 +287,11 @@ approach infinity. Hint: (1−1/N)N approaches 1/e as N approaches infinity.*
 $$
 \begin{align}
 E(p^*) &= N\frac{1}{N}(1-\frac{1}{N})^{N-1} = (1-\frac{1}{N})^{N-1}
-= \frac{(1-\frac{1}{N})^N}{1-\frac{1}{N}} \\
-\lim_{N \rightarrow \infty}(1-\frac{1}{N}) &= 1 \\
-\lim_{N \rightarrow \infty}(1-\frac{1}{N})^N &= \frac{1}{e} \\
+= \frac{(1-\frac{1}{N})^N}{1-\frac{1}{N}} \nonumber\\
+\lim_{N \rightarrow \infty}(1-\frac{1}{N}) &= 1 \nonumber\\
+\lim_{N \rightarrow \infty}(1-\frac{1}{N})^N &= \frac{1}{e} \nonumber\\
 
-Thus: \lim_{N \rightarrow \infty}E(p^*) &= \frac{1}{e}
+Thus: \lim_{N \rightarrow \infty}E(p^*) &= \frac{1}{e} \nonumber
 \end{align}
 $$
 
@@ -302,12 +302,12 @@ you have completed the problem above!*
 
 $$
 \begin{align}
-E(p) &= Np(1-p)^{2(N-1)} \\
-E'(p) &= N(1-p)^{2(N-2)} - Np2(N-1)(1-p)^{2(N-3)} \\
-      &= N(1-p)^{2(N-3)}((1-p) - p2(N-1)) \\
-E'(p) &= 0 \Rightarrow p^* = \frac{1}{2N-1} \\
-E(p^*) &= \frac{N}{2N-1}(1-\frac{1}{2N-1})^{2(N-1)} \\
-\lim_{N \rightarrow \infty}E(P^*) &= \frac{1}{2} \cdot \frac{1}{e} = \frac{1}{2e}
+E(p) &= Np(1-p)^{2(N-1)} \nonumber\\
+E'(p) &= N(1-p)^{2(N-2)} - Np2(N-1)(1-p)^{2(N-3)} \nonumber\\
+      &= N(1-p)^{2(N-3)}((1-p) - p2(N-1)) \nonumber\\
+E'(p) &= 0 \Rightarrow p^* = \frac{1}{2N-1} \nonumber\\
+E(p^*) &= \frac{N}{2N-1}(1-\frac{1}{2N-1})^{2(N-1)} \nonumber\\
+\lim_{N \rightarrow \infty}E(P^*) &= \frac{1}{2} \cdot \frac{1}{e} = \frac{1}{2e} \nonumber
 \end{align}
 $$
 
