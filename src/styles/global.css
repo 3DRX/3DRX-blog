@@ -73,6 +73,12 @@ blockquote {
 .content-svg {
     fill: var(--color);
 }
+.math {
+    overflow-x: auto;
+}
+.math-display {
+    overflow-x: auto;
+}
 :root[data-theme="light"] {
     --img-brightness: 100%;
 	--background-color: #fff;
