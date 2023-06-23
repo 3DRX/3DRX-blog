@@ -6,6 +6,16 @@ updatedDate: "06/23/2023"
 heroImage: "https://source.unsplash.com/QfmM3JrHtog"
 ---
 
+<!--toc:start-->
+- [Primitive Types](#primitive-types)
+  - [Default types of implicit definition](#default-types-of-implicit-definition)
+  - [Max size](#max-size)
+- [Strings](#strings)
+- [Tuples](#tuples)
+- [Arrays](#arrays)
+- [Vectors](#vectors)
+<!--toc:end-->
+
 ## Primitive Types
 
 Integers: i8, u8, i16, u16, i32, u32, i64, u64, i128, u128.
