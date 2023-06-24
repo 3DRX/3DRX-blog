@@ -3,7 +3,7 @@ title: "Giscus: github based comment section"
 description: "How I set up comment section based on github discussions"
 pubDate: "06/24/2023"
 updatedDate: "06/24/2023"
-heroImage: "https://source.unsplash.com/tNALoIZhqVM"
+heroImage: "https://source.unsplash.com/xv7-GlvBLFw"
 ---
 
 Since I started this blog, I've always wanted to add a nice comment section to it.
