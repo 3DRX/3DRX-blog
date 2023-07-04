@@ -3,7 +3,7 @@ title: "Dash.js 源码阅读: Scheduling Logic"
 description: "My notes while working with Dash.js, trying to enable the ability of getNextFragment in ABR algorithm."
 pubDate: "07/4/2023"
 updatedDate: "07/4/2023"
-heroImage: "http://reference.dashif.org/dash.js/latest/samples/"
+heroImage: "https://source.unsplash.com/VLzAkbs5afg"
 ---
 
 <!--toc:start-->
