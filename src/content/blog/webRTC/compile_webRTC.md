@@ -2,7 +2,7 @@
 title: "Compiling WebRTC"
 description: "编译 WebRTC"
 pubDate: "07/2/2023"
-updatedDate: "07/5/2023"
+updatedDate: "07/6/2023"
 heroImage: "https://cdn-cdpl.sgp1.cdn.digitaloceanspaces.com/source/998b78e349061b4971c0a2b0e8d6be41/webrtc.png"
 ---
 
@@ -36,3 +36,9 @@ After this, you can follow [the guide from Google](https://webrtc.github.io/webr
 ## 如果访问 Google [有困难](https://en.wikipedia.org/wiki/Great_Firewall)
 
 WebRTC 国内镜像地址: https://webrtc.org.cn/mirror/
+
+## Other resources generaed during compile
+
+Use command `gn gen out/Default --ide=json --export-compile-commands` can generate `compile_commands.json` in out/Default folder,
+which is useful when using a LSP or IDE.
+
