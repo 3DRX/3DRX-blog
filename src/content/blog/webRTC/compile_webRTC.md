@@ -2,7 +2,7 @@
 title: "Compiling WebRTC"
 description: "编译 WebRTC"
 pubDate: "07/2/2023"
-updatedDate: "07/2/2023"
+updatedDate: "07/5/2023"
 heroImage: "https://cdn-cdpl.sgp1.cdn.digitaloceanspaces.com/source/998b78e349061b4971c0a2b0e8d6be41/webrtc.png"
 ---
 
@@ -15,7 +15,9 @@ heroImage: "https://cdn-cdpl.sgp1.cdn.digitaloceanspaces.com/source/998b78e34906
 ## System Requirements
 
 By the time when this article is written, the tooling around building WebRTC seems not working
-properly on Ubuntu 22.04, but is fine on Ubuntu 20.04.
+properly on Ubuntu 22.04, but is fine on Ubuntu 20.04 and Debian 12.
+
+Also, you need to install `pkg-config`.
 
 ## Normal Process (from Google's repo)
 
