@@ -2,7 +2,7 @@
 title: "Using Matplotlib to Produce Figures in Paper"
 description: "Some configurations and environment setup"
 pubDate: "08/2/2023"
-updatedDate: "08/2/2023"
+updatedDate: "08/8/2023"
 heroImage: "https://source.unsplash.com/h3kuhYUCE9A"
 ---
 
@@ -35,3 +35,10 @@ plt.rcParams['font.serif'] = ['Arial']
 matplotlib.rcParams['pdf.fonttype'] = 42
 matplotlib.rcParams['ps.fonttype'] = 42
 ```
+
+## Export as PDF
+
+```python
+plt.savefig('./figure_name.pdf', bbox_inches='tight', dpi=300)
+```
+
