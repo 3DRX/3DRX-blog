@@ -1,41 +1,41 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
-import BlogEnd from '../../components/BlogEnd.astro';
+import { CollectionEntry, getCollection } from "astro:content";
+import BlogPost from "../../layouts/BlogPost.astro";
+import BlogEnd from "../../components/BlogEnd.astro";
 
 export async function getStaticPaths() {
-    const posts = (await getCollection('blog')).sort(
-        (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-    );
-    const numPosts = posts.length;
-    return posts.map((post, i) => {
-        let prevPost = null;
-        let nextPost = null;
-        if (i + 1 === numPosts) {
-            prevPost = null;
-        } else {
-            prevPost = {
-                slug: posts[i + 1].slug,
-                title: posts[i + 1].data.title,
-            }
-        }
-        if (i === 0) {
-            nextPost = null;
-        } else {
-            nextPost = {
-                slug: posts[i - 1].slug,
-                title: posts[i - 1].data.title,
-            }
-        }
-        return {
-            params: { slug: post.slug },
-            props: {
-                ...post,
-                prevPost: prevPost,
-                nextPost: nextPost
-            },
-        }
-    })
+  const posts = (await getCollection("blog")).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  );
+  const numPosts = posts.length;
+  return posts.map((post, i) => {
+    let prevPost = null;
+    let nextPost = null;
+    if (i + 1 === numPosts) {
+      prevPost = null;
+    } else {
+      prevPost = {
+        slug: posts[i + 1].slug,
+        title: posts[i + 1].data.title,
+      };
+    }
+    if (i === 0) {
+      nextPost = null;
+    } else {
+      nextPost = {
+        slug: posts[i - 1].slug,
+        title: posts[i - 1].data.title,
+      };
+    }
+    return {
+      params: { slug: post.slug },
+      props: {
+        ...post,
+        prevPost: prevPost,
+        nextPost: nextPost,
+      },
+    };
+  });
 }
 
 const post = Astro.props;
@@ -43,6 +43,6 @@ const { Content } = await post.render();
 ---
 
 <BlogPost {...post.data}>
-    <Content />
-    <BlogEnd prev={post.prevPost} next={post.nextPost} />
+  <Content />
+  <BlogEnd prev={post.prevPost} next={post.nextPost} />
 </BlogPost>

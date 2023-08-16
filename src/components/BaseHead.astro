@@ -1,17 +1,17 @@
 ---
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
-import '../styles/global.css';
+import "../styles/global.css";
 
 export interface Props {
-	title: string;
-	description: string;
-	image?: string;
+  title: string;
+  description: string;
+  image?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
+const { title, description, image = "/placeholder-social.jpg" } = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -19,7 +19,7 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
-<link rel="sitemap" href="/sitemap-index.xml">
+<link rel="sitemap" href="/sitemap-index.xml" />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -44,7 +44,10 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
 <!-- Google -->
-<meta name="google-site-verification" content="K6U8xdL4WvOKgU4ZnlwVwo-6LDR2LudhSJW5cvh8WmU" />
+<meta
+  name="google-site-verification"
+  content="K6U8xdL4WvOKgU4ZnlwVwo-6LDR2LudhSJW5cvh8WmU"
+/>
 
 <!-- Markdown Rendering -->
 <script src="/lib/theme-util.js" type="text/javascript" is:inline></script>
