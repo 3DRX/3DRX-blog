@@ -1,19 +1,14 @@
 import * as THREE from 'three'
-import { STLLoader } from 'three/examples/jsm/loaders/STLLoader'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 const scene = new THREE.Scene()
-const loader = new STLLoader()
+const loader = new GLTFLoader()
 const canvas = document.querySelector('.webgl')
 loader.load(
-    `/3DRX-2022.stl`,
-    (geometry) => {
-        const material = new THREE.MeshStandardMaterial({
-            color: '#fff',
-            metalness: 1.0,
-        })
-        const mesh = new THREE.Mesh(geometry, material)
-        scene.add(mesh)
+    `/3DRX-2022.gltf`,
+    (gltf) => {
+        scene.add(gltf.scene)
     },
     (_) => {
     },
