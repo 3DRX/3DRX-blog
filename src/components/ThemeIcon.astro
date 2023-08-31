@@ -3,88 +3,89 @@ const { id } = Astro.props;
 ---
 
 <div class="toggle-container">
-    <span class="light">
-        🌞
-    </span>
-    <div>
-        <label class="switch" aria-label="Switch theme">
-            <input id={id} class="theme-toggle" type="checkbox" 
-                onclick="togglePreference()" />
-            <span class="slider round"></span>
-        </label>
-    </div>
-    <span class="dark">
-        🌑
-    </span>
+  <span class="light"> 🌞</span>
+  <div>
+    <label class="switch" aria-label="Switch theme">
+      <input
+        id={id}
+        class="theme-toggle"
+        type="checkbox"
+        onclick="togglePreference()"
+      />
+      <span class="slider round"></span>
+    </label>
+  </div>
+  <span class="dark"> 🌑</span>
 </div>
 
 <style>
-.theme-toggle {}
+  .theme-toggle {
+  }
 
-.toggle-container {
+  .toggle-container {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 0.5em;
-}
+  }
 
-.light {
+  .light {
     color: var(--light-theme-indicator-color);
-}
+  }
 
-.dark {
+  .dark {
     color: var(--dark-theme-indicator-color);
-}
+  }
 
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 40px;
-  height: 20px;
-}
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+  }
 
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
 
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--link-color);
-  transition: .4s;
-}
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--link-color);
+    transition: 0.4s;
+  }
 
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 14px;
-  width: 14px;
-  left: 3px;
-  bottom: 3px;
-  background-color: var(--color);
-  transform: var(--theme-slider-initial-transform);
-  transition: .4s;
-}
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: var(--color);
+    transform: var(--theme-slider-initial-transform);
+    transition: 0.4s;
+  }
 
-input:checked + .slider {
-  background-color: var(--link-color);
-}
+  input:checked + .slider {
+    background-color: var(--link-color);
+  }
 
-input:focus + .slider {
-  box-shadow: 0 0 5px var(--link-color);
-}
+  input:focus + .slider {
+    box-shadow: 0 0 5px var(--link-color);
+  }
 
-.slider.round {
-  border-radius: 34px;
-}
+  .slider.round {
+    border-radius: 34px;
+  }
 
-.slider.round:before {
-  border-radius: 50%;
-}
+  .slider.round:before {
+    border-radius: 50%;
+  }
 </style>
