@@ -47,10 +47,18 @@ table {
 img {
     max-width: 100%;
     height: auto;
+    filter: drop-shadow(var(--image-shadow-color) 0px 0px 30px);
+    padding-top: 3rem;
+    padding-bottom: 0rem;
+}
+#rss-img {
+    filter: none;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
 }
 code {
     padding: 2px 5px;
-    background-color: var(--code-background-color);
+    background-color: var(--image-shadow-color);
     border-radius: 3px;
 }
 .code-block-wrapper {
@@ -79,12 +87,8 @@ pre > code {
     visibility: visible;
 }
 blockquote {
-    border: 1px solid var(--color);
     color: var(--color);
-    padding: 2px 0px 2px 20px;
-    margin: 0px;
-    border-radius: 12px;
-    font-style: italic;
+    text-align: center;
 }
 .content-svg {
     fill: var(--color);
@@ -102,7 +106,7 @@ blockquote {
     --heading-color: #111;
     --link-color: #3273dc;
     --link-visited-color: #193c75;
-    --code-background-color: #c7c7c7;
+    --image-shadow-color: #888;
     --theme-slider-initial-transform: 0px;
     --light-theme-indicator-color: #ffcf00;
     --dark-theme-indicator-color: var(--color);
@@ -115,7 +119,7 @@ blockquote {
     --heading-color: #eee;
     --link-color: #de9906;
     --link-visited-color: #966807;
-    --code-background-color: #252525;
+    --image-shadow-color: #000;
     --theme-slider-initial-transform: translateX(20px);
     --light-theme-indicator-color: var(--color);
     --dark-theme-indicator-color: #ffcf00;
