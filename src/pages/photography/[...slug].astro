@@ -43,15 +43,5 @@ const { Content } = await post.render();
 ---
 
 <PhotographyPost {...post.data}>
-  <style>
-    img {
-      max-width: 100%;
-      height: auto;
-      filter: drop-shadow(#000 0px 0px 30px);
-      padding-top: 4rem;
-      padding-bottom: 4rem;
-    }
-  </style>
   <Content />
-  <BlogEnd prev={post.prevPost} next={post.nextPost} />
 </PhotographyPost>

@@ -35,6 +35,9 @@ const posts = (await getCollection("photography")).sort(
       ul li a:visited {
         color: var(--link-visited-color);
       }
+      img {
+          border-radius: 0px;
+      }
     </style>
   </head>
   <body>
@@ -56,3 +59,4 @@ const posts = (await getCollection("photography")).sort(
     <Footer />
   </body>
 </html>
+
