@@ -45,13 +45,8 @@ const posts = (await getCollection("photography")).sort(
           {
             posts.map((post) => (
               <li>
-                <img
-                  src={post.data.heroImage}
-                  href={`/photography/${post.slug}/`}
-                  alt={post.data.title}
-                  width="1600"
-                  height="900"
-                />
+                <FormattedDate date={post.data.pubDate} />
+                <a href={`/photography/${post.slug}/`}>{post.data.title}</a>
               </li>
             ))
           }

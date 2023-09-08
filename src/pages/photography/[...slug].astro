@@ -4,7 +4,7 @@ import BlogPost from "../../layouts/BlogPost.astro";
 import BlogEnd from "../../components/BlogEnd.astro";
 
 export async function getStaticPaths() {
-  const posts = (await getCollection("blog")).sort(
+  const posts = (await getCollection("photography")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
   );
   const numPosts = posts.length;
