@@ -2,9 +2,11 @@
 title: "Read WebRTC Fec code"
 description: "WebRTC Fec 代码阅读笔记"
 pubDate: "09/12/2023"
-updatedDate: "09/12/2023"
+updatedDate: "09/13/2023"
 heroImage: "https://cdn-cdpl.sgp1.cdn.digitaloceanspaces.com/source/998b78e349061b4971c0a2b0e8d6be41/webrtc.png"
 ---
+
+## FEC 编码
 
 WebRTC 中的 FEC 算法有两种，FlexFec 和 UlpFec，
 其中默认的是 UlpFec。
@@ -35,4 +37,14 @@ if (num_fec_packets == 0) {
 
 ... encode fec
 ```
+
+## FEC rate 决策
+
+`bool VCMNackFecMethod::ProtectionFactor(...)`
+
+## 参考链接
+
+https://xjsxjtu.github.io/2017-07-16/LearningWebRTC-adafec/
+
+https://xjsxjtu.github.io/2017-07-16/LearningWebRTC-fec/
 
