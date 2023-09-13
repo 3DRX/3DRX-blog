@@ -238,6 +238,62 @@ NetworkControlUpdate GoogCcNetworkController::OnTransportPacketsFeedback(
 控制。`GoogCcNetworkController` 中 public 函数返回的 update 是所有函数共用的。
 具体调用的 interval 参见 [GCC 控制器创建流程](#模块入口)
 
+### 链路容量预估
+
+`LinkCapacityTracker` （在 send_side_bandwidth_estimation.cc 中）
+
+有四个输入
+1. 根据基于延迟的带宽预估值变化
+
+    如果当前基于延迟的预估带宽比上次的小，就将 link_capacity 更新为
+    `link_capacity = min(link_capacity, delay_based_bwe)`
+
+2. 根据初始值
+
+    `link_capacity = start_rate`
+
+3. 根据接收端实际速率和发送速率对比
+
+    已知吞吐量等于上面两者最小值，
+    如果这个值大于当前 link_capacity，则进行下面操作，
+    否则不更新预估值。
+
+```cpp
+TimeDelta delta = at_time - last_link_capacity_update_;
+double alpha = delta.IsFinite() ? exp(-(delta / tracking_rate.Get())) : 0;
+capacity_estimate_bps_ = alpha * capacity_estimate_bps_ +
+                         (1 - alpha) * acknowledged_target.bps<double>();
+```
+
+4. 根据 RTT backoff
+
+    `link_capacity = min(link_capacity, backoff_rate)`
+    其中 backoff_rate 的值由以下逻辑产生
+
+```cpp
+void SendSideBandwidthEstimation::UpdateEstimate(Timestamp at_time) {
+  if (rtt_backoff_.IsRttAboveLimit()) {
+    if (at_time - time_last_decrease_ >= rtt_backoff_.drop_interval_ &&
+        current_target_ > rtt_backoff_.bandwidth_floor_) {
+      time_last_decrease_ = at_time;
+      DataRate new_bitrate =
+          std::max(current_target_ * rtt_backoff_.drop_fraction_,
+                   rtt_backoff_.bandwidth_floor_.Get());
+      link_capacity_.OnRttBackoff(new_bitrate, at_time);
+      // 上一行的 new_bitrate 就是 backoff_rate
+      UpdateTargetBitrate(new_bitrate, at_time);
+      return;
+    }
+    // TODO(srte): This is likely redundant in most cases.
+    ApplyTargetLimits(at_time);
+    return;
+  }
+
+  ...
+
+}
+```
+
 ## 参考链接
 
 https://blog.csdn.net/fanyamin/article/details/128479333
