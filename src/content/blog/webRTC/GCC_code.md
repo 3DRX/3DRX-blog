@@ -2,7 +2,7 @@
 title: "Read WebRTC GoogCC code"
 description: "WebRTC GCC 代码阅读笔记"
 pubDate: "09/12/2023"
-updatedDate: "09/12/2023"
+updatedDate: "09/19/2023"
 heroImage: "https://cdn-cdpl.sgp1.cdn.digitaloceanspaces.com/source/998b78e349061b4971c0a2b0e8d6be41/webrtc.png"
 ---
 
@@ -293,6 +293,17 @@ void SendSideBandwidthEstimation::UpdateEstimate(Timestamp at_time) {
 
 }
 ```
+
+## GCC 结果生效处
+
+GCC 中 `OnTransportPacketsFeedback` 函数返回 target_rate 和 stable_target_rate 之后，
+其对编码起到限制作用的地方在
+`void RtpVideoSender::OnBitrateUpdated(BitrateAllocationUpdate update, int framerate)`。
+这里的 update 参数就是 GCC 返回的值。
+
+该函数首先通过 `fec_controller_->UpdateFecRates()` 函数计算当前丢包和延迟下做冗余后剩余带宽，
+然后告知编码器按照预估链路总带宽 - 冗余信息所占用带宽编码。
+
 
 ## 参考链接
 
