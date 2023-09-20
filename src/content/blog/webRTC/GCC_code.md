@@ -2,7 +2,7 @@
 title: "Read WebRTC GoogCC code"
 description: "WebRTC GCC 代码阅读笔记"
 pubDate: "09/12/2023"
-updatedDate: "09/19/2023"
+updatedDate: "09/20/2023"
 heroImage: "https://cdn-cdpl.sgp1.cdn.digitaloceanspaces.com/source/998b78e349061b4971c0a2b0e8d6be41/webrtc.png"
 ---
 
@@ -291,6 +291,30 @@ void SendSideBandwidthEstimation::UpdateEstimate(Timestamp at_time) {
 
   ...
 
+}
+```
+
+### 码率约束限制
+
+```cpp
+struct BitrateConstraints {
+  int min_bitrate_bps = 0;
+  int start_bitrate_bps = kDefaultStartBitrateBps;
+  int max_bitrate_bps = -1;
+
+ private:
+  static constexpr int kDefaultStartBitrateBps = 300000;
+};
+```
+
+```cpp
+BitrateConstraints DefaultBitrateConstraints() {
+  BitrateConstraints constraints;
+
+  constraints.min_bitrate_bps = 0;
+  constraints.start_bitrate_bps = INT_MAX;
+  constraints.max_bitrate_bps = INT_MAX;
+  return constraints;
 }
 ```
 
