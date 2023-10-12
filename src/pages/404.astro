@@ -1,0 +1,45 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    </head>
+    <body>
+        <Header title={SITE_TITLE} />
+        <main>
+            <h1>oops...</h1>
+            <img src="/404.png" alt="404" />
+            <h2 id="countdown">Redirecting in 5 seconds</h2>
+            <script>
+            var count = 5;
+            var counter = setInterval(timer, 1000);
+            function timer() {
+                count = count - 1;
+                if (count <= 0) {
+                    clearInterval(counter);
+                    window.location.href = "/";
+                    return;
+                }
+                document.getElementById("countdown").innerHTML = "Redirecting in " + count + " seconds...";
+            }
+            </script>
+        </main>
+        <style>
+        h1 {
+            text-align: center;
+        }
+        img {
+            display: block;
+            margin: 0 auto;
+        }
+        h2 {
+            text-align: center;
+        }
+        </style>
+    </body>
+</html>
