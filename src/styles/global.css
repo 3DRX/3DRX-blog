@@ -112,7 +112,7 @@ blockquote {
 
 :root[data-theme="dark"] {
     --img-brightness: 90%;
-    --background-color: #232323;
+    --background-color: #000;
     --color: #eee;
     --heading-color: #eee;
     --link-color: #de9906;
