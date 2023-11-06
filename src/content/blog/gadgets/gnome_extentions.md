@@ -1,9 +1,9 @@
 ---
-title: "Gnome Plugins"
-description: "Gnome plugins I'm using on Debian 12"
+title: "Gnome Extensions"
+description: "Gnome extensions I'm using on Debian 12"
 pubDate: "11/6/2023"
 updatedDate: "11/6/2023"
-heroImage: ""
+heroImage: "../../../assets/gagets/gnome_extentions.png"
 ---
 
 - [AppIndicator and KStatusNotifierItem Support](https://extensions.gnome.org/extension/615/appindicator-support/)  
