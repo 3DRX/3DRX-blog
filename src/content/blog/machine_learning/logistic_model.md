@@ -1,9 +1,16 @@
 ---
-title: "Logistic Model"
-description: "逻辑模型"
+title: "机器学习：逻辑模型"
+description: "Logistic Model"
 pubDate: "11/10/2023"
 updatedDate: "11/10/2023"
 ---
+
+<!--toc:start-->
+- [FINDS](#finds)
+- [决策树](#决策树)
+  - [ID3](#id3)
+  - [CART](#cart)
+<!--toc:end-->
 
 > 概念学习：利用有关某个布尔函数的输入输出训练样例，推断该布尔函数的学习过程。
 > 假设空间：全部可能的概念构成的空间

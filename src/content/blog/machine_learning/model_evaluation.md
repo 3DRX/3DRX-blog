@@ -1,9 +1,20 @@
 ---
-title: "Model Evaluation"
-description: "模型评估与选择"
+title: "机器学习：模型评估与选择"
+description: "Model Evaluation"
 pubDate: "11/10/2023"
 updatedDate: "11/10/2023"
 ---
+
+<!--toc:start-->
+- [误差](#误差)
+- [评估方法](#评估方法)
+  - [hold-out](#hold-out)
+  - [cross validation](#cross-validation)
+  - [bootstrapping 自助法](#bootstrapping-自助法)
+- [性能度量](#性能度量)
+  - [分类任务](#分类任务)
+  - [回归任务](#回归任务)
+<!--toc:end-->
 
 ## 误差
 
