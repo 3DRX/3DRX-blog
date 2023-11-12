@@ -20,11 +20,39 @@ updatedDate: "11/12/2023"
 
 视频固有参数
 
+### PSNR
+
+> Peak signal-to-noise ratio，峰值信噪比。
+
 ### Average Frame Recovery Rate
 
 > 平均帧恢复率
 
 在丢包率和丢包分布同样的网络下，这个指标能够直接反映出 FEC 调控和编码算法的性能。
+
+## 算法思路
+
+### 查表：静态规则
+
+- WebRTC 中的冗余率表：根据当前时刻的 RTT、丢包、吞吐量等信息结合帧类型（关键帧、非关键帧）给出一个相应的冗余率。
+- MaxFilter: Calculates the maximum packet loss rate in
+the received network reports in a fixed size window and
+chooses it as the prediction result.
+- KalmanFilter: Applies Kalman Filter to the sequence of
+packet loss rate, considering the difference of importance
+between packet loss rates in network reports.
+
+### 基于学习的动态算法
+
+一种实现方式是将过去一段时间的丢包、RTT、吞吐量、反馈时间间隔等信息作为机器学习算法的输入，
+其输出为对未来丢包分布趋势的预测。
+其所使用的机器学习模型可以是离线训练好的神经网络，
+也可以是强化学习模型。
+
+- DeepRS: A recently proposed deep-learning-based
+prototypical AFEC algorithm. It applies Long-Short Term
+Memory (LSTM) neural networks to make sequence
+predictions on packet loss rate.
 
 ## Reference
 
