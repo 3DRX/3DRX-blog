@@ -2,7 +2,7 @@
 title: "Adaptive Forward Error Correction in Video Streaming"
 description: "动态自适应的前向纠错"
 pubDate: "11/12/2023"
-updatedDate: "11/12/2023"
+updatedDate: "11/14/2023"
 ---
 
 ## 评价指标
@@ -53,8 +53,4 @@ between packet loss rates in network reports.
 prototypical AFEC algorithm. It applies Long-Short Term
 Memory (LSTM) neural networks to make sequence
 predictions on packet loss rate.
-
-## Reference
-
-[TCSVT'23 ABRF：Adaptive_BitRate-FEC_Joint_Control_for_Real-Time_Video_Streaming](https://ieeexplore.ieee.org/document/10050528)
 
