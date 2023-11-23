@@ -2,8 +2,14 @@
 title: "tcctl"
 description: "A webui for tc netem"
 pubDate: "11/19/2023"
-updatedDate: "11/22/2023"
+updatedDate: "11/23/2023"
 ---
+
+
+![tcctl](../../../assets/gagets/tcctl.png)
+
+> A webui for tc netem, designed to be run on OpenWrt routers.  
+> https://github.com/3DRX/tcctl
 
 <!--toc:start-->
 - [Install & Run](#install-run)
@@ -11,11 +17,6 @@ updatedDate: "11/22/2023"
   - [Manual](#manual)
   - [Trace File](#trace-file)
 <!--toc:end-->
-
-![tcctl](../../../assets/gagets/tcctl.png)
-
-> A webui for tc netem, designed to be run on OpenWrt routers.  
-> https://github.com/3DRX/tcctl
 
 ## Install & Run
 
@@ -51,4 +52,16 @@ Click "Reset" button to clear all shaping rules to network interface.
 
 Set delay(ms/s), loss(%), rate(Mbps/Kbps) by **floating point precision**.
 Select a NIC before upload trace file, click "Start" button to start playback the network trace.
+
+For example
+
+```
+10 1 20
+10 1 20
+10 1 20
+10 1 20
+```
+
+describes a trace that have 10 ms delay, 1% packet loss, and 20 Mbps data rate for 4 seconds (each line represents 1 second).
+There shouldn't be blank line in trace file.
 
