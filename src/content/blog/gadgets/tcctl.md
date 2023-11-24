@@ -1,6 +1,6 @@
 ---
 title: "tcctl"
-description: "A webui for tc netem"
+description: "A webui for tc netem that runs on any Linux system"
 pubDate: "11/19/2023"
 updatedDate: "11/24/2023"
 ---
@@ -14,15 +14,16 @@ updatedDate: "11/24/2023"
 <!--toc:start-->
 - [Install & Run](#install-run)
 - [Usage](#usage)
-  - [Manual](#manual)
-  - [Trace File](#trace-file)
+  - [Manual Mode](#manual-mode)
+  - [Trace File Mode](#trace-file-mode)
 <!--toc:end-->
 
 ## Install & Run
 
-1. Download release .zip on OpenWrt and decompress it
-    - [tcctl-0.0.1.zip](/tcctl-0.0.1.zip)
-    - [tcctl-0.0.2.zip](/tcctl-0.0.2.zip)
+> The following operations should be taken as root user.
+
+1. Download release .zip on OpenWrt and decompress it to /root/tcctl
+    - [tcctl-0.1.0.zip](/tcctl-0.1.0.zip)
 2. Install following dependencies
 ```
 opkg update
@@ -30,16 +31,17 @@ opkg install python3 python3-pip python3-psutil tc-full
 pip install flask gunicorn
 ```
 3. Reboot you system
-4. `cd build && chmod +x ./run_prod.sh && ./run_prod.sh`
+4. `cd /root/tcctl && chmod +x ./install.sh && ./install.sh`
 5. Go to `http://<host_name_of_your_router>:8080`
 
 ## Usage
 
-1. Monitor network traffic by interface.
-2. Apply limitations on **delay**, **packet loss**, and **data rate** via [tc netem](/blog/gadgets/tc_openwrt).
-3. Upload [trace file](#trace-file) and apply limitations according to the trace.
-4. Switching between manual mode and trace file mode will reset all shaping rules.
-5. It is recommended to connect to tcctl from a port that's not been controlled by itself.
+1. Starts automatically in background when system boots.
+2. Monitor network traffic by interface.
+3. Apply limitations on **delay**, **packet loss**, and **data rate** via [tc netem](/blog/gadgets/tc_openwrt).
+4. Upload [trace file](#trace-file) and apply limitations according to the trace.
+5. Switching between manual mode and trace file mode will reset all shaping rules.
+6. It is recommended to connect to tcctl from a port that's not been controlled by itself.
 
 ### Manual Mode
 
