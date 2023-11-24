@@ -2,7 +2,7 @@
 title: "tcctl"
 description: "A webui for tc netem"
 pubDate: "11/19/2023"
-updatedDate: "11/23/2023"
+updatedDate: "11/24/2023"
 ---
 
 
@@ -22,6 +22,7 @@ updatedDate: "11/23/2023"
 
 1. Download release .zip on OpenWrt and decompress it
     - [tcctl-0.0.1.zip](/tcctl-0.0.1.zip)
+    - [tcctl-0.0.2.zip](/tcctl-0.0.2.zip)
 2. Install following dependencies
 ```
 opkg update
@@ -40,14 +41,14 @@ pip install flask gunicorn
 4. Switching between manual mode and trace file mode will reset all shaping rules.
 5. It is recommended to connect to tcctl from a port that's not been controlled by itself.
 
-### Manual
+### Manual Mode
 
 Set delay(ms/s), loss(%), rate(Mbps/Kbps) by **integer values**.
 Click "Submit" to apply the values, if submit multiple times,
 subsequent submissions will override previous ones.
 Click "Reset" button to clear all shaping rules to network interface.
 
-### Trace File
+### Trace File Mode
 
 Set delay(ms/s), loss(%), rate(Mbps/Kbps) by **floating point precision**.
 Select a NIC before upload trace file, click "Start" button to start playback the network trace.
