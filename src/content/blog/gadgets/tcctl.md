@@ -8,7 +8,6 @@ updatedDate: "11/24/2023"
 
 ![tcctl](../../../assets/gagets/tcctl.png)
 
-> A webui for tc netem, designed to be run on OpenWrt routers.  
 > https://github.com/3DRX/tcctl
 
 <!--toc:start-->
