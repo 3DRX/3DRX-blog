@@ -25,13 +25,12 @@ updatedDate: "11/23/2023"
 2. Install following dependencies
 ```
 opkg update
-opkg install python3
-opkg install python3-pip
-opkg install python3-psutil
-pip install flask
+opkg install python3 python3-pip python3-psutil tc-full
+pip install flask gunicorn
 ```
-3. `cd build && chmod +x ./run_prod.sh && ./run_prod.sh`
-4. Go to `http://<host_name_of_your_router>:8080`
+3. Reboot you system
+4. `cd build && chmod +x ./run_prod.sh && ./run_prod.sh`
+5. Go to `http://<host_name_of_your_router>:8080`
 
 ## Usage
 
