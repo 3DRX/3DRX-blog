@@ -18,12 +18,13 @@ The `println!` macro in Rust is powerful, the following are some common use case
    ```
 2. [Traits](https://doc.rust-lang.org/book/ch10-02-traits.html)
    for numbers
-   `rust
- println!("Binary: {:b} Hex: {:x} Octal: {:o}", 10, 10, 10);
- `
+   ```rust
+   println!("Binary: {:b} Hex: {:x} Octal: {:o}", 10, 10, 10);
+   ```
    The output:
-   `     Binary: 1010 Hex: a Octal: 12
- `
+   ```
+   Binary: 1010 Hex: a Octal: 12
+   ```
 3. A "tuple" of values
    ```rust
    println!("{:?}", (10, true, "text"));

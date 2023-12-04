@@ -70,18 +70,17 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
       data-lang="en"
       data-loading="lazy"
       crossorigin="anonymous"
-      async
-    ></script>
+      async></script>
     <Footer />
+    <style>
+      .blog-date {
+        font-size: 0.9em;
+        color: var(--text-color-secondary);
+        display: flex;
+      }
+      .blog-date > div {
+        margin-left: 3em;
+      }
+    </style>
   </body>
-  <style>
-    .blog-date {
-      font-size: 0.9em;
-      color: var(--text-color-secondary);
-      display: flex;
-    }
-    .blog-date > div {
-      margin-left: 3em;
-    }
-  </style>
 </html>

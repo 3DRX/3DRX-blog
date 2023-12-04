@@ -4,7 +4,7 @@ import PhotographyPost from "../../layouts/PhotographyPost.astro";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("photography")).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
   );
   const numPosts = posts.length;
   return posts.map((post, i) => {
