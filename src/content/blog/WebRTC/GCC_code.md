@@ -7,6 +7,7 @@ heroImage: "https://cdn-cdpl.sgp1.cdn.digitaloceanspaces.com/source/998b78e34906
 ---
 
 <!--toc:start-->
+
 - [模块入口](#模块入口)
 - [模块主函数](#模块主函数)
 - [其他部分](#其他部分)
@@ -243,20 +244,21 @@ NetworkControlUpdate GoogCcNetworkController::OnTransportPacketsFeedback(
 `LinkCapacityTracker` （在 send_side_bandwidth_estimation.cc 中）
 
 有四个输入
+
 1. 根据基于延迟的带宽预估值变化
 
-    如果当前基于延迟的预估带宽比上次的小，就将 link_capacity 更新为
-    `link_capacity = min(link_capacity, delay_based_bwe)`
+   如果当前基于延迟的预估带宽比上次的小，就将 link_capacity 更新为
+   `link_capacity = min(link_capacity, delay_based_bwe)`
 
 2. 根据初始值
 
-    `link_capacity = start_rate`
+   `link_capacity = start_rate`
 
 3. 根据接收端实际速率和发送速率对比
 
-    已知吞吐量等于上面两者最小值，
-    如果这个值大于当前 link_capacity，则进行下面操作，
-    否则不更新预估值。
+   已知吞吐量等于上面两者最小值，
+   如果这个值大于当前 link_capacity，则进行下面操作，
+   否则不更新预估值。
 
 ```cpp
 TimeDelta delta = at_time - last_link_capacity_update_;
@@ -267,8 +269,8 @@ capacity_estimate_bps_ = alpha * capacity_estimate_bps_ +
 
 4. 根据 RTT backoff
 
-    `link_capacity = min(link_capacity, backoff_rate)`
-    其中 backoff_rate 的值由以下逻辑产生
+   `link_capacity = min(link_capacity, backoff_rate)`
+   其中 backoff_rate 的值由以下逻辑产生
 
 ```cpp
 void SendSideBandwidthEstimation::UpdateEstimate(Timestamp at_time) {
@@ -328,7 +330,6 @@ GCC 中 `OnTransportPacketsFeedback` 函数返回 target_rate 和 stable_target_
 该函数首先通过 `fec_controller_->UpdateFecRates()` 函数计算当前丢包和延迟下做冗余后剩余带宽，
 然后告知编码器按照预估链路总带宽 - 冗余信息所占用带宽编码。
 
-
 ## 参考链接
 
 https://blog.csdn.net/fanyamin/article/details/128479333
@@ -336,4 +337,3 @@ https://blog.csdn.net/fanyamin/article/details/128479333
 https://blog.csdn.net/weixin_29405665/article/details/110420315
 
 https://zhuanlan.zhihu.com/p/490526586
-

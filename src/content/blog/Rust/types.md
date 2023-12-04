@@ -7,6 +7,7 @@ heroImage: "https://source.unsplash.com/QfmM3JrHtog"
 ---
 
 <!--toc:start-->
+
 - [Primitive Types](#primitive-types)
   - [Default types of implicit definition](#default-types-of-implicit-definition)
   - [Max size](#max-size)
@@ -25,14 +26,17 @@ Floats: f32, f64.
 Boolean
 
 Character: wrapped by `''`
+
 ```rust
 let character = 'a';
 ```
 
 Note that
+
 ```rust
 let character2 = "b";
 ```
+
 is not a char, it's a `&str` instead.
 
 ### Default types of implicit definition
@@ -50,7 +54,9 @@ let b = 2.5;  // default is f64
 ```rust
 println!("Max i32: {}", std::i32::MAX);
 ```
+
 result is:
+
 ```
 Max i32: 2147483647
 ```
@@ -58,16 +64,19 @@ Max i32: 2147483647
 ## Strings
 
 > There are two types of strings in rust
+>
 > - Immutable, fixed-length strings stored in the stack.
 > - Growable strings allocated from heap.
 
 Functions they have in common:
+
 - `.len()`: returns the length
 - `.contains()`: pass in substring, returns if contains it
 - `.replace()`: replace substring
 - and many more
 
 What `String` have in addition:
+
 - `.push()`: takes in a char, append it to the `String`
 - `.push_str()`: takes in a immutable string, and append it
 
@@ -107,11 +116,12 @@ The first number: 1.
 Note that you have to use `{:?}` to print an entire tuple or array.
 
 Common functions of array:
+
 - `.len()`: the length
 - To get the size of memory used by an array
-    ```rust
-    let size_in_bytes: usize = std::mem::size_of_val(&my_array);
-    ```
+  ```rust
+  let size_in_bytes: usize = std::mem::size_of_val(&my_array);
+  ```
 
 Slice of array:
 
@@ -134,4 +144,3 @@ let num_vec: Vec<i32> = vec![1, 2, 3, 4, 5];
 
 Vectors have all the features of array, and when set to `mut`,
 they have `.push()` and `.pop()` functions.
-

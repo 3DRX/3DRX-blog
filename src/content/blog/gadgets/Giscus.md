@@ -19,21 +19,20 @@ by the end of blog-post page.
 
 ```html
 <script
-    src="https://giscus.app/client.js"
-    data-repo="3DRX/3DRX-blog"
-    data-repo-id="R_kgDOJvPgqQ"
-    data-category="Announcements"
-    data-category-id="DIC_kwDOJvPgqc4CXcFb"
-    data-mapping="url"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="1"
-    data-input-position="top"
-    data-theme="preferred_color_scheme"
-    data-lang="en"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-</script>
+  src="https://giscus.app/client.js"
+  data-repo="3DRX/3DRX-blog"
+  data-repo-id="R_kgDOJvPgqQ"
+  data-category="Announcements"
+  data-category-id="DIC_kwDOJvPgqc4CXcFb"
+  data-mapping="url"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="1"
+  data-input-position="top"
+  data-theme="preferred_color_scheme"
+  data-lang="en"
+  data-loading="lazy"
+  crossorigin="anonymous"
+  async
+></script>
 ```
-

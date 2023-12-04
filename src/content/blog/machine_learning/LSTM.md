@@ -58,6 +58,7 @@ class LSTM(nn.Module):
 ```
 
 Training
+
 ```py
 for i in range(epoch):
     err_train = []
@@ -78,4 +79,3 @@ for i in range(epoch):
 ---
 
 本文仅作为个人学习记录，作者水平很差，如有错误，恳请指正。
-

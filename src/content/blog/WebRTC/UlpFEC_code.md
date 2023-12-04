@@ -14,6 +14,7 @@ WebRTC 中的 FEC 算法有两种，FlexFec 和 UlpFec，
 `UlpfecGenerator::AddPacketAndGenerateFec(const RtpPacketToSend& packet)` 是 fec 编码过程的入口。
 
 其中调用了函数 `int ForwardErrorCorrection::EncodeFec(...)`
+
 ```cpp
 ...
 
@@ -47,4 +48,3 @@ if (num_fec_packets == 0) {
 https://xjsxjtu.github.io/2017-07-16/LearningWebRTC-adafec/
 
 https://xjsxjtu.github.io/2017-07-16/LearningWebRTC-fec/
-

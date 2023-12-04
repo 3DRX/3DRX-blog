@@ -5,6 +5,7 @@ pubDate: "06/17/2023"
 updatedDate: "06/17/2023"
 heroImage: "https://source.unsplash.com/jXd2FSvcRr8"
 ---
+
 ## 总线事物
 
 1. 请求
@@ -34,4 +35,3 @@ heroImage: "https://source.unsplash.com/jXd2FSvcRr8"
 **总线宽度**：总线系统中数据总线的位数称为总线宽度
 
 **总线的数据传输率**：每秒钟传输的最大字节数，B/s
-

@@ -12,7 +12,7 @@ We need to manually configure it.
 
 ## Install font
 
-> Solving: ***findfont: Font family ['Arial'] not found***
+> Solving: **_findfont: Font family ['Arial'] not found_**
 
 Use `fc-match Arial` to check if the font is already installed.
 
@@ -41,4 +41,3 @@ matplotlib.rcParams['ps.fonttype'] = 42
 ```python
 plt.savefig('./figure_name.pdf', bbox_inches='tight', dpi=300)
 ```
-

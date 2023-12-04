@@ -11,7 +11,7 @@ updatedDate: "11/14/2023"
 
 ### VMAF
 
-[VMAF](https://github.com/Netflix/vmaf)（[视频多方法评估融合](https://zh.wikipedia.org/zh-cn/%E8%A7%86%E9%A2%91%E5%A4%9A%E6%96%B9%E6%B3%95%E8%AF%84%E4%BC%B0%E8%9E%8D%E5%90%88)） 
+[VMAF](https://github.com/Netflix/vmaf)（[视频多方法评估融合](https://zh.wikipedia.org/zh-cn/%E8%A7%86%E9%A2%91%E5%A4%9A%E6%96%B9%E6%B3%95%E8%AF%84%E4%BC%B0%E8%9E%8D%E5%90%88)）
 是根据源视频和传输/转码后视频画面本身对比评估画面质量的工具，比帧率、码率、分辨率这些指标更贴近观看体验。
 
 ### 帧率、码率、分辨率
@@ -36,11 +36,11 @@ updatedDate: "11/14/2023"
 
 - WebRTC 中的冗余率表：根据当前时刻的 RTT、丢包、吞吐量等信息结合帧类型（关键帧、非关键帧）给出一个相应的冗余率。
 - MaxFilter: Calculates the maximum packet loss rate in
-the received network reports in a fixed size window and
-chooses it as the prediction result.
+  the received network reports in a fixed size window and
+  chooses it as the prediction result.
 - KalmanFilter: Applies Kalman Filter to the sequence of
-packet loss rate, considering the difference of importance
-between packet loss rates in network reports.
+  packet loss rate, considering the difference of importance
+  between packet loss rates in network reports.
 
 ### 基于学习的动态算法
 
@@ -50,7 +50,6 @@ between packet loss rates in network reports.
 也可以是强化学习模型。
 
 - DeepRS: A recently proposed deep-learning-based
-prototypical AFEC algorithm. It applies Long-Short Term
-Memory (LSTM) neural networks to make sequence
-predictions on packet loss rate.
-
+  prototypical AFEC algorithm. It applies Long-Short Term
+  Memory (LSTM) neural networks to make sequence
+  predictions on packet loss rate.

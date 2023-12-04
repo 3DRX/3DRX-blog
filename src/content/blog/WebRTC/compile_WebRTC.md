@@ -7,6 +7,7 @@ heroImage: "https://cdn-cdpl.sgp1.cdn.digitaloceanspaces.com/source/998b78e34906
 ---
 
 <!--toc:start-->
+
 - [System Requirements](#system-requirements)
 - [Normal Process (from Google's repo)](#normal-process-from-googles-repo)
 - [如果访问 Google 有困难](#如果访问-google-有困难)
@@ -88,4 +89,3 @@ gclient sync --verbose
 
 https://github.com/webrtc-sdk/webrtc seems to be legit, but the code doesn't compile with the above process somehow.
 I then made a mirror repo manually, and it worked.
-

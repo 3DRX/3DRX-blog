@@ -7,6 +7,7 @@ heroImage: "https://source.unsplash.com/h3kuhYUCE9A"
 ---
 
 <!--toc:start-->
+
 - [Creating figure(s)](#creating-figures)
 - [Setting axis style & width](#setting-axis-style-width)
 - [Constants](#constants)
@@ -91,4 +92,3 @@ plt.legend(
 ```python
 plt.savefig('./plot.pdf', bbox_inches='tight', dpi=300)
 ```
-

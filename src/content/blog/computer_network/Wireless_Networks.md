@@ -7,6 +7,7 @@ heroImage: "https://source.unsplash.com/M5tzZtFCOfs"
 ---
 
 <!--toc:start-->
+
 - [Wireless](#wireless)
   - [Wireless links and network characteristics](#wireless-links-and-network-characteristics)
   - [Wi-Fi: 802.11 wireless LAN](#wi-fi-80211-wireless-lan)
@@ -14,7 +15,7 @@ heroImage: "https://source.unsplash.com/M5tzZtFCOfs"
 - [Mobility](#mobility)
   - [Principles](#principles)
   - [Practice](#practice)
-<!--toc:end-->
+  <!--toc:end-->
 
 ![](../../../assets/computer_networking/characteristics_wireless.png)
 
@@ -60,8 +61,8 @@ Let end-systems handle it: functionality at the "edge"
 ### Practice
 
 Major tasks
+
 1. base station association
 2. control-plane configuration
 3. data-plane configuration
 4. mobile handover
-

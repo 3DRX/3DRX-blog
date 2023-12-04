@@ -7,6 +7,7 @@ heroImage: "https://source.unsplash.com/M5tzZtFCOfs"
 ---
 
 <!--toc:start-->
+
 - [Principles of network applications](#principles-of-network-applications)
   - [Internet transport protocols services](#internet-transport-protocols-services)
 - [Web and HTTP](#web-and-http)
@@ -27,11 +28,12 @@ heroImage: "https://source.unsplash.com/M5tzZtFCOfs"
 - [Video streaming and CDN](#video-streaming-and-cdn)
   - [Streaming stored video](#streaming-stored-video)
   - [CDN](#cdn)
-<!--toc:end-->
+  <!--toc:end-->
 
 ## Principles of network applications
 
 **An application-layer protocol defines**:
+
 - types of messages exchanged
 - message syntax
 - message semantics
@@ -40,12 +42,14 @@ heroImage: "https://source.unsplash.com/M5tzZtFCOfs"
 ### Internet transport protocols services
 
 **TCP**:
+
 - reliable transport
 - flow control
 - congestion control
 - connection-oriented
 
 **UDP**:
+
 - unreliable data transfer
 - state-less
 
@@ -54,11 +58,13 @@ heroImage: "https://source.unsplash.com/M5tzZtFCOfs"
 ### HTTP: two types
 
 **Non-persistent HTTP**:
+
 1. TCP connection opened
 2. at most one object sent over TCP connection
 3. TCP connection closed
 
 **Persistent HTTP**:
+
 1. TCP connection opened to a server
 2. multiple objects can be sent over single TCP
 3. TCP connection closed
@@ -70,6 +76,7 @@ heroImage: "https://source.unsplash.com/M5tzZtFCOfs"
 ![web cache](../../../assets/computer_networking/web_cache.png)
 
 performance:
+
 - much lower access link utilization
 - much shorter end-end delay
 
@@ -83,7 +90,7 @@ performance:
 
 ![http/2](../../../assets/computer_networking/http2.png)
 
-> decreased delay in multi-object HTTP requests  
+> decreased delay in multi-object HTTP requests
 
 Reduce HOL blocking by dividing objects into smaller chunks.
 
@@ -95,9 +102,10 @@ Adds security, and per object error/congestion control over UDP.
 
 > - **distributed database** implemented in hierarchy of many **name servers**
 > - **application-layer protocol**:
-hosts, DNS servers communicate to **resolve** names (address/name translation)
+>   hosts, DNS servers communicate to **resolve** names (address/name translation)
 
 **Services**:
+
 - hostname to IP address translation
 - host/mail-server aliasing
 - load distribution
@@ -129,19 +137,23 @@ resource records (RR)
 ```
 
 `type = A`
+
 - `name` is hostname
 - `value` is IP address
 
 `type = NS`
+
 - `name` is domain
 - `value` is hostname of authoritative name server for this domain
 
 `type = CNAME`
+
 - `name` is alias name for some "canonical"(the real) name
 - `www.ibm.com` is really `servereast.backup2.ibm.com`
 - `value` is canonical name
 
 `type = MX`
+
 - `value` is name of SMTP mail server associated with `name`
 
 ## P2P applications
@@ -151,25 +163,27 @@ resource records (RR)
 > client-server vs P2P
 
 **client-server**
+
 - server side
-    - time to send 1 copy: $\frac{F}{u_s}$
-    - time to send N copy: $N\cdot \frac{F}{u_s}$
+  - time to send 1 copy: $\frac{F}{u_s}$
+  - time to send N copy: $N\cdot \frac{F}{u_s}$
 - client side
-    - $d_{min}$: min client download rate
-    - min client download time: $\frac{F}{d_{min}}$
+  - $d_{min}$: min client download rate
+  - min client download time: $\frac{F}{d_{min}}$
 - time to distribute F to N clients: $max(\frac{NF}{u_s}, \frac{F}{d_{min}})$
-increases linearly in N
+  increases linearly in N
 
 **P2P**
+
 - server side
-    - time to send 1 copy: $\frac{F}{u_s}$
+  - time to send 1 copy: $\frac{F}{u_s}$
 - client
-    - min client download time: $\frac{F}{d_{min}}$
+  - min client download time: $\frac{F}{d_{min}}$
 - clients: aggregate must download NF bits
-    - max upload rate: $u_s + \sum{u_i}$
+  - max upload rate: $u_s + \sum{u_i}$
 - time to distribute F to N clients:
-$max(\frac{F}{u_s}, \frac{F}{d_{min}}, \frac{NF}{u_s + \sum{u_i}})$
-which **does not** increases linearly in N
+  $max(\frac{F}{u_s}, \frac{F}{d_{min}}, \frac{NF}{u_s + \sum{u_i}})$
+  which **does not** increases linearly in N
 
 ![](../../../assets/computer_networking/p2p_vs_cs.png)
 
@@ -183,6 +197,7 @@ which **does not** increases linearly in N
 ### Streaming stored video
 
 challenges:
+
 - bandwidth vary over time
 - packet loss and delay
 
@@ -190,6 +205,5 @@ challenges:
 
 - stores copies of content at CDN nodes
 - user request content, service provider returns manifest
-    - client then retrieves content at highest supportable rate
-    - may choose different rate or copy if network environment changed
-
+  - client then retrieves content at highest supportable rate
+  - may choose different rate or copy if network environment changed

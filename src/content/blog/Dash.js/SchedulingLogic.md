@@ -7,11 +7,12 @@ heroImage: "https://source.unsplash.com/VLzAkbs5afg"
 ---
 
 <!--toc:start-->
+
 - [Start point](#start-point)
-  - [_shouldScheduleNextRequest](#shouldschedulenextrequest)
-  - [_getNextFragment](#getnextfragment)
+  - [\_shouldScheduleNextRequest](#shouldschedulenextrequest)
+  - [\_getNextFragment](#getnextfragment)
   - [执行请求](#执行请求)
-<!--toc:end-->
+  <!--toc:end-->
 
 ## Start point
 
@@ -23,14 +24,14 @@ heroImage: "https://source.unsplash.com/VLzAkbs5afg"
 其次，调用 ABR 算法，查询是否需要切换码率，如果需要，则再次调用 ABR 算法确认。
 如果这一次的 ABR 算法结果与之前请求的码率相同，则[开始请求流程](#_getNextFragment)。
 
-### _shouldScheduleNextRequest
+### \_shouldScheduleNextRequest
 
 > 判断是否安排下一个请求
 
 对于静态点播视频而言，这里需要关注的就是 currentRepresentationInfo 不为空且
 `_shouldBuffer()` 为 `true` （即当前 buffer 没有超过固定阈值）。
 
-### _getNextFragment
+### \_getNextFragment
 
 > 发起请求事件
 
@@ -52,4 +53,3 @@ Dash.js 中有两种 segment: init or media segment，
 是一个为 ABR 算法提供的接口。
 
 抛弃请求： 黑名单 URL 等等，没有算法相关逻辑。
-

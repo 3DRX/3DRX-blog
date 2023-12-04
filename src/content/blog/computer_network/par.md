@@ -12,10 +12,11 @@ heroImage: "https://source.unsplash.com/M5tzZtFCOfs"
 
 ABR algorithm can be improved by adding payload awareness.
 Two main modules used:
+
 1. An online payload-aware throughput predictor, which utilizes a
-lightweight neural network to predict future bandwidths
-via past observations, and then calculate the corresponding
-downloading rates for chunks in different bit rates.
+   lightweight neural network to predict future bandwidths
+   via past observations, and then calculate the corresponding
+   downloading rates for chunks in different bit rates.
 2. A bit rate selector aiming at maximizing the given QoE function
 
 ## Background
@@ -33,10 +34,11 @@ this estimation deviation.
 ## Detail
 
 3 components
+
 1. The client, running [dash.js](https://github.com/Dash-Industry-Forum/dash.js/)
-in web browser.
+   in web browser.
 2. The video server, basically a bunch of sliced videos and a running nginx,
-nothing fancy.
+   nothing fancy.
 3. The magic, ABR server powered by neural network.
 
 **How it works**: client request video chunks from the video server,
@@ -52,6 +54,6 @@ is also used to limit network speed to simulate poor network.
 $$
 QoE = \sum^N_{i=1}(Q(i) - \mu W(i)) - \sum^N_{i=2}|Q(i) - Q(i-1)|
 $$
+
 - $W(i)$: rebuffering time
 - $Q(i)$: chunk bit rate
-

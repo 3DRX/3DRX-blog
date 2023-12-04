@@ -4,16 +4,25 @@ https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c
 License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
 body {
-    font-family: 'PingFang SC', 'Noto Sans CJK SC', 'Heiti SC', 'DengXian', 'Microsoft YaHei', Helvetica, Segoe UI, Arial, sans-serif;
-    margin: auto;
-    padding: 20px;
-    max-width: 65ch;
-    text-align: left;
-    background-color: var(--background-color);
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    line-height: 1.5;
-    color: var(--color);
+  font-family:
+    "PingFang SC",
+    "Noto Sans CJK SC",
+    "Heiti SC",
+    "DengXian",
+    "Microsoft YaHei",
+    Helvetica,
+    Segoe UI,
+    Arial,
+    sans-serif;
+  margin: auto;
+  padding: 20px;
+  max-width: 65ch;
+  text-align: left;
+  background-color: var(--background-color);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.5;
+  color: var(--color);
 }
 h1,
 h2,
@@ -23,102 +32,102 @@ h5,
 h6,
 strong,
 b {
-    color: var(--heading-color);
+  color: var(--heading-color);
 }
 a {
-    color: var(--link-color);
+  color: var(--link-color);
 }
 nav a {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 textarea {
-    width: 100%;
-    font-size: 16px;
+  width: 100%;
+  font-size: 16px;
 }
 input {
-    font-size: 16px;
+  font-size: 16px;
 }
 content {
-    line-height: 1.6;
+  line-height: 1.6;
 }
 table {
-    width: 100%;
+  width: 100%;
 }
 img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
-    filter: brightness(var(--img-brightness));
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  filter: brightness(var(--img-brightness));
 }
 code {
-    padding: 2px 5px;
-    background-color: var(--code-background-color);
-    border-radius: 3px;
+  padding: 2px 5px;
+  background-color: var(--code-background-color);
+  border-radius: 3px;
 }
 .code-block-wrapper {
-    position: relative;
+  position: relative;
 }
 pre {
-    padding: 1rem;
-    border-radius: 12px;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    position: relative;
+  padding: 1rem;
+  border-radius: 12px;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  position: relative;
 }
 pre > code {
-    all: unset;
-    overflow: auto;
+  all: unset;
+  overflow: auto;
 }
 .code-block-wrapper > copy-code-button {
-    z-index: 99;
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    overflow: hidden;
-    visibility: hidden;
+  z-index: 99;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  overflow: hidden;
+  visibility: hidden;
 }
 .code-block-wrapper:hover > copy-code-button {
-    visibility: visible;
+  visibility: visible;
 }
 blockquote {
-    border: 1px solid var(--color);
-    color: var(--color);
-    padding: 2px 0px 2px 20px;
-    margin: 0px;
-    border-radius: 12px;
-    font-style: italic;
+  border: 1px solid var(--color);
+  color: var(--color);
+  padding: 2px 0px 2px 20px;
+  margin: 0px;
+  border-radius: 12px;
+  font-style: italic;
 }
 .content-svg {
-    fill: var(--color);
+  fill: var(--color);
 }
 .math {
-    overflow-x: auto;
+  overflow-x: auto;
 }
 .math-display {
-    overflow-x: auto;
+  overflow-x: auto;
 }
 :root[data-theme="light"] {
-    --img-brightness: 100%;
-    --background-color: #fff;
-    --color: #111;
-    --heading-color: #111;
-    --link-color: #3273dc;
-    --link-visited-color: #193c75;
-    --code-background-color: #c7c7c7;
-    --theme-slider-initial-transform: 0px;
-    --light-theme-indicator-color: #ffcf00;
-    --dark-theme-indicator-color: var(--color);
+  --img-brightness: 100%;
+  --background-color: #fff;
+  --color: #111;
+  --heading-color: #111;
+  --link-color: #3273dc;
+  --link-visited-color: #193c75;
+  --code-background-color: #c7c7c7;
+  --theme-slider-initial-transform: 0px;
+  --light-theme-indicator-color: #ffcf00;
+  --dark-theme-indicator-color: var(--color);
 }
 
 :root[data-theme="dark"] {
-    --img-brightness: 90%;
-    --background-color: #000;
-    --color: #eee;
-    --heading-color: #eee;
-    --link-color: #de9906;
-    --link-visited-color: #966807;
-    --code-background-color: #252525;
-    --theme-slider-initial-transform: translateX(20px);
-    --light-theme-indicator-color: var(--color);
-    --dark-theme-indicator-color: #ffcf00;
+  --img-brightness: 90%;
+  --background-color: #000;
+  --color: #eee;
+  --heading-color: #eee;
+  --link-color: #de9906;
+  --link-visited-color: #966807;
+  --code-background-color: #252525;
+  --theme-slider-initial-transform: translateX(20px);
+  --light-theme-indicator-color: var(--color);
+  --dark-theme-indicator-color: #ffcf00;
 }

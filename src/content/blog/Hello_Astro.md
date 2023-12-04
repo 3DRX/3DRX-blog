@@ -34,34 +34,37 @@ And to ignore warnings when a Unicode character is included in katex
 I found how to disable the warning in [katex options](https://katex.org/docs/options.html).
 
 ```js
-['rehype-katex', {
+[
+  "rehype-katex",
+  {
     strict: false,
-}]
+  },
+];
 ```
 
 So by the end, my `astro.config.mjs` looks like this
 
 ```js
-import { defineConfig } from 'astro/config';
-import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
+import { defineConfig } from "astro/config";
+import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-    site: 'https://example.com',
-    integrations: [mdx(), sitemap()],
-    markdown: {
-        remarkPlugins: [
-            'remark-math'
-        ],
-        rehypePlugins: [
-            ['rehype-katex', {
-                strict: false
-            }]
-        ]
-    },
-    experimental: {
-        assets: true
-    }
+  site: "https://example.com",
+  integrations: [mdx(), sitemap()],
+  markdown: {
+    remarkPlugins: ["remark-math"],
+    rehypePlugins: [
+      [
+        "rehype-katex",
+        {
+          strict: false,
+        },
+      ],
+    ],
+  },
+  experimental: {
+    assets: true,
+  },
 });
 ```
-

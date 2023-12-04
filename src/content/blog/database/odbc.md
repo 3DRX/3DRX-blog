@@ -15,6 +15,7 @@ sudo apt install odbc-postgresql unixodbc unixodbc-dev
 ## 修改配置文件
 
 /etc/odbc.ini
+
 > 此处 Driver 名字要和下面 `odbcinst.ini` 中 "[]" 里的名字相同
 
 ```ini
@@ -78,7 +79,9 @@ if __name__ == "__main__":
     con.close()
     pass
 ```
+
 Execute the code.
+
 ```
 $ python3 ./src/main.py
 [('test_schema',)]
@@ -90,4 +93,3 @@ $ python3 ./src/main.py
 https://support.huaweicloud.com/mgtg-dws/dws_01_0086.html
 
 https://www.postgresql.org/docs/current/
-

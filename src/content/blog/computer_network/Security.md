@@ -7,6 +7,7 @@ heroImage: "https://source.unsplash.com/M5tzZtFCOfs"
 ---
 
 <!--toc:start-->
+
 - [Principles](#principles)
   - [Simple encryption scheme](#simple-encryption-scheme)
     - [Symmetric key crypto](#symmetric-key-crypto)
@@ -126,51 +127,59 @@ Alice uses three keys: her private key, Bob’s public key, new symmetric key.
 4. Potential issue: 3 RTT before client can start receiving data (including TCP handshake)
 
 Use 4 keys for each cryptographic function
+
 1. $K_c$ encryption key for data sent from client to server
 2. $M_c$ MAC key for data sent from client to server
 3. $K_s$ encryption key for data sent from server to client
 4. $M_s$ MAC key for data sent from server to client
 
 Possible attacks on data stream
+
 1. re-ordering
 2. replay
 
 Solutions
+
 1. add TLS sequence numbers
 2. use nonce
 
 ## Network layer security: IPsec
 
 > Provides datagram level encryption, authentication, integrity,
-for both user traffic and control traffic (e.g., BGP, DNS messages).  
+> for both user traffic and control traffic (e.g., BGP, DNS messages).  
 > **With 2 modes**
+>
 > - transport mode: only datagram payload is encrypted, authenticated
 > - tunnel mode: entire datagram is encrypted, authenticated,
-encrypted datagram encapsulated in new datagram with new IP header, tunneled to destination
+>   encrypted datagram encapsulated in new datagram with new IP header, tunneled to destination
 
 2 IPsec protocols
+
 - Authentication Header (AH) protocol
 - Encapsulation Security Protocol (ESP)
 
 ## Security in wireless and mobile networks
 
 **WPA3 handshake**: used in 802.11
+
 1. AS generates $Nonce_{AS}$, sends to mobile
 2. Mobile receives $Nonce_{AS}$
-    1. generates $Nonce_{M}$
-    2. generates symmetric shared session key $K_{M-AP}$ using $Nonce_{AS}$, $Nonce_{M}$,
-    and initial shared secret
-    3. sends $Nonce_M$, and HMAC-signed value using $Nonce_{AS}$ and initial shared secret
+   1. generates $Nonce_{M}$
+   2. generates symmetric shared session key $K_{M-AP}$ using $Nonce_{AS}$, $Nonce_{M}$,
+      and initial shared secret
+   3. sends $Nonce_M$, and HMAC-signed value using $Nonce_{AS}$ and initial shared secret
 3. AS derives symmetric shared session key $K_{M-AP}$
 
 Authentication, encryption in **4G LTE** have notable differences.
+
 1. Mobile’s SIM card provides global identity, contains shared keys.
 2. Services in visited network depend on (paid) service subscription in home network.
 
 ## Firewall and IDS
 
 > Firewall isolates organization’s internal network from larger Internet,
-allowing some packets to pass, blocking others
+> allowing some packets to pass, blocking others
+>
 > - prevent denial of service attacks
 > - prevent illegal modification/access of internal data
 > - allow only authorized access to inside network
@@ -178,4 +187,3 @@ allowing some packets to pass, blocking others
 >   - stateless packet filters
 >   - stateful packet filters
 >   - application gateways
-

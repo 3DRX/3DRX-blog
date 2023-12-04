@@ -44,5 +44,4 @@ More detailed usage [here](https://man7.org/linux/man-pages/man8/tc-netem.8.html
 
 https://cizixs.com/2017/10/23/tc-netem-for-terrible-network/  
 https://man7.org/linux/man-pages/man8/tc-netem.8.html  
-https://man7.org/linux/man-pages/man8/tc.8.html  
-
+https://man7.org/linux/man-pages/man8/tc.8.html

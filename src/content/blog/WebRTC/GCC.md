@@ -13,10 +13,12 @@ heroImage: "https://cdn-cdpl.sgp1.cdn.digitaloceanspaces.com/source/998b78e34906
 
 实时视频传输对网络提出了新的要求，
 基于 TCP 的传输方式和基于丢包的拥塞控制不在适用于 RTC。
+
 - TCP 在应用层的拥塞控制导致延迟较大
 - 震荡问题
 
 相关内容
+
 - 利用 RTT 分析拥塞情况: TCP Vegas, TCP FAST
 - 利用单向的延迟分析拥塞: LEDBAT, TCP-LP
 - 利用 delay-gradient 延迟梯度分析拥塞: CDG, Verus
@@ -24,4 +26,3 @@ heroImage: "https://cdn-cdpl.sgp1.cdn.digitaloceanspaces.com/source/998b78e34906
 - RTP/RTCP
 
 ... 未完待续
-

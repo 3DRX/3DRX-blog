@@ -7,6 +7,7 @@ heroImage: "https://source.unsplash.com/M5tzZtFCOfs"
 ---
 
 <!--toc:start-->
+
 - [Error detection and correction](#error-detection-and-correction)
   - [Parity checking](#parity-checking)
   - [CRC](#crc)
@@ -34,7 +35,7 @@ heroImage: "https://source.unsplash.com/M5tzZtFCOfs"
   - [P14](#p14)
   - [P15](#p15)
   - [P16](#p16)
-<!--toc:end-->
+  <!--toc:end-->
 
 ## Error detection and correction
 
@@ -53,6 +54,7 @@ See [the exercise section](#exercise).
 
 > Multiple access protocol is distributed algorithm that determines how nodes share channel,
 > i.e., determine when node can transmit. And communication about channel sharing must use channel itself.
+>
 > - channel partitioning: TDMA, FDMA, CDMA
 > - random access: ALOHA, S-ALOCA, CSMA, CSMA/CD
 > - taking turns
@@ -64,11 +66,12 @@ If no collision, node can send new frame in next slot.
 If there is a collision, node retransmits frame in each subsequent slot with probability p until success.
 
 **Efficiency**: N nodes with many frames to send, each transmits in slot with probability p
+
 - prob that given node has success in a slot: $p(1-p)^{N-1}$
 - prob that any node has a success: $Np(1-p)^{N-1}$
 - max efficiency: find $p^*$ that maximizes $Np(1-p)^{N-1}$
 - for many nodes, take limit of $Np^*(1-p^*)^{N-1}$ as N goes to $\infty$,
-gives: $max \; efficiency = \frac{1}{e}$
+  gives: $max \; efficiency = \frac{1}{e}$
 
 ### Pure ALOHA
 
@@ -81,6 +84,7 @@ Similar with Slotted ALOHA, but no synchronization. With efficiency of only 18%.
 ![](../../../assets/computer_networking/CSMA.png)
 
 **Efficiency**:
+
 - $t_{prop}$: max prop delay between 2 nodes in LAN
 - $t_{trans}$: time to transmit max-size frame
 
@@ -113,10 +117,11 @@ Ethernet is unreliable and connectionless.
 ### Switch
 
 > A link layer device
+>
 > - store, forward Ethernet frames
 > - examine incoming frame’s MAC address,
-selectively forward frame to one-or-more outgoing links when frame is to be forwarded on segment,
-uses CSMA/CD to access segment
+>   selectively forward frame to one-or-more outgoing links when frame is to be forwarded on segment,
+>   uses CSMA/CD to access segment
 
 ![](../../../assets/computer_networking/switch.png)
 
@@ -125,9 +130,9 @@ Contains entry: `(MAC addr, interface, TTL)`
 
 #### Switch vs routers
 
-| Switch | Router |
-|--------|--------|
-| link layer | network layer |
+| Switch                                | Router                                  |
+| ------------------------------------- | --------------------------------------- |
+| link layer                            | network layer                           |
 | learn forwarding table using flooding | compute tables using routing algorithms |
 
 ## Data center networking
@@ -146,16 +151,16 @@ Contains entry: `(MAC addr, interface, TTL)`
 
 ## Exercise
 
-> From [*Computer Networking: A Top Down Approach 7th Edition*](https://gaia.cs.umass.edu/kurose_ross/online_lectures.htm)
+> From [_Computer Networking: A Top Down Approach 7th Edition_](https://gaia.cs.umass.edu/kurose_ross/online_lectures.htm)
 
 Chapter 6
 
 ### P1
 
-*Suppose the information content of a packet is the bit pattern 1110 0110 1001 1101 and an
+_Suppose the information content of a packet is the bit pattern 1110 0110 1001 1101 and an
 even parity scheme is being used. What would the value of the field containing the parity bits be
 for the case of a two-dimensional parity scheme? Your answer should be such that a minimum
-length checksum field is used.*
+length checksum field is used._
 
 ```
 11101
@@ -167,9 +172,9 @@ length checksum field is used.*
 
 ### P2
 
-*Show (give an example other than the one in Figure 6.5) that two-dimensional parity checks
+_Show (give an example other than the one in Figure 6.5) that two-dimensional parity checks
 can correct and detect a single bit error. Show (give an example of) a double-bit error that can
-be detected but not corrected.*
+be detected but not corrected._
 
 ![](../../../assets/computer_networking/c6p2.png)
 
@@ -207,9 +212,9 @@ The above example shows that a double bit error can be detected (if not correcte
 
 ### P3
 
-*Suppose the information portion of a packet (D in Figure 6.3) contains 10 bytes consisting
+_Suppose the information portion of a packet (D in Figure 6.3) contains 10 bytes consisting
 of the 8-bit unsigned binary ASCII representation of string “Networking.” Compute the Internet
-checksum for this data.*
+checksum for this data._
 
 ![](../../../assets/computer_networking/c6p3.png)
 
@@ -217,42 +222,42 @@ checksum for this data.*
 
 ### P5
 
-*Consider the 5-bit generator, G=10011, and suppose that D has the value 1010101010.
-What is the value of R?*
+_Consider the 5-bit generator, G=10011, and suppose that D has the value 1010101010.
+What is the value of R?_
 
 If we divide 10011 into 1010101010 0000, we get 1011011100, with a remainder of
 R=0100. Note that, G=10011 is CRC-4-ITU standard.
 
 ### P6
 
-*Consider the previous problem, but suppose that D has the value*
+_Consider the previous problem, but suppose that D has the value_
 
-*a. 1001010101*
+_a. 1001010101_
 
 1000110000, with a remainder of R=0000.
 
-*b. 0101101010*
+_b. 0101101010_
 
 0101010101, with a remainder of R=1111.
 
-*c. 1010100000*
+_c. 1010100000_
 
 1011010111, with a remainder of R=1001.
 
 ### P7
 
-*In this problem, we explore some of the properties of the CRC. For the ­generator G(=1001)
-given in Section 6.2.3, answer the following questions.*
+_In this problem, we explore some of the properties of the CRC. For the ­generator G(=1001)
+given in Section 6.2.3, answer the following questions._
 
-*a. Why can it detect any single bit error in data D?*
+_a. Why can it detect any single bit error in data D?_
 
-*b. Can the above G detect any odd number of bit errors? Why?*
+_b. Can the above G detect any odd number of bit errors? Why?_
 
 a.
 
 Without loss of generality, suppose ith bit is flipped, where 0<= i <= d+r-1 and
 assume that the least significant bit is 0th bit.
-A single bit error means that the received data is K=D*2r XOR R + 2i. It is clear that
+A single bit error means that the received data is K=D\*2r XOR R + 2i. It is clear that
 if we divide K by G, then the reminder is not zero. In general, if G contains at least
 two 1’s, then a single bit error can always be detected.
 
@@ -265,11 +270,11 @@ divided by G.
 
 ### P8
 
-*In Section 6.3, we provided an outline of the derivation of the efficiency of slotted ALOHA.
-In this problem we’ll complete the derivation.*
+_In Section 6.3, we provided an outline of the derivation of the efficiency of slotted ALOHA.
+In this problem we’ll complete the derivation._
 
-*a. Recall that when there are N active nodes, the efficiency of slotted ALOHA is
-Np(1−p)N−1. Find the value of p that maximizes this expression.*
+_a. Recall that when there are N active nodes, the efficiency of slotted ALOHA is
+Np(1−p)N−1. Find the value of p that maximizes this expression._
 
 $$
 \begin{align}
@@ -281,8 +286,8 @@ E'(p) &= 0 \Rightarrow p^* = \frac{1}{N} \nonumber
 \end{align}
 $$
 
-*b. Using the value of p found in (a), find the efficiency of slotted ALOHA by letting N
-approach infinity. Hint: (1−1/N)N approaches 1/e as N approaches infinity.*
+_b. Using the value of p found in (a), find the efficiency of slotted ALOHA by letting N
+approach infinity. Hint: (1−1/N)N approaches 1/e as N approaches infinity._
 
 $$
 \begin{align}
@@ -297,8 +302,8 @@ $$
 
 ### P9
 
-*Show that the maximum efficiency of pure ALOHA is 1/(2e). Note: This problem is easy if
-you have completed the problem above!*
+_Show that the maximum efficiency of pure ALOHA is 1/(2e). Note: This problem is easy if
+you have completed the problem above!_
 
 $$
 \begin{align}
@@ -313,14 +318,14 @@ $$
 
 ### P12
 
-*Graph the efficiency of slotted ALOHA and pure ALOHA as a function of p for the following
-values of N:*
+_Graph the efficiency of slotted ALOHA and pure ALOHA as a function of p for the following
+values of N:_
 
-*a. N=15*
+_a. N=15_
 
-*b. N=25*
+_b. N=25_
 
-*c. N=35*
+_c. N=35_
 
 ```python
 import matplotlib.pyplot as plt
@@ -348,35 +353,35 @@ plt.show()
 
 ### P14
 
-*Consider three LANs interconnected by two routers, as shown in Figure 6.33.*
+_Consider three LANs interconnected by two routers, as shown in Figure 6.33._
 
 ![](../../../assets/computer_networking/c6p14.png)
 
-*a. Assign IP addresses to all of the interfaces. For Subnet 1 use addresses of the form
+_a. Assign IP addresses to all of the interfaces. For Subnet 1 use addresses of the form
 192.168.1.xxx; for Subnet 2 uses addresses of the form 192.168.2.xxx; and for Subnet 3
-use addresses of the form 192.168.3.xxx.*
+use addresses of the form 192.168.3.xxx._
 
-*b. Assign MAC addresses to all the adapters.*
+_b. Assign MAC addresses to all the adapters._
 
 ![](../../../assets/computer_networking/c6p14_ansa.png)
 
-*c. Consider sending an IP datagram from Host E to Host B. Suppose all the ARP tables
+_c. Consider sending an IP datagram from Host E to Host B. Suppose all the ARP tables
 are up-to-date. Enumerate all the steps, as done for the single-router example in Section
-6.4.1.*
+6.4.1._
 
 1. Forwarding table in E determines that the datagram should be routed to interface
-192.168.3.002.
+   192.168.3.002.
 2. The adapter in E creates and Ethernet packet with Ethernet destination address 88-
-88-88-88-88-88.
+   88-88-88-88-88.
 3. Router 2 receives the packet and extracts the datagram. The forwarding table in
-this router indicates that the datagram is to be routed to 198.162.2.002.
+   this router indicates that the datagram is to be routed to 198.162.2.002.
 4. Router 2 then sends the Ethernet packet with the destination address of 33-33-33-
-33-33-33 and source address of 55-55-55-55-55-55 via its interface with IP
-address of 198.162.2.003.
+   33-33-33 and source address of 55-55-55-55-55-55 via its interface with IP
+   address of 198.162.2.003.
 5. The process continues until the packet has reached Host B.
 
-*d. Repeat (c), now assuming that the ARP table in the sending host is empty (and the other
-tables are up-to-date).*
+_d. Repeat (c), now assuming that the ARP table in the sending host is empty (and the other
+tables are up-to-date)._
 
 ARP in E must now determine the MAC address of 198.162.3.002. Host E sends out
 an ARP query packet within a broadcast Ethernet frame. Router 2 receives the query
@@ -385,35 +390,37 @@ carried by an Ethernet frame with Ethernet destination address 77-77-77-77-77-77
 
 ### P15
 
-*Consider Figure 6.33. Now we replace the router between subnets 1 and 2 with a switch
-S1, and label the router between subnets 2 and 3 as R1.*
+_Consider Figure 6.33. Now we replace the router between subnets 1 and 2 with a switch
+S1, and label the router between subnets 2 and 3 as R1._
 
-*a. Consider sending an IP datagram from Host E to Host F. Will Host E ask router R1 to
+_a. Consider sending an IP datagram from Host E to Host F. Will Host E ask router R1 to
 help forward the datagram? Why? In the Ethernet frame containing the IP datagram,
-what are the source and destination IP and MAC addresses?*
+what are the source and destination IP and MAC addresses?_
 
 No. E can check the subnet prefix of Host F’s IP address, and then learn that F is on
 the same LAN. Thus, E will not send the packet to the default router R1.
 Ethernet frame from E to F:
+
 - Source IP = E’s IP address
 - Destination IP = F’s IP address
 - Source MAC = E’s MAC address
 - Destination MAC = F’s MAC address
 
-*b. Suppose E would like to send an IP datagram to B, and assume that E’s ARP cache
+_b. Suppose E would like to send an IP datagram to B, and assume that E’s ARP cache
 does not contain B’s MAC address. Will E perform an ARP query to find B’s MAC address? Why?
 In the Ethernet frame (containing the IP datagram destined to B) that is
-delivered to router R1, what are the source and destination IP and MAC addresses?*
+delivered to router R1, what are the source and destination IP and MAC addresses?_
 
 No, because they are not on the same LAN. E can find this out by checking B’s IP
 address.
 Ethernet frame from E to R1:
+
 - Source IP = E’s IP address
 - Destination IP = B’s IP address
 - Source MAC = E’s MAC address
 - Destination MAC = The MAC address of R1’s interface connecting to Subnet 3.
 
-*c. Suppose Host A would like to send an IP datagram to Host B, and neither A’s ARP cache
+_c. Suppose Host A would like to send an IP datagram to Host B, and neither A’s ARP cache
 contains B’s MAC address nor does B’s ARP cache contain A’s MAC address. Further,
 suppose that the switch S1’s forwarding table contains entries for Host B and router R1
 only. Thus, A will broadcast an ARP request message. What actions will switch S1
@@ -422,7 +429,7 @@ Will router R1 also receive this ARP request message?
 If so, will R1 forward the message to Subnet 3?  
 Once Host B receives this ARP request message, it will send back to Host A an ARP response message.
 But will it send an ARP query message to ask for A’s MAC address? Why?  
-What will switch S1 do once it receives an ARP response message from Host B?*
+What will switch S1 do once it receives an ARP response message from Host B?_
 
 Switch S1 will broadcast the Ethernet frame via both its interfaces as the received
 ARP frame’s destination address is a broadcast address. And it learns that A resides
@@ -441,8 +448,8 @@ same interface as host B (i.e., A and B are on the same LAN segment).
 
 ### P16
 
-*Consider the previous problem, but suppose now that the router between subnets 2 and 3
-is replaced by a switch. Answer questions (a)–(c) in the previous problem in this new context.*
+_Consider the previous problem, but suppose now that the router between subnets 2 and 3
+is replaced by a switch. Answer questions (a)–(c) in the previous problem in this new context._
 
 Let's call the switch between subnets 2 and 3 S2. That is, router R1 between subnets 2 and
 3 is now replaced with switch S2.
@@ -452,6 +459,7 @@ a.
 No. E can check the subnet prefix of Host F’s IP address, and then learn that F is on
 the same LAN segment. Thus, E will not send the packet to S2.
 Ethernet frames from E to F:
+
 - Source IP = E’s IP address
 - Destination IP = F’s IP address
 - Source MAC = E’s MAC address
@@ -464,6 +472,7 @@ query packet with destination MAC address being the broadcast address.
 This query packet will be re-broadcast by switch 1, and eventually received by Host
 B.
 Ethernet frame from E to S2:
+
 - Source IP = E’s IP address
 - Destination IP = B’s IP address
 - Source MAC = E’s MAC address
@@ -482,4 +491,3 @@ be obtained from A’s query message.
 Once switch S1 receives B’s response message, it will add an entry for host B in its
 forwarding table, and then drop the received frame as destination host A is on the
 same interface as host B (i.e., A and B are on the same LAN segment).
-

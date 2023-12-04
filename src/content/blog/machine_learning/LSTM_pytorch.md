@@ -145,4 +145,3 @@ for i, trace in enumerate(X_test):
 
 print(mae(np.array(real_list), np.array(pred_list)))
 ```
-

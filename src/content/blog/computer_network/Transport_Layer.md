@@ -7,6 +7,7 @@ heroImage: "https://source.unsplash.com/M5tzZtFCOfs"
 ---
 
 <!--toc:start-->
+
 - [Transport layer services](#transport-layer-services)
 - [Multiplexing and demultiplexing](#multiplexing-and-demultiplexing)
 - [Connectionless transport: UDP](#connectionless-transport-udp)
@@ -31,8 +32,8 @@ heroImage: "https://source.unsplash.com/M5tzZtFCOfs"
     - [Closing TCP connection](#closing-tcp-connection)
 - [TCP congestion control](#tcp-congestion-control)
   - [Approaches towards congestion control](#approaches-towards-congestion-control)
-  - [*Throughput based* TCP congestion control: AIMD](#throughput-based-tcp-congestion-control-aimd)
-  - [*Delay based* TCP congestion control](#delay-based-tcp-congestion-control)
+  - [_Throughput based_ TCP congestion control: AIMD](#throughput-based-tcp-congestion-control-aimd)
+  - [_Delay based_ TCP congestion control](#delay-based-tcp-congestion-control)
   - [TCP fairness](#tcp-fairness)
 - [Evolution of transport-layer functionality](#evolution-of-transport-layer-functionality)
 <!--toc:end-->
@@ -41,11 +42,11 @@ heroImage: "https://source.unsplash.com/M5tzZtFCOfs"
 
 - provide **logical communication** between application processes running on different hosts
 - transport protocols actions
-    - sender: breaks messages into **segments**, passes to network layer
-    - receiver: reassembles segments, passes to application layer
+  - sender: breaks messages into **segments**, passes to network layer
+  - receiver: reassembles segments, passes to application layer
 - 2 protocols
-    - TCP
-    - UDP
+  - TCP
+  - UDP
 
 ## Multiplexing and demultiplexing
 
@@ -60,7 +61,7 @@ Host uses **IP addresses and port numbers** to direct segment to appropriate soc
 
 - UDP: demultiplexing using destination port number (only)
 - TCP: demultiplexing using 4-tuple: source and destination IP addresses,
-and port numbers
+  and port numbers
 
 ## Connectionless transport: UDP
 
@@ -82,6 +83,7 @@ and port numbers
 - HTTP/3
 
 If reliable transfer needed over UDP (e.g. HTTP/3):
+
 - add reliability at application layer
 - add congestion control at application layer
 
@@ -106,18 +108,20 @@ Channel with bit errors, how to recover?
 
 - **ACK**: receiver explicitly tells sender that packet received OK
 - **NAK - negative ACK**: receiver explicitly tells sender that packet had errors
-    - sender then retransmits packet on receipt of NAK
+  - sender then retransmits packet on receipt of NAK
 
 **"Stop and wait"**:  
 Sender sends one packet, then waits for receiver response.
 
 **Flaw of rdt 2.0**:
+
 - ACK or NAK can be corrupted
 - stop and wait is slow
 
 ### rdt 2.1
 
 **sender**
+
 - seq added to each packet
 
 ### rdt 2.2
@@ -135,32 +139,32 @@ Still, performance is poor due to only one packet is in transfer each moment.
 **Go Back N**
 
 - sender
-    - maintain a "window" of size up to N, with transmitted but unACKed packets
-    - **cumulative ACK**: receiving ACK seq `n` means ACK all packets up to, including seq `n`
+  - maintain a "window" of size up to N, with transmitted but unACKed packets
+  - **cumulative ACK**: receiving ACK seq `n` means ACK all packets up to, including seq `n`
 - receiver
-    - ACK only
-        - may generate duplicate ACKs
-        - need only remember the seq of next needed packet (in order)
-    - on receipt of out-of-order packet
-        - can discard or buffer these packets
-        - re-ACK the highest in-order seq
+  - ACK only
+    - may generate duplicate ACKs
+    - need only remember the seq of next needed packet (in order)
+  - on receipt of out-of-order packet
+    - can discard or buffer these packets
+    - re-ACK the highest in-order seq
 
 **Selective repeat**
 
 - sender
-    - data from above: if net available seq in window, send packet
-    - timeout: resend packet `n`, restart timer
-    - ACK `n` in `[sendbase, sendbase + N-1]`
-        - mark packet `n` as received
-        - if `n` smallest unACKed packet, advance window base to next unACKed seq
+  - data from above: if net available seq in window, send packet
+  - timeout: resend packet `n`, restart timer
+  - ACK `n` in `[sendbase, sendbase + N-1]`
+    - mark packet `n` as received
+    - if `n` smallest unACKed packet, advance window base to next unACKed seq
 - receiver
-    - packet `n` in `[rcvbase, rcvbase + N-1]`
-        - send ACK `n`
-        - out-of-order: buffer
-        - in-order: deliver, advance window to next not-yet-received packet
-    - packet `n` in `[rcvbase - N, rcvbase - 1]`
-        - ACK `n`
-    - otherwise: ignore
+  - packet `n` in `[rcvbase, rcvbase + N-1]`
+    - send ACK `n`
+    - out-of-order: buffer
+    - in-order: deliver, advance window to next not-yet-received packet
+  - packet `n` in `[rcvbase - N, rcvbase - 1]`
+    - ACK `n`
+  - otherwise: ignore
 
 ## Connection-oriented transport: TCP
 
@@ -209,6 +213,7 @@ sender limits amount of packets to the size of `rwnd`.
 ### Connection management
 
 Before exchanging data, sender and receiver do "handshake".
+
 - Agree to establish connection
 - Agree on connection parameters (e.g. starting seq)
 
@@ -227,9 +232,9 @@ and here is a never ending half open connection with no client
 #### Closing TCP connection
 
 - client, server each close their side of connection
-    - send TCP segment with `FIN` bit = 1
+  - send TCP segment with `FIN` bit = 1
 - respond to received `FIN` with ACK
-    - on receiving `FIN`, ACK can be combined with own `FIN`
+  - on receiving `FIN`, ACK can be combined with own `FIN`
 - simultaneous `FIN` exchanges can be handled
 
 ## TCP congestion control
@@ -239,7 +244,7 @@ and here is a never ending half open connection with no client
 - End-end congestion control
 - Network-assisted congestion control
 
-### *Throughput based* TCP congestion control: AIMD
+### _Throughput based_ TCP congestion control: AIMD
 
 > **Additive** Increase and **Multiplicative** Decrease
 
@@ -247,6 +252,7 @@ Sending rate is cut in half on loss detected by triple duplicate ACK,
 and cut to 1 MSS (maximum segment size) when loss detected by timeout.
 
 **Why AIMD?**
+
 - Optimize congested flow rates network wide
 - have desirable stability properties
 
@@ -275,7 +281,7 @@ CUBIC increase TCP sending rate gradually slower when approaching K.
 
 ![](../../../assets/computer_networking/reno_vs_cubic.png)
 
-### *Delay based* TCP congestion control
+### _Delay based_ TCP congestion control
 
 $$
 measured\;throughput =

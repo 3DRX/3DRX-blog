@@ -42,43 +42,43 @@ in the top right corner of the `pre`.
 My approach using vanilla js and css:
 
 ```js
-let blocks = document.querySelectorAll('pre');
+let blocks = document.querySelectorAll("pre");
 
 blocks.forEach((block) => {
-    // replace every pre with a div containing a pre and a copy-code-button
-    let div = document.createElement('div');
-    div.classList.add("code-block-wrapper");
-    let button = document.createElement('copy-code-button');
-    div.appendChild(button);
-    div.appendChild(block.cloneNode(true));
-    block.replaceWith(div);
+  // replace every pre with a div containing a pre and a copy-code-button
+  let div = document.createElement("div");
+  div.classList.add("code-block-wrapper");
+  let button = document.createElement("copy-code-button");
+  div.appendChild(button);
+  div.appendChild(block.cloneNode(true));
+  block.replaceWith(div);
 });
 ```
 
 ```css
 .code-block-wrapper {
-    position: relative;
+  position: relative;
 }
 pre {
-	padding: 1rem;
-    border-radius: 12px;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    position: relative;
+  padding: 1rem;
+  border-radius: 12px;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  position: relative;
 }
 pre > code {
-	all: unset;
-    overflow: auto;
+  all: unset;
+  overflow: auto;
 }
 .code-block-wrapper > copy-code-button {
-    z-index: 99;
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    overflow: hidden;
-    visibility: hidden;
+  z-index: 99;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  overflow: hidden;
+  visibility: hidden;
 }
 .code-block-wrapper:hover > copy-code-button {
-    visibility: visible;
+  visibility: visible;
 }
 ```

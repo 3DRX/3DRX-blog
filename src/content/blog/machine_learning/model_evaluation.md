@@ -6,6 +6,7 @@ updatedDate: "11/10/2023"
 ---
 
 <!--toc:start-->
+
 - [误差](#误差)
 - [评估方法](#评估方法)
   - [hold-out](#hold-out)
@@ -14,7 +15,7 @@ updatedDate: "11/10/2023"
 - [性能度量](#性能度量)
   - [分类任务](#分类任务)
   - [回归任务](#回归任务)
-<!--toc:end-->
+  <!--toc:end-->
 
 ## 误差
 
@@ -43,10 +44,10 @@ updatedDate: "11/10/2023"
 
 > 衡量模型泛化能力的评价标准
 
-| |预测为正|预测为反|
-|--|--|--|
-|真实为正|TP|FN|
-|真实为反|FP|TN|
+|          | 预测为正 | 预测为反 |
+| -------- | -------- | -------- |
+| 真实为正 | TP       | FN       |
+| 真实为反 | FP       | TN       |
 
 ### 分类任务
 
@@ -69,6 +70,6 @@ $$
 ### 回归任务
 
 - ROC (Receiver Operating Characteristic)
-    - 纵轴 True positive rate: $TPR = \frac{TP}{TP+FN}$
-    - 横轴 False positive rate: $FPR = \frac{FP}{TN+FP}$
+  - 纵轴 True positive rate: $TPR = \frac{TP}{TP+FN}$
+  - 横轴 False positive rate: $FPR = \frac{FP}{TN+FP}$
 - AUC (Area Under ROC Curve) 越大说明模型性能越好

@@ -6,7 +6,7 @@ updatedDate: "06/14/2023"
 heroImage: "https://source.unsplash.com/EaB4Ml7C7fE"
 ---
 
-> https://gource.io/ a git visualization tool 
+> https://gource.io/ a git visualization tool
 
 ## Feature
 
