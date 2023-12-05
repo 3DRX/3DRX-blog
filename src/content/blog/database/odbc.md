@@ -2,7 +2,7 @@
 title: "Connect to GaussDB and PostgreSQL using ODBC on Linux(Debian)"
 description: "在 Linux(Debian) 上使用 ODBC 连接 GaussDB 与 PostgreSQL"
 pubDate: "12/3/2023"
-updatedDate: "12/3/2023"
+updatedDate: "12/5/2023"
 heroImage: ""
 ---
 
@@ -47,6 +47,17 @@ Debug=0
 CommLog=1
 UsageCount=1
 ```
+
+## GaussDB only
+
+Download gsql [here](https://support.huaweicloud.com/mgtg-dws/dws_01_0032.html)
+(for Debian 12, I use the dws_client_8.1.x_redhat_x64 package),
+decompress it and cd into the dir.
+```
+source ./gsql_env.sh
+```
+This script replaces certain .so in PATH,
+and won't have permanent effect on system libraries.
 
 ## Connect using pyodbc
 
