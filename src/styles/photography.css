@@ -58,6 +58,7 @@ img {
   height: auto;
   filter: drop-shadow(var(--image-shadow-color) 0px 0px 30px);
   padding-top: 3rem;
+  border-radius: 0px;
   padding-bottom: 0rem;
 }
 #rss-img {

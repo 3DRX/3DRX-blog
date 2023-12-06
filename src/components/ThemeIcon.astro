@@ -2,23 +2,18 @@
 const { id } = Astro.props;
 ---
 
+<script src="./ThemeIcon.ts"></script>
+
 <div class="toggle-container">
   <span class="light"> 🌞</span>
   <div>
     <label class="switch" aria-label="Switch theme">
-      <input
-        id={id}
-        class="theme-toggle"
-        type="checkbox"
-        onclick="togglePreference()"
-      />
+      <input id={id} class="theme-toggle" type="checkbox" />
       <span class="slider round"></span>
     </label>
   </div>
   <span class="dark"> 🌑</span>
 </div>
-
-<script src="./ThemeIcon.ts"></script>
 
 <style>
   .theme-toggle {
@@ -29,6 +24,10 @@ const { id } = Astro.props;
     flex-direction: row;
     align-items: center;
     gap: 0.5em;
+  }
+
+  .toggle-container > span {
+    margin-bottom: 0.2em;
   }
 
   .light {

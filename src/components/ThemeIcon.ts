@@ -21,15 +21,15 @@ function togglePreference() {
   setPreference(getColorPreference() === "dark" ? "light" : "dark");
 }
 
-const buttons = document.querySelectorAll("input.theme-toggle");
-buttons.forEach((button) => {
-  button.addEventListener("click", () => {
-    togglePreference();
+function init() {
+  document.querySelectorAll("input.theme-toggle").forEach((button) => {
+    button.addEventListener("click", () => {
+      togglePreference();
+    });
   });
-});
-
-setPreference(getColorPreference());
-
-document.addEventListener("astro:after-swap", () => {
   setPreference(getColorPreference());
-});
+}
+
+init();
+
+document.addEventListener("astro:after-swap", init);
