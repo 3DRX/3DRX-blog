@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { ViewTransitions } from 'astro:transitions';
 
 export interface Props {
   title: string;
@@ -47,8 +48,7 @@ const { title, description, image = "/thumbnail.jpg" } = Astro.props;
   content="K6U8xdL4WvOKgU4ZnlwVwo-6LDR2LudhSJW5cvh8WmU"
 />
 
-<!-- Markdown Rendering -->
-<script src="/lib/theme-util.js" type="text/javascript" is:inline></script>
-
 <!-- Vercel -->
 <script defer src="/_vercel/insights/script.js"></script>
+
+<ViewTransitions />
