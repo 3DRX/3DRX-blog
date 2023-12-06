@@ -12,14 +12,13 @@
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^4.0.0",
-    "@astrojs/mdx": "^2.0.0",
     "@astrojs/rss": "^4.0.0",
     "@astrojs/sitemap": "^3.0.3",
     "@vercel/analytics": "^1.0.1",
     "astro": "^4.0.2",
     "lit": "^2.7.5",
-    "rehype-katex": "^6.0.3",
-    "remark-math": "^5.1.1",
+    "rehype-katex": "^7.0.0",
+    "remark-math": "^6.0.0",
     "three": "^0.155.0"
   },
   "devDependencies": {

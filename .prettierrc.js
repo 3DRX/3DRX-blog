@@ -1,4 +1,4 @@
 const config = {
-  plugins: ["prettier-plugin-astro"]
+  plugins: ["prettier-plugin-astro"],
 };
 export default config;
