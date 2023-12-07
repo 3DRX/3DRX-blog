@@ -31,6 +31,7 @@ const images: any = import.meta.glob(
       }
       img {
         padding-top: 0;
+        max-width: 360px;
       }
       li {
         display: flex;
@@ -57,7 +58,6 @@ const images: any = import.meta.glob(
                       `/src/assets/photography/${post.data.heroImage}`
                     ]()}
                     alt={post.data.title}
-                    width={360}
                     transition:name="hero"
                   />
                 </a>
