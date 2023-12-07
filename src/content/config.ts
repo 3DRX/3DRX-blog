@@ -29,7 +29,7 @@ const photography = defineCollection({
       .string()
       .or(z.date())
       .transform((val) => new Date(val)),
-    heroImage: z.string().optional(),
+    heroImage: z.string(),
   }),
 });
 

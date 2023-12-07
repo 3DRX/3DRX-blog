@@ -4,8 +4,7 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import FormattedDate from "../components/FormattedDate.astro";
-const { title, description, pubDate, updatedDate, heroImage, catagory } =
-  Astro.props;
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
 <html lang="en">
@@ -15,6 +14,7 @@ const { title, description, pubDate, updatedDate, heroImage, catagory } =
       import "../components/CopyCodeButton/CCB.js";
       import "../components/CopyCodeButton/create_CCB.js";
     </script>
+    <script src="../LoadGiscus.ts"></script>
     <style>
       .title {
         font-size: 2em;
@@ -26,6 +26,14 @@ const { title, description, pubDate, updatedDate, heroImage, catagory } =
       }
       .last-updated-on {
         font-style: italic;
+      }
+      .blog-date {
+        font-size: 0.9em;
+        color: var(--text-color-secondary);
+        display: flex;
+      }
+      .blog-date > div {
+        margin-left: 3em;
       }
     </style>
     <link
@@ -57,32 +65,6 @@ const { title, description, pubDate, updatedDate, heroImage, catagory } =
         <slot />
       </article>
     </main>
-    <script
-      src="https://giscus.app/client.js"
-      data-repo="3DRX/3DRX-blog"
-      data-repo-id="R_kgDOJvPgqQ"
-      data-category="Announcements"
-      data-category-id="DIC_kwDOJvPgqc4CXcFb"
-      data-mapping="url"
-      data-strict="0"
-      data-reactions-enabled="1"
-      data-emit-metadata="1"
-      data-input-position="top"
-      data-theme="preferred_color_scheme"
-      data-lang="en"
-      data-loading="lazy"
-      crossorigin="anonymous"
-      async></script>
     <Footer />
-    <style>
-      .blog-date {
-        font-size: 0.9em;
-        color: var(--text-color-secondary);
-        display: flex;
-      }
-      .blog-date > div {
-        margin-left: 3em;
-      }
-    </style>
   </body>
 </html>

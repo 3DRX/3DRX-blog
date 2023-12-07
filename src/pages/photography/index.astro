@@ -1,13 +1,22 @@
 ---
+import { fade } from "astro:transitions";
+import { Image } from "astro:assets";
 import BaseHead from "../../components/BaseHead.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
-import FormattedDate from "../../components/FormattedDate.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import { getCollection } from "astro:content";
+import "../../styles/photography.css";
 
 const posts = (await getCollection("photography")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+// should be: Record<string, () => Promise<{default: ImageMetadata}>>
+// instead: Record<string, () => Promise<unknown>>
+// use any to avoid ts being angry
+const images: any = import.meta.glob(
+  "/src/assets/photography/*.{jpeg,jpg,png,gif}",
 );
 ---
 
@@ -20,32 +29,42 @@ const posts = (await getCollection("photography")).sort(
         list-style-type: none;
         padding: unset;
       }
-      ul li {
+      img {
+        padding-top: 0;
+      }
+      li {
         display: flex;
+        flex-direction: row;
       }
-      ul li :global(time) {
-        flex: 0 0 130px;
-        font-style: italic;
-        color: var(--color);
-      }
-      ul li a:unvisited {
-        color: var(--link-color);
-      }
-      ul li a:visited {
-        color: var(--link-visited-color);
+      li div {
+        display: flex;
+        flex-direction: column;
+        padding-left: 3rem;
       }
     </style>
   </head>
   <body>
     <Header />
-    <main>
+    <main transition:animate={fade({ duration: "0.4s" })}>
       <section>
         <ul>
           {
             posts.map((post) => (
               <li>
-                <FormattedDate date={post.data.pubDate} />
-                <a href={`/photography/${post.slug}/`}>{post.data.title}</a>
+                <a href={`/photography/${post.slug}/`}>
+                  <Image
+                    src={images[
+                      `/src/assets/photography/${post.data.heroImage}`
+                    ]()}
+                    alt={post.data.title}
+                    width={360}
+                    transition:name="hero"
+                  />
+                </a>
+                <div>
+                  <h3>{post.data.title}</h3>
+                  <p>{post.data.description}</p>
+                </div>
               </li>
             ))
           }

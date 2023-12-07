@@ -1,4 +1,5 @@
 ---
+import { fade, slide } from "astro:transitions";
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
@@ -12,8 +13,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
   </head>
   <body>
     <Header title={SITE_TITLE} />
-    <main>
-      <h2>👋 Hello!</h2>
+    <main transition:animate={fade({ duration: "0.4s" })}>
+      <h2 transition:animate={slide({ duration: "0.4s" })}>👋 Hello!</h2>
       <p>I'm 3DRX, a random dude on the internet.</p>
       <p>欢迎来到我的小窝</p>
     </main>
