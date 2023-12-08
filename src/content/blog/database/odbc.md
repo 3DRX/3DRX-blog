@@ -1,5 +1,5 @@
 ---
-title: "Connect to GaussDB and PostgreSQL using ODBC on Linux(Debian)"
+title: "Connect to GaussDB and PostgreSQL using ODBC"
 description: "在 Linux(Debian) 上使用 ODBC 连接 GaussDB 与 PostgreSQL"
 pubDate: "12/3/2023"
 updatedDate: "12/5/2023"
