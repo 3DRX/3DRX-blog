@@ -39,6 +39,10 @@ const posts = (await getCollection("blog")).sort(
         flex: 1;
         text-align: right;
       }
+      .catagory {
+        font-style: italic;
+        color: var(--secondary-color);
+      }
     </style>
   </head>
   <body>
@@ -51,7 +55,7 @@ const posts = (await getCollection("blog")).sort(
               <li>
                 <FormattedDate date={post.data.pubDate} />
                 <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-                <div>{post.data.catagory}</div>
+                <div class="catagory">{post.data.catagory}</div>
               </li>
             ))
           }

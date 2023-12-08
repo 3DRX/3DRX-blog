@@ -110,6 +110,7 @@ blockquote {
   --img-brightness: 100%;
   --background-color: #fff;
   --color: #111;
+  --secondary-color: #c7c7c7;
   --heading-color: #111;
   --link-color: #3273dc;
   --link-visited-color: #193c75;
@@ -123,6 +124,7 @@ blockquote {
   --img-brightness: 90%;
   --background-color: #000;
   --color: #eee;
+  --secondary-color: #999;
   --heading-color: #eee;
   --link-color: #de9906;
   --link-visited-color: #966807;
