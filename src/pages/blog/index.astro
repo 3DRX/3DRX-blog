@@ -29,6 +29,9 @@ const posts = (await getCollection("blog")).sort(
         font-style: italic;
         color: var(--color);
       }
+      ul li a {
+        max-width: calc(70ch - 17em);
+      }
       ul li a:unvisited {
         color: var(--link-color);
       }
@@ -38,10 +41,19 @@ const posts = (await getCollection("blog")).sort(
       ul li div {
         flex: 1;
         text-align: right;
-      }
-      .catagory {
         font-style: italic;
         color: var(--secondary-color);
+        margin-right: 0;
+        margin-left: auto;
+        max-width: 5em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      @media screen and (max-width: 70ch) {
+        .catagory {
+          display: none !important;
+        }
       }
     </style>
   </head>
@@ -55,7 +67,9 @@ const posts = (await getCollection("blog")).sort(
               <li>
                 <FormattedDate date={post.data.pubDate} />
                 <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-                <div class="catagory">{post.data.catagory}</div>
+                <div class="catagory">
+                  {post.slug.search("/") == -1 ? "" : post.slug.split("/")[0]}
+                </div>
               </li>
             ))
           }

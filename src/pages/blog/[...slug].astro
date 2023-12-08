@@ -27,9 +27,6 @@ export async function getStaticPaths() {
         title: posts[i - 1].data.title,
       };
     }
-    const catagory: string =
-      post.slug.search("/") == -1 ? "" : post.slug.split("/")[0];
-    post.data.catagory = catagory;
     return {
       params: { slug: post.slug },
       props: {
