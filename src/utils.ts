@@ -30,7 +30,6 @@ type Message = {
 function sendMessage(message: Message) {
   const iframe = document.querySelector("iframe.giscus-frame");
   if (!iframe) {
-    console.log(`no iframe to set`);
     return;
   }
   iframe.contentWindow.postMessage({ giscus: message }, "https://giscus.app");

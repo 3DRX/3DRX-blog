@@ -8,4 +8,7 @@ export default defineConfig({
     remarkPlugins: ["remark-math"],
     rehypePlugins: [["rehype-katex", { strict: false }]],
   },
+  prefetch: {
+    defaultStrategy: "hover",
+  },
 });

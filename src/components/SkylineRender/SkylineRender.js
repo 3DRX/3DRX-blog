@@ -5,7 +5,6 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 function render() {
   const scene = new THREE.Scene();
   const loader = new GLTFLoader();
-  const canvas = document.querySelector(".webgl");
   loader.load(
     `/3DRX-2022.gltf`,
     (gltf) => {
@@ -16,6 +15,10 @@ function render() {
       console.log("error", error);
     },
   );
+  const canvas = document.querySelector(".webgl");
+  if (!canvas) {
+    return;
+  }
 
   function getSizes() {
     const c = document.querySelector(".webgl");
