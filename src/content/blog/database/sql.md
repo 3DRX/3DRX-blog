@@ -13,6 +13,21 @@ heroImage: "https://source.unsplash.com/Wpnoqo2plFA"
   - [视图 View](#视图-view)
   - [索引 Index](#索引-index)
 - [数据查询](#数据查询)
+  - [`SELECT`](#select)
+  - [`FROM`](#from)
+  - [`WHERE`](#where)
+  - [`GROUP BY` & `HAVING`](#group-by-having)
+  - [`ORDER BY`](#order-by)
+  - [聚集函数](#聚集函数)
+  - [连接查询](#连接查询)
+  - [嵌套查询](#嵌套查询)
+  - [集合查询](#集合查询)
+  - [基于派生表的查询](#基于派生表的查询)
+- [数据更新（增、删、改）](#数据更新增删改)
+  - [插入数据](#插入数据)
+  - [修改数据](#修改数据)
+  - [删除数据](#删除数据)
+  - [空值的处理](#空值的处理)
 <!--toc:end-->
 
 ---
@@ -101,4 +116,152 @@ SELECT COUNT(*) FROM Student;
 - `DISTINCT`
 - `AVG`
 
-// CKPT: 数据库第三章第二部分 2:11
+### 连接查询
+
+- 简单连接查询
+- 外连接查询
+```sql
+SELECT Student.Sno, Sname, Ssex, Sage, Sdept, Cno, Grade
+FROM Student LEFT OUT JOIN SC ON (Student.Sno = SC.Sno);
+```
+
+### 嵌套查询
+
+```sql
+SELECT Sname FROM Student
+WHERE Sno IN (
+    SELECT Sno FROM SC
+    WHERE Cno = '2'
+);
+```
+
+限制：子查询不能使用 `ORDER BY` 语句，如果需要排序，
+只能在主查询的结尾加 `ORDER BY`。
+
+- 不相关子查询：不依赖外层传入的值
+- 相关子查询：依赖外层传入的值
+
+> 连接查询与嵌套查询的区别：连接查询效率相对低一些
+> （因为需要做笛卡尔积）
+
+### 集合查询
+
+查询计算机科学系的学生**及**年龄不大于 19 岁的学生（并）。
+```sql
+SELECT * FROM Student
+WHERE Sdept = 'CS'
+UNION
+SELECT * FROM Student
+WHERE Sage <= 19;
+```
+
+- `UNION` 自动去重
+- `UNION ALL` 不去重
+
+类似地， 查询计算机科学系的学生**与**年龄不大于 19 岁的学生（交）。
+```sql
+SELECT * FROM Student
+WHERE Sdept = 'CS'
+INTERSECT
+SELECT * FROM Student
+WHERE Sage <= 19;
+```
+
+类似地，`EXCEPT`（差）。
+
+### 基于派生表的查询
+
+派生表：`FROM` 后面跟的不是表，而是一个子查询语句。
+例如，找出每个学生超过他自己选修课程平均成绩的课程号：
+```sql
+SELECT Sno, Cno
+FROM SC, (
+    SELECT Sno, Avg(Grade)
+    FROM SC GROUP BY Sno
+    AS Avg_sc(avg_sno, avg_grade)
+)
+WHERE SC.Sno = Avg_sc.avg_sno and
+    SC.Grade >= Avg_sc.avg_grade;
+```
+
+## 数据更新（增、删、改）
+
+### 插入数据
+
+- 插入元组
+    - 给出全部列的数据
+    ```sql
+    INSERT INTO Student(Sno, Sname, Ssex, Sdept, Sage)
+    VALUES ('201215128', '张三', '男', 'CS', 18);
+    ```
+    - 自动赋空值
+    ```sql
+    INSERT INTO SC(Sno, Cno)
+    VALUES ('201215128', '1');
+    ```
+    等价于
+    ```sql
+    INSERT INTO SC
+    VALUES ('201215128', '1', NULL);
+    ```
+- 插入子查询结果
+    - 例如，对每个系，求学生的平均年龄，并把结果存入数据库
+    ```sql
+    CREATE TABLE Dept_age (
+        Sdept CHAR(15),
+        Avg_age INT
+    );
+    INSERT INTO Dept_age(Sdept, Avg_age)
+        SELECT Sdept, AVG(Sage)
+        FROM Student
+        GROUP BY Sdept;
+    ```
+
+### 修改数据
+
+- 修改某一个元组的值
+    ```sql
+    UPDATE Student
+    SET Sage = 22
+    WHERE Sno = '201215121';
+    ```
+- 修改多个元组的值
+    ```sql
+    UPDATE Student
+    SET Sage = Sage + 1;
+    ```
+- 带自查询的修改语句
+    ```sql
+    UPDATE SC
+    SET Grade = 0
+    WHERE Sno IN (
+        SELECT Sno FROM Student
+        WHERE Sdept = 'CS'
+    );
+    ```
+
+### 删除数据
+
+- 删除某一个元组的值
+    ```sql
+    DELETE FROM Student
+    WHERE Sno = '201215128';
+    ```
+- 删除多个元组的值
+    ```sql
+    DELETE FROM SC;
+    ```
+    和 `DROP TABLE SC;` 的区别是这个会剩下空表。
+- 带自查询的删除语句
+    ```sql
+    DELETE FROM SC
+    WHERE Sno IN (
+        SELECT Sno FROM Student
+        WHERE Sdept = 'CS'
+    );
+    ```
+
+### 空值的处理
+
+// CKPT 第三章第三部分 17:49
+
