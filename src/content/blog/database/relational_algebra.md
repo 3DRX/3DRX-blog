@@ -2,7 +2,7 @@
 title: "Relational Algebra"
 description: "关系代数"
 pubDate: "12/21/2023"
-updatedDate: "12/21/2023"
+updatedDate: "12/22/2023"
 heroImage: "https://source.unsplash.com/Wpnoqo2plFA"
 ---
 
@@ -17,8 +17,11 @@ heroImage: "https://source.unsplash.com/Wpnoqo2plFA"
   - [选择 $\sigma$](#选择-sigma)
   - [投影 $\Pi$](#投影-pi)
   - [连接 $\Join$](#连接-join)
+    - [常用的连接运算](#常用的连接运算)
   - [除 $\div$](#除-div)
 <!--toc:end-->
+
+---
 
 ## 集合运算
 
@@ -111,18 +114,68 @@ $$
 ### 连接 $\Join$
 
 $$
-R \underset{A \theta B}\Join S = \{
+\begin{aligned}
+&R \underset{A \theta B}\Join S =\\
+&\{
 \mathop{t_r t_s}\limits^{\frown} | t_r \isin R \wedge t_s \isin S
 \wedge t_r[A] \theta t_s[B]
 \}
+\end{aligned}
 $$
 
-#### 两类常用的连接运算
+#### 常用的连接运算
 
 - 等值连接：上面 $\theta$ 定义为 $=$
 - 自然连接：特殊的等值连接，在结果中**把重复的属性列去掉**
+- 外连接：对于关系 $R$ 中有而关系 $S$ 中没有的元素，
+外连接会创建对应的原组，将空缺设置为 NULL，
+外连接分为左外连接、右外连接。
 
 ### 除 $\div$
 
-// CKPT 第二章下 47:59
+$$
+R \div S = \{t_r[X] | t_r \isin R \wedge \Pi_Y(S) \subseteq Y_x\}
+$$
+
+其中 $Y_x$ 是 $x$ 在 $R$ 中的象集，$x = t_r[X]$。
+
+#### 例子
+
+$R$：
+
+|A|B|C|
+|-|-|-|
+|a1|b1|c2|
+|a2|b3|c7|
+|a3|b4|c6|
+|a1|b2|c3|
+|a4|b6|c6|
+|a2|b2|c3|
+|a1|b2|c1|
+
+$S$：
+
+|B|C|D|
+|-|-|-|
+|b1|c2|d1|
+|b2|c1|d1|
+|b2|c3|d2|
+
+$R \div S$：
+
+|A|
+|-|
+|a1|
+
+步骤：
+
+1. 关系 $R$ 中 $A$ 可以取 4 个值
+    - $a1$ 在 $R$ 上的象集是 $\{(b1, c2), (b2, c3), (b2, c1)\}$
+    - $a2$ 在 $R$ 上的象集是 $\{(b3, c7), (b2, c3)\}$
+    - $a3$ 在 $R$ 上的象集是 $\{(b4, c6)\}$
+    - $a4$ 在 $R$ 上的象集是 $\{(b6, c6)\}$
+2. $S$ 在 $(B, C)$ 上的投影为 $\{(b1 c2), (b2, c1), (b2, c3)\}$
+只有 $a1$ 的象集包含在了这之中，所以 $R \div S = \{a1\}$
+
+> 思想：包含
 
