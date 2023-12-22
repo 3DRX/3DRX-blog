@@ -17,8 +17,14 @@ const giscusAttributes = {
   crossorigin: "anonymous",
   async: "",
 };
-const giscusScript = document.createElement("script");
-Object.entries(giscusAttributes).forEach(([key, value]) =>
-  giscusScript.setAttribute(key, value),
-);
-document.body.appendChild(giscusScript);
+
+function init() {
+  const giscusScript = document.createElement("script");
+  Object.entries(giscusAttributes).forEach(([key, value]) =>
+    giscusScript.setAttribute(key, value),
+  );
+  document.body.appendChild(giscusScript);
+}
+
+init();
+document.addEventListener("astro:after-swap", init);
