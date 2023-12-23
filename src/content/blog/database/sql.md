@@ -2,7 +2,7 @@
 title: "SQL"
 description: "Structured Query Language"
 pubDate: "12/22/2023"
-updatedDate: "12/22/2023"
+updatedDate: "12/23/2023"
 heroImage: "https://source.unsplash.com/Wpnoqo2plFA"
 ---
 
@@ -27,7 +27,9 @@ heroImage: "https://source.unsplash.com/Wpnoqo2plFA"
   - [插入数据](#插入数据)
   - [修改数据](#修改数据)
   - [删除数据](#删除数据)
-  - [空值的处理](#空值的处理)
+- [空值](#空值)
+  - [空值的约束条件](#空值的约束条件)
+  - [空值的运算*](#空值的运算)
 <!--toc:end-->
 
 ---
@@ -47,13 +49,27 @@ heroImage: "https://source.unsplash.com/Wpnoqo2plFA"
 
 ### 视图 View
 
-- 从一个或几个基本表导出的表
-- 数据库中只存放视图的定义而不存放视图对应的数据
+- 从一个或几个基本表导出的表（虚表）
+- 数据库中只存放视图的**定义**而不存放视图对应的**数据**
 - 视图是一个虚表
 - 用户可以在视图上再定义视图
 
-`CREATE VIEW ...`,
-`DROP VIEW ...`
+创建
+```sql
+CREATE VIEW IS_Student AS
+SELECT Sno, Sname, Sage
+FROM Student
+WHERE Sdept = 'IS';
+```
+
+建立信息系学生的视图，并要求进行修改和插入操作时仍需保证该视图只有信息系的学生。
+```sql
+CREATE VIEW IS_Student AS
+SELECT Sno, Sname, Sage
+FROM Student
+WHERE Sdept = 'IS'
+WITH CHECK OPTION;
+```
 
 ### 索引 Index
 
@@ -261,7 +277,48 @@ WHERE SC.Sno = Avg_sc.avg_sno and
     );
     ```
 
-### 空值的处理
+## 空值
 
-// CKPT 第三章第三部分 17:49
+产生：`INSERT`，`UPDATE`
+
+判断：`NOT NULL`
+
+### 空值的约束条件
+
+属性定义中
+- `NOT NULL` 约束的不能是空值
+- `UNIQUE` 约束的不能是空值
+- `PRIMARY KEY` 不能是空值
+
+### 空值的运算*
+
+- `NULL` 与另一个值（任意）的算术运算结果为 `NULL`
+- `NULL` 与另一个值（任意）的比较运算结果为 `UNKNOWN`
+- 有 `UNKNOWN` 后，传统二值逻辑（`TRUE`, `FALSE`）就扩展成了三值逻辑
+
+|x|y|x AND y|x OR y|NOT x|
+|-|-|-|-|-|
+|T|T|T|T|F|
+|T|U|U|T|F|
+|T|F|F|T|F|
+|U|T|U|T|U|
+|U|U|U|U|U|
+|U|F|F|U|U|
+|F|T|F|T|T|
+|F|U|F|U|T|
+|F|F|F|F|T|
+
+在查询语句中的例子：找出选修 1 号课程的不及格的学生
+```sql
+SELECT Sno FROM SC
+WHERE Grade < 60 AND Cno = '1';
+```
+查询结果不包含缺考的学生，因为他们的 `Grade` 值为 `NULL`。
+
+找出选修 1 号课程的不及格及缺考的学生
+```sql
+SELECT Sno FROM SC
+WHERE Cno = '1' AND
+    (Grade < 60 OR Grade IS NULL);
+```
 
