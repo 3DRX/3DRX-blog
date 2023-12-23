@@ -19,6 +19,15 @@ const giscusAttributes = {
 };
 
 function init() {
+  // if in page Home, Blog, Photography, About, don't load giscus
+  const path = window.location.pathname;
+  if (
+    path === "/" ||
+    path === "/blog" ||
+    path === "/photography" ||
+    path === "/about"
+  )
+    return;
   const giscusScript = document.createElement("script");
   Object.entries(giscusAttributes).forEach(([key, value]) =>
     giscusScript.setAttribute(key, value),
