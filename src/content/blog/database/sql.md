@@ -71,6 +71,8 @@ WHERE Sdept = 'IS'
 WITH CHECK OPTION;
 ```
 
+查询视图和查询表一样。
+
 ### 索引 Index
 
 `CREATE INDEX ...`,
