@@ -13,8 +13,8 @@
   "dependencies": {
     "@astrojs/markdown-remark": "^4.0.1",
     "@astrojs/rss": "^4.0.1",
-    "@astrojs/sitemap": "^3.0.3",
-    "astro": "^4.0.7",
+    "@astrojs/sitemap": "^3.0.4",
+    "astro": "^4.0.8",
     "lit": "^2.8.0",
     "rehype-katex": "^7.0.0",
     "remark-math": "^6.0.0",
