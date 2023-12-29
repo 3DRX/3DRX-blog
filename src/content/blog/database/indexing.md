@@ -6,6 +6,16 @@ updatedDate: "12/29/2023"
 heroImage: "https://source.unsplash.com/Wpnoqo2plFA"
 ---
 
+<!--toc:start-->
+- [基本概念](#基本概念)
+- [索引的不同分类方式](#索引的不同分类方式)
+  - [Primary vs Secondary](#primary-vs-secondary)
+  - [Dense vs Sparse](#dense-vs-sparse)
+  - [Multilevel Index](#multilevel-index)
+- [更新索引](#更新索引)
+- [SQL 中的索引](#sql-中的索引)
+<!--toc:end-->
+
 ## 基本概念
 
 Index file 中的 records 有两个字段
