@@ -48,8 +48,12 @@ Lock based protocol 就是任务执行过程中通过加锁解锁来控制并发
 
 保证冲突可串行（会级联回滚），不能保证避免死锁。
 
-Rigorous two-phase locking：更严格，只有 commit 或 abort
-后可以释放锁。此时，事物可以按照 commit 的顺序串行。
+#### Strict two-phase locking
+所有互斥锁（X锁）需要保持到 commit 或 abort 时再释放。
+
+#### Rigorous two-phase locking
+更严格，所有锁都要保持到commit 或 abort 时才能释放。
+此时，事物可以按照 commit 的顺序串行。
 
 ### Multiple Granularity Lock
 
