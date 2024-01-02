@@ -10,6 +10,8 @@ heroImage: "https://source.unsplash.com/Wpnoqo2plFA"
 - [问题提出](#问题提出)
 - [Locks](#locks)
   - [Two-phase locking](#two-phase-locking)
+    - [Strict two-phase locking](#strict-two-phase-locking)
+    - [Rigorous two-phase locking](#rigorous-two-phase-locking)
   - [Multiple Granularity Lock](#multiple-granularity-lock)
 <!--toc:end-->
 
