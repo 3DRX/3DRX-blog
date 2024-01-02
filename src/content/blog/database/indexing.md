@@ -61,10 +61,11 @@ Index Evaluation Metrics
 ## SQL 中的索引
 
 - create index
-`CREATE [UNIQUE] INDEX <index-name> ON <relation name> <attribute-list>;`
-- create cluster index
-    - `CREATE NONCLUSTER INDEX ...;`
-    - `CREATE UNIQUE INDEX ...;`
+```
+CREATE [UNIQUE|CLUSTERED|NONCLUSTERED] INDEX <index-name>
+ON <relation name> <attribute-list>;
+```
 - drop an index
-`DROP INDEX <index-name>;`
-
+```
+DROP INDEX <index-name>;
+```
