@@ -2,7 +2,7 @@
 title: "Indexing"
 description: "数据库索引"
 pubDate: "12/29/2023"
-updatedDate: "12/29/2023"
+updatedDate: "1/2/2023"
 heroImage: "https://source.unsplash.com/Wpnoqo2plFA"
 ---
 
@@ -61,7 +61,7 @@ Index Evaluation Metrics
 ## SQL 中的索引
 
 - create index
-`CREATE [UNIQUE] INDEX <index-name> or <relation name> <attribute-list>;`
+`CREATE [UNIQUE] INDEX <index-name> ON <relation name> <attribute-list>;`
 - create cluster index
     - `CREATE NONCLUSTER INDEX ...;`
     - `CREATE UNIQUE INDEX ...;`
