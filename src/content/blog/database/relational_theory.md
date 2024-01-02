@@ -2,7 +2,7 @@
 title: "Relational Theory"
 description: "关系数据理论"
 pubDate: "12/23/2023"
-updatedDate: "12/29/2023"
+updatedDate: "1/2/2023"
 heroImage: "https://source.unsplash.com/Wpnoqo2plFA"
 ---
 
@@ -22,6 +22,7 @@ heroImage: "https://source.unsplash.com/Wpnoqo2plFA"
   - [BCNF](#bcnf)
 - [多值依赖](#多值依赖)
   - [4 NF](#4-nf)
+- [基于函数依赖的无损连接分解](#基于函数依赖的无损连接分解)
 <!--toc:end-->
 
 ---
@@ -204,4 +205,24 @@ $$
 ### 4 NF
 
 把多值依赖拆解成函数依赖。
+
+## 基于函数依赖的无损连接分解
+
+若
+$$
+R_1 \cap R_2 \rightarrow R_1 - R_2 \; 或 \;
+R_1 \cap R_2 \rightarrow R_2 - R_1
+$$
+则 $R_1$ 与 $R_2$ 是 $R$ 的 lossless-join decomposition 成立。
+
+如：
+$$
+\begin{aligned}
+R &= (A, B, C, D, E) \\
+F &= {AB \rightarrow C, C \rightarrow DE} \\
+R_1 &= (A, B, C) \\
+R_2 &= (C, D, E) \\
+\end{aligned}
+$$
+$R_1$ 与 $R_2$ 是 $R$ 的无损连接分解。
 
