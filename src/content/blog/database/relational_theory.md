@@ -2,7 +2,7 @@
 title: "Relational Theory"
 description: "关系数据理论"
 pubDate: "12/23/2023"
-updatedDate: "1/2/2023"
+updatedDate: "1/3/2023"
 heroImage: "https://source.unsplash.com/Wpnoqo2plFA"
 ---
 
@@ -22,7 +22,10 @@ heroImage: "https://source.unsplash.com/Wpnoqo2plFA"
   - [BCNF](#bcnf)
 - [多值依赖](#多值依赖)
   - [4 NF](#4-nf)
-- [基于函数依赖的无损连接分解](#基于函数依赖的无损连接分解)
+- [关系模型的分解](#关系模型的分解)
+  - [无损连接分解](#无损连接分解)
+  - [函数依赖保持](#函数依赖保持)
+  - [3 NF Decomposition Algorithm](#3-nf-decomposition-algorithm)
 <!--toc:end-->
 
 ---
@@ -206,13 +209,11 @@ $$
 
 把多值依赖拆解成函数依赖。
 
-## 基于函数依赖的无损连接分解
+## 关系模型的分解
 
-若
-$$
-R_1 \cap R_2 \rightarrow R_1 - R_2 \; 或 \;
-R_1 \cap R_2 \rightarrow R_2 - R_1
-$$
+### 无损连接分解
+若 $R_1 \cap R_2 \rightarrow R_1$
+或 $R_1 \cap R_2 \rightarrow R_2$，
 则 $R_1$ 与 $R_2$ 是 $R$ 的 lossless-join decomposition 成立。
 
 如：
@@ -226,3 +227,23 @@ R_2 &= (C, D, E) \\
 $$
 $R_1$ 与 $R_2$ 是 $R$ 的无损连接分解。
 
+### 函数依赖保持
+$$
+(F_1 \cup F_2 \cup ... \cup F_n)^+ = F^+
+$$
+如：
+$$
+\begin{aligned}
+F &= \{A \rightarrow B, B \rightarrow C\} \\
+F_1 &= \{A \rightarrow B\} \\
+F_2 &= \{A \rightarrow C\}
+\end{aligned}
+$$
+不是函数依赖保持的分解，$B \rightarrow C$ 函数依赖丢失了。
+
+### 3 NF Decomposition Algorithm
+将关系模型分解为第三范式，同时保持无损连接和函数依赖。
+1. 求 $F$ 的 canonical cover $F_c$
+2. 对 $F_c$ 中的每一个函数依赖 $\alpha \rightarrow \beta$，
+如果不存在包含 $\alpha$ 和 $\beta$ 的表，拆出一张新表 $R_n(\alpha, \beta)$
+3. 如果拆出的子表中没有任何一个包含候选键，则将候选键作为一个单独的子表
