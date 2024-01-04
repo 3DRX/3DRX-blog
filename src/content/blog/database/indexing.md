@@ -2,7 +2,7 @@
 title: "Indexing"
 description: "数据库索引"
 pubDate: "12/29/2023"
-updatedDate: "1/2/2023"
+updatedDate: "1/2/2024"
 heroImage: "https://source.unsplash.com/Wpnoqo2plFA"
 ---
 
