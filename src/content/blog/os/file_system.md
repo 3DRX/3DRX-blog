@@ -2,11 +2,12 @@
 title: "OS: File System"
 description: "操作系统文件系统"
 pubDate: "12/31/2023"
-updatedDate: "1/5/2024"
+updatedDate: "1/6/2024"
 heroImage: ""
 ---
 
 <!--toc:start-->
+- [操作](#操作)
 - [逻辑结构](#逻辑结构)
 - [物理结构](#物理结构)
   - [连续分配](#连续分配)
@@ -24,6 +25,23 @@ heroImage: ""
 <!--toc:end-->
 
 ---
+
+## 操作
+File Operations:
+- create
+- write
+- read
+- reposition within file
+- delete
+- truncate
+
+Directory Operations:
+- search for a file
+- create a file
+- delete a file
+- list a directory
+- rename a file
+- traverse the file system
 
 ## 逻辑结构
 - 无结构文件
