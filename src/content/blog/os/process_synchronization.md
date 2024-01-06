@@ -2,11 +2,12 @@
 title: "OS: Process Synchronization"
 description: "操作系统进程同步"
 pubDate: "12/31/2023"
-updatedDate: "12/31/2023"
+updatedDate: "1/6/2024"
 heroImage: ""
 ---
 
 <!--toc:start-->
+- [Critical-section Problem](#critical-section-problem)
 - [Peterson's Solution](#petersons-solution)
 - [硬件实现方法](#硬件实现方法)
   - [中断屏蔽](#中断屏蔽)
@@ -23,6 +24,13 @@ heroImage: ""
 <!--toc:end-->
 
 ---
+
+## Critical-section Problem
+一个好的解决方案需要符合以下 3 点
+1. Mutual Exclusion：同一时间只能有最多一个进程处于临界区中
+2. Progress：当临界区中没有正在执行的进程时，一个想要进入的进程应能够立即进入
+3. Bounded Waiting：在等待进入临界区时，等待的时间应该是有限的
+（即不会有进程在等待时被饿死）
 
 ## Peterson's Solution
 软件实现的用于两个进程间互斥访问临界区的方法
