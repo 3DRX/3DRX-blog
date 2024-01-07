@@ -2,7 +2,7 @@
 title: "OS: Memory Management & Virtual Memory"
 description: "操作系统内存管理"
 pubDate: "12/31/2023"
-updatedDate: "12/31/2023"
+updatedDate: "1/7/2024"
 heroImage: ""
 ---
 
@@ -68,6 +68,13 @@ heroImage: ""
 
 页表项的大小：round up 到整数倍字节（存放块号），页号不占空间，因为页表是个数组，
 其下标就是页号。
+
+注\*：此处页表中字段不完整，完整的页表字段应包含：
+1. resident 1 bit 标志着是否缺页
+2. dirty 1 bit 标志着内存中的页与硬盘上的是否相同
+3. physical page number 物理地址
+
+其中没有逻辑地址是因为逻辑地址隐含在 index 中。
 
 ##### 地址转换
 对给定的逻辑地址 A
@@ -196,7 +203,7 @@ TLB, translation lookaside buffer 是一种速度比内存快很多的高速缓�
 一般只有在需要将快表项删除时才将脏页面写回外存。
 
 #### 换页算法
-追求更少的却页率
+追求更少的缺页率
 - OPT 最佳置换法
 每次选择以后永不使用，或在最长时间内不再被访问的页面，
 这是一种 oracle 的算法，实际上无法实现。
