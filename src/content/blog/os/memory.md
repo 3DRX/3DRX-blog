@@ -25,6 +25,10 @@ heroImage: ""
     - [缺页中断机构](#缺页中断机构)
     - [换页算法](#换页算法)
     - [页面分配策略](#页面分配策略)
+    - [Thrashing 振荡](#thrashing-振荡)
+  - [内核内存的分配](#内核内存的分配)
+    - [Buddy System](#buddy-system)
+    - [Slab Allocation](#slab-allocation)
 <!--toc:end-->
 
 ---
@@ -224,3 +228,25 @@ TLB, translation lookaside buffer 是一种速度比内存快很多的高速缓�
 调入页面
 1. 预调页，根据局部性原理
 2. 请求调页
+
+#### Thrashing 振荡
+当程序持续地导致页错误，页被频繁地在内存与硬盘上交换，导致程序本身运行速度降低。
+缓解这一现象的方式有
+1. 预取机制，预测接下来要访问的页，一并换入物理内存，以减少发生缺页异常的次数。
+2. 设计更好的换页算法。
+
+### 内核内存的分配
+
+#### Buddy System
+![buddy system](../../../assets/os/buddy_system.png)
+
+#### Slab Allocation
+基于内核中内存使用的一些特点：
+- 一些需要频繁使用的同样大小数据经常在使用后不久又再次被用到
+- 找到合适大小的内存所消耗的时间远远大于释放内存所需要的时间
+
+slab 分配方式将申请到的整块内存分为更小的 chunk，并设置缓存。
+
+![slab allocation](../../../assets/os/slab_allocation.png)
+1. No memory is wasted due to fragmentation.
+2. Memory requests can be satisfied quickly.
