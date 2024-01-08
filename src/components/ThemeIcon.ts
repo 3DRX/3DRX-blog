@@ -2,14 +2,14 @@ import {
   setPreference,
   togglePreference,
   getColorPreference,
-  toggleGiscusTheme,
 } from "../utils";
 
 function init() {
   document.querySelectorAll("input.theme-toggle").forEach((button) => {
     button.addEventListener("click", () => {
       togglePreference();
-      toggleGiscusTheme();
+      const event = new CustomEvent("theme:change");
+      document.dispatchEvent(event);
     });
   });
   setPreference(getColorPreference());

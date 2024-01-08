@@ -11,7 +11,6 @@ const giscusAttributes = {
   "data-reactions-enabled": "1",
   "data-emit-metadata": "1",
   "data-input-position": "top",
-  "data-theme": getColorPreference(),
   "data-lang": "en",
   "data-loading": "lazy",
   crossorigin: "anonymous",
@@ -32,8 +31,10 @@ function init() {
   Object.entries(giscusAttributes).forEach(([key, value]) =>
     giscusScript.setAttribute(key, value),
   );
+  giscusScript.setAttribute("data-theme", getColorPreference());
   document.body.appendChild(giscusScript);
 }
 
 init();
 document.addEventListener("astro:after-swap", init);
+document.addEventListener("theme:change", init);

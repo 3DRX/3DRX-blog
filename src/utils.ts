@@ -46,11 +46,3 @@ export function setGiscusTheme(pref: string) {
     });
   }
 }
-
-export function toggleGiscusTheme() {
-  sendMessage({
-    setConfig: {
-      theme: getColorPreference(),
-    },
-  });
-}
