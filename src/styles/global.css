@@ -16,7 +16,7 @@ body {
     sans-serif;
   margin: auto;
   padding: 20px;
-  max-width: 70ch;
+  max-width: 80ch;
   text-align: left;
   background-color: var(--background-color);
   word-wrap: break-word;

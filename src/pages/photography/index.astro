@@ -25,9 +25,6 @@ const images: any = import.meta.glob(
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     <style>
-      body {
-        max-width: 70ch;
-      }
       ul {
         list-style-type: none;
         padding: unset;
@@ -65,7 +62,7 @@ const images: any = import.meta.glob(
                       `/src/assets/photography/${post.data.heroImage}`
                     ]()}
                     alt={post.data.title}
-                    transition:name="hero"
+                    transition:name={`cover-${post.data.title}`}
                   />
                 </a>
                 <div>
