@@ -25,6 +25,9 @@ const images: any = import.meta.glob(
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     <style>
+      body {
+        max-width: 70ch;
+      }
       ul {
         list-style-type: none;
         padding: unset;
@@ -57,6 +60,7 @@ const images: any = import.meta.glob(
               <li>
                 <a href={`/photography/${post.slug}/`}>
                   <Image
+                    class="cover-image"
                     src={images[
                       `/src/assets/photography/${post.data.heroImage}`
                     ]()}
