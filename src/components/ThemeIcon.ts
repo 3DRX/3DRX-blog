@@ -1,8 +1,4 @@
-import {
-  setPreference,
-  togglePreference,
-  getColorPreference,
-} from "../utils";
+import { setPreference, togglePreference, getColorPreference } from "../utils";
 
 function init() {
   document.querySelectorAll("input.theme-toggle").forEach((button) => {

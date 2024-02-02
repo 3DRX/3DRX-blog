@@ -51,7 +51,11 @@ const { title, description, image = "/thumbnail.jpg" } = Astro.props;
 <!-- Vercel -->
 <script defer src="/_vercel/insights/script.js"></script>
 <script>
-  window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  window.si =
+    window.si ||
+    function () {
+      (window.siq = window.siq || []).push(arguments);
+    };
 </script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
 

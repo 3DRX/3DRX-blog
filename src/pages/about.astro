@@ -1,8 +1,7 @@
 ---
-import { fade, slide } from "astro:transitions";
+import { slide } from "astro:transitions";
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 import Skyline from "../components/Skyline.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
@@ -28,7 +27,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
         </p>
       </div>
     </main>
-    <Footer />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;500;700&display=swap");
       h2 {

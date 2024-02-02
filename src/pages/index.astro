@@ -2,8 +2,9 @@
 import { fade, slide } from "astro:transitions";
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import { Image } from "astro:assets";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import img3DRX from "../assets/3DRX.jpg";
 ---
 
 <!doctype html>
@@ -14,21 +15,39 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
   <body>
     <Header title={SITE_TITLE} />
     <main transition:animate={fade({ duration: "0.2s" })}>
-      <h2 transition:animate={slide({ duration: "0.2s" })}>👋 Hello!</h2>
-      <p>I'm 3DRX, a random dude on the internet.</p>
-      <p>欢迎来到我的小窝</p>
+      <div class="img-desc">
+        <Image id="img3DRX" src={img3DRX} alt="" />
+        <div class="desc" transition:animate={slide({ duration: "0.2s" })}>
+          <h2>👋 Hello!</h2>
+          <p>I'm 3DRX, a random dude on the internet.</p>
+          <p>欢迎来到我的小窝</p>
+          <a>
+            This blog is powered by <a
+              href="https://astro.build/"
+              target="_blank">Astro.js</a
+            >.
+          </a>
+        </div>
+      </div>
     </main>
-    <a>
-      This blog is powered by <a href="https://astro.build/" target="_blank"
-        >Astro.js</a
-      >.
-    </a>
-    <Footer />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;500;700&display=swap");
       h2 {
         margin: 0.5em 0;
         font-family: "M PLUS Rounded 1c", Verdana, sans-serif;
+      }
+      #img3DRX {
+        object-fit: cover;
+        max-width: 200px;
+        max-height: 200px;
+        object-position: 0% 100%;
+        border-radius: 100px;
+      }
+      .img-desc {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+        margin: 0 0 1em;
       }
     </style>
   </body>
