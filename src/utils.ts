@@ -32,6 +32,7 @@ function sendMessage(message: Message) {
   if (!iframe) {
     return;
   }
+  // @ts-ignore
   iframe.contentWindow.postMessage({ giscus: message }, "https://giscus.app");
 }
 

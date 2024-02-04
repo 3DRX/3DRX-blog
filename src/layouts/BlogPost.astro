@@ -10,10 +10,6 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 <html lang="en">
   <head>
     <BaseHead title={title} description={description} />
-    <script>
-      import "../components/CopyCodeButton/CCB.js";
-      import "../components/CopyCodeButton/create_CCB.js";
-    </script>
     <script src="../LoadGiscus.ts"></script>
     <style>
       .title {
@@ -36,12 +32,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
         margin-left: 3em;
       }
     </style>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.css"
-      integrity="sha384-OH8qNTHoMMVNVcKdKewlipV4SErXqccxxlg6HC9Cwjr5oZu2AdBej1TndeCirael"
-      crossorigin="anonymous"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" rel="stylesheet">
   </head>
 
   <body>
