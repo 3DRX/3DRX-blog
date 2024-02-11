@@ -16,7 +16,13 @@ import img3DRX from "../assets/3DRX.jpg";
     <Header title={SITE_TITLE} />
     <main transition:animate={fade({ duration: "0.2s" })}>
       <div class="img-desc">
-        <Image id="img3DRX" src={img3DRX} alt="" />
+        <Image
+          id="img3DRX"
+          src={img3DRX}
+          alt=""
+          loading="eager"
+          width={img3DRX.width / 4}
+        />
         <div class="desc" transition:animate={slide({ duration: "0.2s" })}>
           <h2>👋 Hello!</h2>
           <p>I'm 3DRX, a random dude on the internet.</p>
@@ -24,7 +30,7 @@ import img3DRX from "../assets/3DRX.jpg";
           <a>
             This blog is powered by <a
               href="https://astro.build/"
-              target="_blank">Astro.js</a
+              target="_blank">Astro</a
             >.
           </a>
         </div>
@@ -36,10 +42,8 @@ import img3DRX from "../assets/3DRX.jpg";
         font-family: "M PLUS Rounded 1c", Verdana, sans-serif;
       }
       #img3DRX {
-        object-fit: cover;
         max-width: 200px;
         max-height: 200px;
-        object-position: 0% 100%;
         border-radius: 100px;
       }
       .img-desc {

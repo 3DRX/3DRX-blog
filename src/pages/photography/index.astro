@@ -62,6 +62,7 @@ const images: any = import.meta.glob(
                       `/src/assets/photography/${post.data.heroImage}`
                     ]()}
                     alt={post.data.title}
+                    loading="eager"
                     transition:name={`cover-${post.data.title}`}
                   />
                 </a>
