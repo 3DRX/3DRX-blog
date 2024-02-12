@@ -63,6 +63,9 @@ const images: any = import.meta.glob(
                     ]()}
                     alt={post.data.title}
                     loading="eager"
+                    style={{
+                      filter: "none",
+                    }}
                     transition:name={`cover-${post.data.title}`}
                   />
                 </a>
