@@ -16,11 +16,11 @@
     "astro": "^4.3.6",
     "rehype-katex": "^7.0.0",
     "remark-math": "^6.0.0",
-    "three": "^0.155.0"
+    "three": "^0.161.0"
   },
   "devDependencies": {
-    "@types/three": "^0.155.1",
-    "prettier": "^3.1.1",
-    "prettier-plugin-astro": "^0.12.2"
+    "@types/three": "^0.161.2",
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.13.0"
   }
 }
