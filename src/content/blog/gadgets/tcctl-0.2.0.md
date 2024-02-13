@@ -1,8 +1,8 @@
 ---
 title: "An update on tcctl"
 description: "Release note of v0.2.0"
-pubDate: "04/02/2024"
-updatedDate: "04/02/2024"
+pubDate: "02/04/2024"
+updatedDate: "02/04/2024"
 ---
 
 ![](../../../assets/gagets/tcctl-v0.2.0.png)
