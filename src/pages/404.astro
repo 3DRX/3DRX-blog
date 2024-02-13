@@ -14,7 +14,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
     <main>
       <h1>oops...</h1>
       <img src="/404.png" alt="404" />
-      <h2 id="countdown">Redirecting in 5 seconds</h2>
+      <h2 id="countdown">Redirecting in 5 seconds...</h2>
       <script>
         var count = 5;
         var counter = setInterval(timer, 1000);
@@ -25,8 +25,11 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
             window.location.href = "/";
             return;
           }
-          document.getElementById("countdown").innerHTML =
-            "Redirecting in " + count + " seconds...";
+          const obj = document.getElementById("countdown");
+          if (obj)
+            obj.innerHTML = `Redirecting in ${count} ${
+              count === 1 ? "second" : "seconds"
+            }...`;
         }
       </script>
     </main>
