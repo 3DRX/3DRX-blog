@@ -1,8 +1,8 @@
 ---
 title: "tcctl"
-description: "A webui for tc netem that runs on any Linux system"
+description: "A webui for tc netem"
 pubDate: "11/19/2023"
-updatedDate: "02/14/2024"
+updatedDate: "02/15/2024"
 ---
 
 ![tcctl](../../../assets/gagets/tcctl.png)
@@ -10,7 +10,6 @@ updatedDate: "02/14/2024"
 > https://github.com/3DRX/tcctl
 
 <!--toc:start-->
-
 - [Install & Run](#install-run)
 - [Usage](#usage)
   - [Manual Mode](#manual-mode)
@@ -51,7 +50,7 @@ Click "Reset" button to clear all shaping rules to network interface.
 
 ### Trace File Mode
 
-Set delay(ms/s), loss(%), rate(Mbps/Kbps) by **floating point precision**.
+Set delay(ms), loss(%), rate(Mbps) by **floating point number**.
 Select a NIC before upload trace file, click "Start" button to start playback the network trace.
 
 For example
@@ -63,5 +62,6 @@ For example
 10 1 20
 ```
 
-describes a trace that have 10 ms delay, 1% packet loss, and 20 Mbps data rate for 4 seconds (each line represents 1 second).
+describes a trace that have 10 ms delay, 1% packet loss,
+and 20 Mbps data rate for 4 seconds (each line represents 1 second).
 There shouldn't be blank line in trace file.
