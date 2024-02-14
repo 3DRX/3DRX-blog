@@ -30,7 +30,7 @@ const posts = (await getCollection("blog")).sort(
         color: var(--color);
       }
       ul li a {
-        max-width: calc(70ch - 10em);
+        max-width: calc(70ch - 13em);
       }
       ul li a:unvisited {
         color: var(--link-color);
@@ -39,16 +39,9 @@ const posts = (await getCollection("blog")).sort(
         color: var(--link-visited-color);
       }
       ul li div {
-        flex: 1;
-        text-align: right;
-        font-style: italic;
         color: var(--secondary-color);
-        margin-right: 0;
         margin-left: auto;
-        max-width: 5em;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        max-width: 9em;
       }
       @media screen and (max-width: 70ch) {
         .catagory {
@@ -67,7 +60,7 @@ const posts = (await getCollection("blog")).sort(
               <li>
                 <FormattedDate date={post.data.pubDate} />
                 <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-                <div class="catagory">
+                <div>
                   {post.slug.search("/") == -1 ? "" : post.slug.split("/")[0]}
                 </div>
               </li>
