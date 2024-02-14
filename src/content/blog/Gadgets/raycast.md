@@ -1,8 +1,8 @@
 ---
-title: "switching from Alfred to Raycast"
+title: "Switching from Alfred to Raycast"
 description: "my hands on experience"
 pubDate: "02/13/2024"
-updatedDate: "02/13/2024"
+updatedDate: "02/14/2024"
 ---
 
 ![Raycast in action](../../../assets/gagets/raycast.png)
