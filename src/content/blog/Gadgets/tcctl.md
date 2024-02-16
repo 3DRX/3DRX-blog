@@ -2,10 +2,12 @@
 title: "tcctl"
 description: "A webui for tc netem"
 pubDate: "11/19/2023"
-updatedDate: "02/15/2024"
+updatedDate: "02/16/2024"
 ---
 
-![tcctl](../../../assets/gagets/tcctl.png)
+![tcctl](../../../assets/gagets/tcctl_manual_mode.png)
+
+![tcctl](../../../assets/gagets/tcctl_trace_mode.png)
 
 > https://github.com/3DRX/tcctl
 
