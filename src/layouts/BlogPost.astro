@@ -42,7 +42,17 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
     <Header />
     <main>
       <article>
-        {heroImage && <Image width={720} height={360} src={heroImage} alt="" />}
+        {
+          heroImage && (
+            <Image
+              width={720}
+              height={360}
+              src={heroImage}
+              alt=""
+              loading="eager"
+            />
+          )
+        }
         <h1 class="title">{title}</h1>
         <p class="description">{description}</p>
         <div class="blog-date">

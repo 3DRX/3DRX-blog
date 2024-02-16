@@ -55,6 +55,7 @@ const images: any = import.meta.glob(
               class="cover-image"
               src={images[`/src/assets/photography/${heroImage}`]()}
               alt=""
+              loading="eager"
               transition:name={`cover-${title}`}
             />
           )
