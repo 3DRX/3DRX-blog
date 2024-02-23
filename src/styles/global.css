@@ -107,6 +107,7 @@ blockquote {
   overflow-x: auto;
 }
 :root[data-theme="light"] {
+  --invert-value: 0%;
   --img-brightness: 100%;
   --background-color: #fff;
   --color: #111;
@@ -120,6 +121,7 @@ blockquote {
   --dark-theme-indicator-color: var(--color);
 }
 :root[data-theme="dark"] {
+  --invert-value: 100%;
   --img-brightness: 90%;
   --background-color: #000;
   --color: #eee;

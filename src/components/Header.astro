@@ -1,7 +1,12 @@
 ---
+import { Image } from "astro:assets";
 import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../consts";
 import ThemeIcon from "./ThemeIcon.astro";
+import YouTubeIcon from "../assets/youtube.svg";
+import InstagramIcon from "../assets/instagram.svg";
+import GithubIcon from "../assets/github.svg";
+import TwitterIcon from "../assets/twitter.svg";
 ---
 
 <div class="header-container">
@@ -14,41 +19,74 @@ import ThemeIcon from "./ThemeIcon.astro";
       <HeaderLink href="/blog">Blog</HeaderLink>
       <HeaderLink href="/photography">Photography</HeaderLink>
       <HeaderLink href="/about">About</HeaderLink>
-      <HeaderLink
-        href="https://www.youtube.com/channel/UC0b6UcWbLfDpmV6XB4_amJQ"
-        target="_blank"
-      >
-        YouTube
-      </HeaderLink>
-      <HeaderLink href="https://www.instagram.com/_andy_kang/" target="_blank">
-        Instagram
-      </HeaderLink>
-      <HeaderLink href="https://github.com/3DRX/" target="_blank">
-        GitHub
-      </HeaderLink>
-      <HeaderLink href="https://twitter.com/_andy_kang" target="_blank">
-        Twitter
-      </HeaderLink>
+      <div class="icons">
+        <HeaderLink
+          href="https://www.youtube.com/channel/UC0b6UcWbLfDpmV6XB4_amJQ"
+          target="_blank"
+        >
+          <Image class="icon-image" src={YouTubeIcon} alt="YouTube" loading="eager" />
+        </HeaderLink>
+        <HeaderLink
+          href="https://www.instagram.com/_andy_kang/"
+          target="_blank"
+        >
+          <Image class="icon-image" src={InstagramIcon} alt="Instagram" loading="eager" />
+        </HeaderLink>
+        <HeaderLink href="https://github.com/3DRX/" target="_blank">
+          <Image
+            class="icon-image"
+            src={GithubIcon}
+            alt="GitHub"
+            style={{
+              filter: "invert(var(--invert-value))",
+            }}
+            loading="eager"
+          />
+        </HeaderLink>
+        <HeaderLink href="https://twitter.com/_andy_kang" target="_blank">
+          <Image class="icon-image" src={TwitterIcon} alt="Twitter" loading="eager" />
+        </HeaderLink>
+      </div>
     </nav>
   </header>
   <ThemeIcon id="light" />
 </div>
 <style>
   header {
+    width: 100%;
     margin: 0em 0 2em;
+    display: flex;
+    justify-content: space-between;
+    gap: 2em;
+  }
+  nav {
+    margin-top: 1.5em;
   }
   h1 {
     margin: 0.5em 0;
   }
   img {
-    height: 1.5em;
     border-radius: 2px;
     margin-bottom: -4px;
+    max-width: 100%;
+    max-height: 100%;
+    background-color: transparent;
+    padding: 0;
   }
   .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-family: "M PLUS Rounded 1c", Verdana, sans-serif;
+  }
+  .icons {
+    max-width: 10em;
+    margin-top: 0.5em;
+    margin-left: auto;
+  }
+  .icon-image {
+    height: 1.25em;
+    margin-top: -0.25em;
+    width: 1.5em;
   }
 </style>
