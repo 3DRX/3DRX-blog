@@ -119,7 +119,6 @@ blockquote {
   --light-theme-indicator-color: #ffcf00;
   --dark-theme-indicator-color: var(--color);
 }
-
 :root[data-theme="dark"] {
   --img-brightness: 90%;
   --background-color: #000;
@@ -132,4 +131,8 @@ blockquote {
   --theme-slider-initial-transform: translateX(20px);
   --light-theme-indicator-color: var(--color);
   --dark-theme-indicator-color: #ffcf00;
+}
+::selection {
+  background-color: var(--background-color);
+  color: var(--background-color);
 }
