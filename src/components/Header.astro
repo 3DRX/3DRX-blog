@@ -7,6 +7,7 @@ import YouTubeIcon from "../assets/youtube.svg";
 import InstagramIcon from "../assets/instagram.svg";
 import GithubIcon from "../assets/github.svg";
 import TwitterIcon from "../assets/twitter.svg";
+import RSSIcon from "../assets/rss.svg";
 ---
 
 <div class="header-container">
@@ -24,13 +25,31 @@ import TwitterIcon from "../assets/twitter.svg";
           href="https://www.youtube.com/channel/UC0b6UcWbLfDpmV6XB4_amJQ"
           target="_blank"
         >
-          <Image class="icon-image" src={YouTubeIcon} alt="YouTube" loading="eager" />
+          <Image
+            class="icon-image"
+            src={YouTubeIcon}
+            alt="YouTube"
+            loading="eager"
+            style={{
+              filter: "invert(var(--invert-value))",
+              height: "2.3em",
+              marginBottom: "-0.79em",
+            }}
+          />
         </HeaderLink>
         <HeaderLink
           href="https://www.instagram.com/_andy_kang/"
           target="_blank"
         >
-          <Image class="icon-image" src={InstagramIcon} alt="Instagram" loading="eager" />
+          <Image
+            class="icon-image"
+            src={InstagramIcon}
+            alt="Instagram"
+            loading="eager"
+            style={{
+              filter: "invert(var(--invert-value))",
+            }}
+          />
         </HeaderLink>
         <HeaderLink href="https://github.com/3DRX/" target="_blank">
           <Image
@@ -44,7 +63,28 @@ import TwitterIcon from "../assets/twitter.svg";
           />
         </HeaderLink>
         <HeaderLink href="https://twitter.com/_andy_kang" target="_blank">
-          <Image class="icon-image" src={TwitterIcon} alt="Twitter" loading="eager" />
+          <Image
+            class="icon-image"
+            src={TwitterIcon}
+            alt="Twitter"
+            loading="eager"
+            style={{
+              filter: "invert(var(--invert-value))",
+              height: "2em",
+              marginBottom: "-0.7em",
+            }}
+          />
+        </HeaderLink>
+        <HeaderLink href="/rss.xml" target="_blank">
+          <Image
+            class="icon-image"
+            src={RSSIcon}
+            alt="RSS"
+            loading="eager"
+            style={{
+              filter: "invert(var(--invert-value))",
+            }}
+          />
         </HeaderLink>
       </div>
     </nav>
@@ -80,7 +120,7 @@ import TwitterIcon from "../assets/twitter.svg";
     font-family: "M PLUS Rounded 1c", Verdana, sans-serif;
   }
   .icons {
-    max-width: 10em;
+    max-width: 11.8em;
     margin-top: 0.5em;
     margin-left: auto;
   }
