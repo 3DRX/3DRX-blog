@@ -115,7 +115,7 @@ WebRTC 作为一套协议有一些调整余地，我确实享受了摆弄 [pion]
 
 ### 数据
 
-WebRTC 还有一个数据通路 API，这是非常有用的，因为[直到最近](TODO)，
+WebRTC 还有一个数据通路 API，这是非常有用的，因为[直到最近](#webtransport)，
 它一直是从浏览器发送/接收“不可靠”消息的唯一方法。
 事实上，许多公司使用 WebRTC 数据通路来绕开 WebRTC 的媒体堆栈 (例如 Zoom)。
 
@@ -186,7 +186,7 @@ https://webrtc.googlesource.com/src/+/refs/heads/main/modules/rtp_rtcp/source/vi
 它非常简单：
 1. 通过 canvas 或 媒体设备 捕获输入。
 2. [VideoEncoder](https://developer.mozilla.org/en-US/docs/Web/API/VideoEncoder)：输入原始帧，输出编码帧。
-3. 以某种方式传输这些帧。（例如 [WebTransport](TODO)）
+3. 以某种方式传输这些帧。（例如 [WebTransport](#webtransport)）
 4. [VideoDecoder](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder)：输入编码帧，输出原始帧。
 5. 通过 canvas 渲染输出，或者看着像素数据乐。
 
