@@ -196,7 +196,7 @@ https://webrtc.googlesource.com/src/+/refs/heads/main/modules/rtp_rtcp/source/vi
 选择何时渲染每个视频帧。需要通过 [AudioWorklet](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorklet)
 选择何时渲染每个音频采样。
 
-好处是，现在您的 Web 应用程序可以完全控制如何渲染媒体。
+好处是，现在你的 Web 应用程序可以完全控制如何渲染媒体。
 现在可以实现类似 WebRTC 的行为，例如暂时冻结视频和音画异步。
 
 在 [caniuse](https://caniuse.com/webcodecs) 查看当前 WebCodecs 的浏览器支持情况。
