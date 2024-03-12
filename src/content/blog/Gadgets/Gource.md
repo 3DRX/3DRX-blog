@@ -13,6 +13,7 @@ heroImage: "https://source.unsplash.com/EaB4Ml7C7fE"
 Generates beautiful video using git commit informations.
 
 <iframe
+    id="yt-iframe"
     src="https://www.youtube.com/embed/bn2l7GpePtY"
     title="YouTube video player"
     frameborder="0"
@@ -20,7 +21,7 @@ Generates beautiful video using git commit informations.
     allowfullscreen
 ></iframe>
 <style>
-iframe {
+#yt-iframe {
     max-width: 65ch;
     height: 36.5ch;
     width: 90vw;
