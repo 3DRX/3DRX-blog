@@ -2,7 +2,7 @@
 title: "tcctl"
 description: "A webui for tc netem"
 pubDate: "11/19/2023"
-updatedDate: "02/16/2024"
+updatedDate: "03/18/2024"
 ---
 
 ![tcctl](../../../assets/gagets/tcctl_manual_mode.png)
@@ -22,9 +22,8 @@ updatedDate: "02/16/2024"
 
 > The following operations should be taken as root user.
 
-1. Download release .zip on OpenWrt and decompress it to /root/tcctl
-    - [tcctl-0.2.0-arm64.zip](https://github.com/3DRX/tcctl/releases/download/0.2.0/tcctl-0.2.0-arm64.zip)
-    - [tcctl-0.2.0-x86_64.zip](https://github.com/3DRX/tcctl/releases/download/0.2.0/tcctl-0.2.0-x86_64.zip)
+1. Download [release zip](https://github.com/3DRX/tcctl/releases/latest)
+on OpenWrt and decompress it to /root/tcctl
 2. Install [tc](https://man7.org/linux/man-pages/man8/tc.8.html), for example, on OpenWrt using opkg:
 ```
 opkg update && opkg install tc-full
