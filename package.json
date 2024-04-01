@@ -11,10 +11,10 @@
     "format": "prettier --write . --plugin=prettier-plugin-astro"
   },
   "dependencies": {
-    "@astrojs/markdown-remark": "^4.3.0",
+    "@astrojs/markdown-remark": "^4.3.2",
     "@astrojs/rss": "^4.0.5",
-    "@astrojs/sitemap": "^3.1.1",
-    "astro": "^4.5.5",
+    "@astrojs/sitemap": "^3.1.2",
+    "astro": "^4.5.12",
     "rehype-katex": "^7.0.0",
     "remark-math": "^6.0.0",
     "three": "^0.161.0"
