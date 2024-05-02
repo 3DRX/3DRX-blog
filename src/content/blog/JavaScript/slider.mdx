@@ -1,0 +1,19 @@
+---
+title: "How to make beautiful slider based on RadixUI"
+description: "my approach inspired by Shadcn/UI"
+pubDate: "05/02/2024"
+updatedDate: "05/02/2024"
+heroImage: ""
+---
+
+import {TempSlider, WindSlider } from "./slider_components/Sliders.tsx";
+
+<div className="w-1/2 mx-auto">
+  <TempSlider
+    defaultValue={[10]}
+    max={100}
+    min={1}
+    step={1}
+    client:only="react"
+  />
+</div>
