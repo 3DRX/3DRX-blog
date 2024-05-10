@@ -15,37 +15,25 @@ import img3DRX from "../assets/3DRX.jpg";
   <body>
     <Header title={SITE_TITLE} />
     <main transition:animate={fade({ duration: "0.2s" })}>
-      <div class="img-desc">
+      <div class="flex flex-row items-center gap-32">
         <Image
-          id="img3DRX"
+          class="max-w-52 max-h-52 rounded-full"
           src={img3DRX}
           alt=""
           loading="eager"
           width={img3DRX.width / 4}
         />
-        <div class="desc" transition:animate={slide({ duration: "0.2s" })}>
-          <h2>👋 Hello!</h2>
-          <p>I'm 3DRX, a random dude on the internet.</p>
-          <p>欢迎来到我的小窝</p>
+        <div
+          class="flex flex-col gap-4"
+          transition:animate={slide({ duration: "0.2s" })}
+        >
+          <h2 class="text-2xl font-sans">👋 Hello!</h2>
+          <div>
+            <p>I'm 3DRX, a random dude on the internet.</p>
+            <p>欢迎来到我的小窝</p>
+          </div>
         </div>
       </div>
     </main>
-    <style>
-      h2 {
-        margin: 0.5em 0;
-        font-family: "M PLUS Rounded 1c", Verdana, sans-serif;
-      }
-      #img3DRX {
-        max-width: 200px;
-        max-height: 200px;
-        border-radius: 100px;
-      }
-      .img-desc {
-        display: flex;
-        align-items: center;
-        gap: 1em;
-        margin: 0 0 1em;
-      }
-    </style>
   </body>
 </html>

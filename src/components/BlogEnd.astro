@@ -2,9 +2,9 @@
 const { prev, next } = Astro.props;
 ---
 
-<hr />
-<div class="blog-end">
-  <div class="left-container container">
+<hr class="mt-1 mb-3" />
+<div class="flex">
+  <div class="flex-1 text-left">
     {
       prev === null ? (
         <a />
@@ -15,10 +15,10 @@ const { prev, next } = Astro.props;
       )
     }
   </div>
-  <div class="middle-container container">
-    <a class="center" href="/blog">cd ..</a>
+  <div class="flex-1 text-center">
+    <a href="/blog">cd ..</a>
   </div>
-  <div class="right-container container">
+  <div class="flex-1 text-right">
     {
       next === null ? (
         <a />
@@ -30,35 +30,3 @@ const { prev, next } = Astro.props;
     }
   </div>
 </div>
-
-<style>
-  a {
-    text-decoration: none;
-  }
-  .left-container {
-    width: 33%;
-    text-align: left;
-  }
-  .middle-container {
-    width: 33%;
-    text-align: center;
-  }
-  .right-container {
-    width: 33%;
-    text-align: right;
-  }
-  .blog-end {
-    display: flex;
-    justify-content: space-between;
-    margin: 2rem 0;
-  }
-  .blog-end .left {
-    text-align: left;
-  }
-  .blog-end .center {
-    text-align: center;
-  }
-  .blog-end .right {
-    text-align: right;
-  }
-</style>

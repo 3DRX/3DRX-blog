@@ -6,12 +6,11 @@ import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import { getCollection } from "astro:content";
-import "../../styles/photography.css";
+import FormattedDate from "../../components/FormattedDate.astro";
 
 const posts = (await getCollection("photography")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
-
 // should be: Record<string, () => Promise<{default: ImageMetadata}>>
 // instead: Record<string, () => Promise<unknown>>
 // use any to avoid ts being angry
@@ -24,28 +23,28 @@ const images: any = import.meta.glob(
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <style>
-      ul {
-        list-style-type: none;
-        padding: unset;
-      }
-      img {
-        max-width: min(360px, 50vw);
-      }
-      li {
-        display: flex;
-        flex-direction: row;
-        margin-top: 2rem;
-      }
-      li div {
-        display: flex;
-        flex-direction: column;
-        padding-left: 3rem;
-      }
-      li div h3 {
-        margin-top: 0;
-      }
-    </style>
+    <!-- <style> -->
+    <!--   ul { -->
+    <!--     list-style-type: none; -->
+    <!--     padding: unset; -->
+    <!--   } -->
+    <!--   img { -->
+    <!--     max-width: min(360px, 50vw); -->
+    <!--   } -->
+    <!--   li { -->
+    <!--     display: flex; -->
+    <!--     flex-direction: row; -->
+    <!--     margin-top: 2rem; -->
+    <!--   } -->
+    <!--   li div { -->
+    <!--     display: flex; -->
+    <!--     flex-direction: column; -->
+    <!--     padding-left: 3rem; -->
+    <!--   } -->
+    <!--   li div h3 { -->
+    <!--     margin-top: 0; -->
+    <!--   } -->
+    <!-- </style> -->
   </head>
   <body>
     <Header title={SITE_TITLE} />
@@ -55,23 +54,29 @@ const images: any = import.meta.glob(
           {
             posts.map((post) => (
               <li>
-                <a href={`/photography/${post.slug}/`}>
-                  <Image
-                    class="cover-image"
-                    src={images[
-                      `/src/assets/photography/${post.data.heroImage}`
-                    ]()}
-                    alt={post.data.title}
-                    loading="eager"
-                    style={{
-                      filter: "none",
-                    }}
-                    transition:name={`cover-${post.data.title}`}
-                  />
-                </a>
-                <div>
-                  <h3>{post.data.title}</h3>
-                  <p>{post.data.description}</p>
+                <div class="flex my-4 group">
+                  <a href={`/photography/${post.slug}/`} class="w-96">
+                    <Image
+                      class="rounded-none w-80 mx-auto group-hover:w-96 transition-all duration-300 ease-in-out"
+                      src={images[
+                        `/src/assets/photography/${post.data.heroImage}`
+                      ]()}
+                      alt={post.data.title}
+                      loading="eager"
+                      style={{
+                        filter: "none",
+                      }}
+                      transition:name={`cover-${post.data.title}`}
+                    />
+                  </a>
+                  <div class="grow" />
+                  <div class="flex flex-col gap-3 mt-5">
+                    <h3 class="text-3xl text-right">{post.data.title}</h3>
+                    <p>{post.data.description}</p>
+                    <p class="text-right text-[color:var(--secondary-color)] group-hover:block hidden transition-all">
+                      <FormattedDate date={post.data.pubDate} />
+                    </p>
+                  </div>
                 </div>
               </li>
             ))

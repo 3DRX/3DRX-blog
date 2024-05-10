@@ -1,26 +1,15 @@
 ---
 export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {}
-
-const { href, class: className, ...props } = Astro.props;
-
+const { href, ...props } = Astro.props;
 const { pathname } = Astro.url;
 const isActive = href === pathname || href === pathname.replace(/\/$/, "");
 ---
 
 <a
   href={href}
-  class:list={[className, { active: isActive }]}
+  class={`inline-block ${isActive ? "underline" : ""}`}
   data-astro-prefetch="viewport"
   {...props}
 >
   <slot />
 </a>
-<style>
-  a {
-    display: inline-block;
-    text-decoration: none;
-  }
-  a.active {
-    text-decoration: underline;
-  }
-</style>

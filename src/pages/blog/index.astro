@@ -16,39 +16,6 @@ const posts = (await getCollection("blog")).sort(
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <style>
-      ul {
-        list-style-type: none;
-        padding: unset;
-      }
-      ul li {
-        display: flex;
-      }
-      ul li :global(time) {
-        flex: 0 0 130px;
-        font-style: italic;
-        color: var(--color);
-      }
-      ul li a {
-        max-width: calc(70ch - 13em);
-      }
-      ul li a:unvisited {
-        color: var(--link-color);
-      }
-      ul li a:visited {
-        color: var(--link-visited-color);
-      }
-      ul li div {
-        color: var(--secondary-color);
-        margin-left: auto;
-        max-width: 9em;
-      }
-      @media screen and (max-width: 70ch) {
-        .catagory {
-          display: none !important;
-        }
-      }
-    </style>
   </head>
   <body>
     <Header />
@@ -57,10 +24,17 @@ const posts = (await getCollection("blog")).sort(
         <ul>
           {
             posts.map((post) => (
-              <li>
-                <FormattedDate date={post.data.pubDate} />
-                <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-                <div>
+              <li class="flex">
+                <div class="w-32 text-nowrap">
+                  <FormattedDate date={post.data.pubDate} />
+                </div>
+                <a
+                  class="visited:text-[color:var(--link-visited-color)] text-[color:var(--link-color)] max-w-[calc(70ch-13em)] "
+                  href={`/blog/${post.slug}/`}
+                >
+                  {post.data.title}
+                </a>
+                <div class="text-[color:var(--secondary-color)] ml-auto max-w-[9em]">
                   {post.slug.search("/") == -1 ? "" : post.slug.split("/")[0]}
                 </div>
               </li>

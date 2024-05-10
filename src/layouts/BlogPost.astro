@@ -11,33 +11,11 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
   <head>
     <BaseHead title={title} description={description} />
     <script src="../LoadGiscus.ts"></script>
-    <style>
-      .title {
-        font-size: 2em;
-        margin: 0.25em 0 0;
-      }
-      hr {
-        border-top: 1px solid #ddd;
-        margin: 1rem 0;
-      }
-      .last-updated-on {
-        font-style: italic;
-      }
-      .blog-date {
-        font-size: 0.9em;
-        color: var(--text-color-secondary);
-        display: flex;
-      }
-      .blog-date > div {
-        margin-left: 3em;
-      }
-    </style>
     <link
       href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
       rel="stylesheet"
     />
   </head>
-
   <body>
     <Header />
     <main>
@@ -53,20 +31,25 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
             />
           )
         }
-        <h1 class="title">{title}</h1>
-        <p class="description">{description}</p>
-        <div class="blog-date">
+        <h1 class="text-3xl">{title}</h1>
+        <p>{description}</p>
+        <div class="flex my-1 text-[color:var(--secondary-color)]">
           <FormattedDate date={pubDate} />
+          <div class="grow"></div>
           {
             updatedDate && (
-              <div class="last-updated-on">
+              <div class="last-updated-on italic">
                 Last updated on <FormattedDate date={updatedDate} />
               </div>
             )
           }
         </div>
-        <hr />
-        <slot />
+        <hr class="mt-1 mb-3" />
+        <div
+          class="prose max-w-full prose-headings:text-[color:var(--color)] text-[color:var(--color)] prose-strong:text-[color:var(--color)] prose-blockquote:text-[color:var(--color)] prose-h1:font-bold prose-h1:text-xl prose-a:text-[color:var(--link-color)] prose-p:text-justify prose-img:rounded-xl prose-img:mx-auto prose-blockquote:px-5 prose-blockquote:border-[color:var(--secondary-color)] prose-blockquote:border prose-li:my-0 prose-ul:mt-0"
+        >
+          <slot />
+        </div>
       </article>
     </main>
     <Footer />
