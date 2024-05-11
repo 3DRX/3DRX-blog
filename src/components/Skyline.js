@@ -8,7 +8,7 @@ function render() {
     (gltf) => {
       const model = gltf.scene;
       scene.add(model);
-      const canvas = document.querySelector(".webgl");
+      const canvas = document.querySelector("#webgl");
       if (!canvas) {
         return;
       }

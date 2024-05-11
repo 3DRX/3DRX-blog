@@ -11,11 +11,16 @@ export default defineConfig({
   integrations: [sitemap(), mdx(), react(), tailwind()],
   markdown: {
     remarkPlugins: [remarkMath],
-    rehypePlugins: [[rehypeKatex, {
-      strict: false
-    }]]
+    rehypePlugins: [
+      [
+        rehypeKatex,
+        {
+          strict: false,
+        },
+      ],
+    ],
   },
   prefetch: {
-    defaultStrategy: "hover"
-  }
+    defaultStrategy: "hover",
+  },
 });

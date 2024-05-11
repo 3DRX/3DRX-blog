@@ -4,7 +4,6 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import FormattedDate from "../components/FormattedDate.astro";
-import "../styles/photography.css";
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 
 // should be: Record<string, () => Promise<{default: ImageMetadata}>>
@@ -52,7 +51,7 @@ const images: any = import.meta.glob(
         {
           heroImage && (
             <Image
-              class="cover-image"
+              class="rounded-none"
               src={images[`/src/assets/photography/${heroImage}`]()}
               alt=""
               loading="eager"
@@ -60,10 +59,11 @@ const images: any = import.meta.glob(
             />
           )
         }
-        <h1 class="title">{title}</h1>
-        <p class="description">{description}</p>
-        <div class="blog-date">
+        <h1 class="text-3xl">{title}</h1>
+        <p>{description}</p>
+        <div class="flex my-1 text-[color:var(--secondary-color)]">
           <FormattedDate date={pubDate} />
+          <div class="grow"></div>
           {
             updatedDate && (
               <div class="last-updated-on">
@@ -72,8 +72,12 @@ const images: any = import.meta.glob(
             )
           }
         </div>
-        <hr />
-        <slot />
+        <hr class="mt-1 mb-3" />
+        <div
+          class="prose max-w-full prose-headings:text-[color:var(--color)] text-[color:var(--color)] prose-strong:text-[color:var(--color)] prose-blockquote:text-[color:var(--color)] prose-h1:font-bold prose-h1:text-xl prose-a:text-[color:var(--link-color)] prose-p:text-justify prose-blockquote:px-5 prose-blockquote:border-[color:var(--secondary-color)] prose-blockquote:border prose-li:my-0 prose-ul:mt-0 prose-img:mx-auto prose-img:max-w-[calc(100%-20px)] prose-img:max-h-[calc(100vh-50px)] prose-img:w-auto prose-img:rounded-none prose-img:shadow-xl prose-img:pt-10"
+        >
+          <slot />
+        </div>
       </article>
     </main>
     <Footer />

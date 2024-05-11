@@ -13,38 +13,15 @@ const posts = (await getCollection("photography")).sort(
 );
 // should be: Record<string, () => Promise<{default: ImageMetadata}>>
 // instead: Record<string, () => Promise<unknown>>
-// use any to avoid ts being angry
-const images: any = import.meta.glob(
-  "/src/assets/photography/*.{jpeg,jpg,png,gif}",
-);
+// @ts-ignore don't know if this is a bug or not
+const images: Record<string, () => Promise<{ default: ImageMetadata }>> =
+  import.meta.glob("/src/assets/photography/*.{jpeg,jpg,png,gif}");
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <!-- <style> -->
-    <!--   ul { -->
-    <!--     list-style-type: none; -->
-    <!--     padding: unset; -->
-    <!--   } -->
-    <!--   img { -->
-    <!--     max-width: min(360px, 50vw); -->
-    <!--   } -->
-    <!--   li { -->
-    <!--     display: flex; -->
-    <!--     flex-direction: row; -->
-    <!--     margin-top: 2rem; -->
-    <!--   } -->
-    <!--   li div { -->
-    <!--     display: flex; -->
-    <!--     flex-direction: column; -->
-    <!--     padding-left: 3rem; -->
-    <!--   } -->
-    <!--   li div h3 { -->
-    <!--     margin-top: 0; -->
-    <!--   } -->
-    <!-- </style> -->
   </head>
   <body>
     <Header title={SITE_TITLE} />
