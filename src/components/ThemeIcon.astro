@@ -4,12 +4,12 @@ const { id } = Astro.props;
 
 <script src="./ThemeIcon.ts"></script>
 <div class="toggle-container">
-  <span class="light"> 🌞</span>
+  <span class="light mt-1"> 🌞</span>
   <label class="switch" aria-label="Switch theme">
     <input id={id} class="theme-toggle" type="checkbox" />
     <span class="slider round"></span>
   </label>
-  <span class="dark"> 🌑</span>
+  <span class="dark mt-1"> 🌑</span>
 </div>
 <style>
   .theme-toggle {

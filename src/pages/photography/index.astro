@@ -32,9 +32,12 @@ const images: Record<string, () => Promise<{ default: ImageMetadata }>> =
             posts.map((post) => (
               <li>
                 <div class="flex my-4 group">
-                  <a href={`/photography/${post.slug}/`} class="w-96">
+                  <a
+                    href={`/photography/${post.slug}/`}
+                    class="w-32 min-w-32 md:w-96 md:min-w-96"
+                  >
                     <Image
-                      class="rounded-none w-80 mx-auto group-hover:w-96 transition-all duration-300 ease-in-out"
+                      class="rounded-none w-32 md:w-80 mx-auto md:group-hover:w-96 transition-all duration-200 ease-in-out"
                       src={images[
                         `/src/assets/photography/${post.data.heroImage}`
                       ]()}

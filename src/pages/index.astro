@@ -15,9 +15,9 @@ import img3DRX from "../assets/3DRX.jpg";
   <body>
     <Header title={SITE_TITLE} />
     <main transition:animate={fade({ duration: "0.2s" })}>
-      <div class="flex flex-row items-center gap-32">
+      <div class="flex flex-col items-center gap-5 sm:flex-row sm:gap-32">
         <Image
-          class="max-w-52 max-h-52 rounded-full"
+          class="max-h-52 max-w-52 rounded-full"
           src={img3DRX}
           alt=""
           loading="eager"
@@ -27,10 +27,9 @@ import img3DRX from "../assets/3DRX.jpg";
           class="flex flex-col gap-4"
           transition:animate={slide({ duration: "0.2s" })}
         >
-          <h2 class="text-2xl font-sans">👋 Hello!</h2>
+          <h2 class="font-sans text-2xl">👋 Hello!</h2>
           <div>
-            <p>I'm 3DRX, a random dude on the internet.</p>
-            <p>欢迎来到我的小窝</p>
+            <p>I'm 3DRX 欢迎来到我的小窝</p>
           </div>
         </div>
       </div>

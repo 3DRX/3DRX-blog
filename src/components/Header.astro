@@ -12,83 +12,90 @@ import RSSIcon from "../assets/rss.svg";
 
 <div class="flex justify-between items-center font-sans my-6">
   <header class="w-full flex">
-    <h1 class="text-4xl">
-      {SITE_TITLE}
-    </h1>
-    <div class="grow"></div>
-    <nav>
-      <HeaderLink href="/">Home</HeaderLink>
-      <HeaderLink href="/blog">Blog</HeaderLink>
-      <HeaderLink href="/photography">Photography</HeaderLink>
-      <HeaderLink href="/about">About</HeaderLink>
-      <div class="max-w-[11.8em] mt-[0.5em] ml-auto">
-        <HeaderLink
-          href="https://www.youtube.com/channel/UC0b6UcWbLfDpmV6XB4_amJQ"
-          target="_blank"
-        >
-          <Image
-            class="h-[1.25em] mt-[-0.25em] w-[1.5em]"
-            src={YouTubeIcon}
-            alt="YouTube"
-            loading="eager"
-            style={{
-              filter: "invert(var(--invert-value))",
-              height: "2.3em",
-              marginBottom: "-0.79em",
-            }}
-          />
-        </HeaderLink>
-        <HeaderLink
-          href="https://www.instagram.com/_andy_kang/"
-          target="_blank"
-        >
-          <Image
-            class="h-[1.25em] mt-[-0.25em] w-[1.5em] rounded-sm p-0 mb-[-4px]"
-            src={InstagramIcon}
-            alt="Instagram"
-            loading="eager"
-            style={{
-              filter: "invert(var(--invert-value))",
-            }}
-          />
-        </HeaderLink>
-        <HeaderLink href="https://github.com/3DRX/" target="_blank">
-          <Image
-            class="h-[1.25em] mt-[-0.25em] w-[1.5em] rounded-sm p-0 mb-[-4px]"
-            src={GithubIcon}
-            alt="GitHub"
-            style={{
-              filter: "invert(var(--invert-value))",
-            }}
-            loading="eager"
-          />
-        </HeaderLink>
-        <HeaderLink href="https://twitter.com/_andy_kang" target="_blank">
-          <Image
-            class="h-[1.25em] mt-[-0.25em] w-[1.5em] rounded-sm p-0 mb-[-4px]"
-            src={TwitterIcon}
-            alt="Twitter"
-            loading="eager"
-            style={{
-              filter: "invert(var(--invert-value))",
-              height: "2em",
-              marginBottom: "-0.7em",
-            }}
-          />
-        </HeaderLink>
-        <HeaderLink href="/rss.xml" target="_blank">
-          <Image
-            class="h-[1.25em] mt-[-0.25em] w-[1.5em] rounded-sm p-0 mb-[-4px]"
-            src={RSSIcon}
-            alt="RSS"
-            loading="eager"
-            style={{
-              filter: "invert(var(--invert-value))",
-            }}
-          />
-        </HeaderLink>
-      </div>
-    </nav>
+    <div class="flex flex-grow flex-col sm:flex-row">
+      <h1 class="text-4xl">
+        {SITE_TITLE}
+      </h1>
+      <div class="grow"></div>
+      <nav class="mt-3">
+        <div class="text-right flex gap-2 sm:text-left">
+          <HeaderLink href="/">Home</HeaderLink>
+          <HeaderLink href="/blog">Blog</HeaderLink>
+          <HeaderLink href="/photography">Photography</HeaderLink>
+          <HeaderLink href="/about">About</HeaderLink>
+        </div>
+        <div class="flex flex-row items-center sm:flex-grow">
+          <div class="max-w-[11.8em] ml-auto">
+            <HeaderLink
+              href="https://www.youtube.com/channel/UC0b6UcWbLfDpmV6XB4_amJQ"
+              target="_blank"
+            >
+              <Image
+                class="h-[1.25em] mt-[-0.25em] w-[1.5em]"
+                src={YouTubeIcon}
+                alt="YouTube"
+                loading="eager"
+                style={{
+                  filter: "invert(var(--invert-value))",
+                  height: "2.3em",
+                  marginBottom: "-0.79em",
+                }}
+              />
+            </HeaderLink>
+            <HeaderLink
+              href="https://www.instagram.com/_andy_kang/"
+              target="_blank"
+            >
+              <Image
+                class="h-[1.25em] mt-[-0.25em] w-[1.5em] rounded-sm p-0 mb-[-4px]"
+                src={InstagramIcon}
+                alt="Instagram"
+                loading="eager"
+                style={{
+                  filter: "invert(var(--invert-value))",
+                }}
+              />
+            </HeaderLink>
+            <HeaderLink href="https://github.com/3DRX/" target="_blank">
+              <Image
+                class="h-[1.25em] mt-[-0.25em] w-[1.5em] rounded-sm p-0 mb-[-4px]"
+                src={GithubIcon}
+                alt="GitHub"
+                style={{
+                  filter: "invert(var(--invert-value))",
+                }}
+                loading="eager"
+              />
+            </HeaderLink>
+            <HeaderLink href="https://twitter.com/_andy_kang" target="_blank">
+              <Image
+                class="h-[1.25em] mt-[-0.25em] w-[1.5em] rounded-sm p-0 mb-[-4px]"
+                src={TwitterIcon}
+                alt="Twitter"
+                loading="eager"
+                style={{
+                  filter: "invert(var(--invert-value))",
+                  height: "2em",
+                  marginBottom: "-0.7em",
+                }}
+              />
+            </HeaderLink>
+            <HeaderLink href="/rss.xml" target="_blank">
+              <Image
+                class="h-[1.25em] mt-[-0.25em] w-[1.5em] rounded-sm p-0 mb-[-4px]"
+                src={RSSIcon}
+                alt="RSS"
+                loading="eager"
+                style={{
+                  filter: "invert(var(--invert-value))",
+                }}
+              />
+            </HeaderLink>
+          </div>
+          <div class="grow"></div>
+          <ThemeIcon id="light" />
+        </div>
+      </nav>
+    </div>
   </header>
-  <ThemeIcon id="light" />
 </div>
