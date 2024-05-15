@@ -1,19 +1,52 @@
 ---
-title: "How to make beautiful slider based on RadixUI"
+title: "Thick slider based on RadixUI"
 description: "my approach inspired by Shadcn/UI"
-pubDate: "05/02/2024"
-updatedDate: "05/02/2024"
+pubDate: "05/15/2024"
+updatedDate: "05/15/2024"
 heroImage: ""
 ---
 
 import { TempSlider, WindSlider } from "./slider_components/Sliders.tsx";
 
-<div className="w-1/2 mx-auto">
-  <TempSlider
-    defaultValue={[10]}
-    max={100}
-    min={1}
-    step={1}
-    client:only="react"
-  />
+<div className="w-2/3 h-32 mx-auto bg-zinc-50 rounded-xl flex items-center shadow-xl">
+  <div className="w-1/2 mx-auto">
+    <TempSlider
+      defaultValue={[10]}
+      max={100}
+      min={1}
+      step={1}
+      client:only="react"
+    />
+  </div>
 </div>
+
+```tsx
+import * as React from "react";
+import * as SliderPrimitive from "@radix-ui/react-slider";
+
+const Slider = React.forwardRef<
+  React.ElementRef<typeof SliderPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
+>(({ ...props }, ref) => (
+  <SliderPrimitive.Root
+    ref={ref}
+    className="relative flex w-full touch-none select-none items-center"
+    {...props}
+  >
+    <SliderPrimitive.Track className="relative h-10 w-full grow overflow-hidden rounded-2xl bg-zinc-200">
+      <SliderPrimitive.Range className="absolute h-full bg-zinc-900" />
+    </SliderPrimitive.Track>
+    <SliderPrimitive.Thumb
+      className="border-primary ring-black/50 ring-offset-background focus-visible:ring-ring block h-[50px] w-3 rounded-full bg-zinc-50 transition-colors focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+      asChild
+    >
+      <div className="flex flex-col">
+        <div className="grow" />
+        <div className="mx-auto block h-5 w-0.5 rounded-full bg-black" />
+        <div className="grow" />
+      </div>
+    </SliderPrimitive.Thumb>
+  </SliderPrimitive.Root>
+));
+Slider.displayName = SliderPrimitive.Root.displayName;
+```
