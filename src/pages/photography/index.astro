@@ -31,13 +31,13 @@ const images: Record<string, () => Promise<{ default: ImageMetadata }>> =
           {
             posts.map((post) => (
               <li>
-                <div class="flex my-4 group">
+                <div class="group my-4 flex">
                   <a
                     href={`/photography/${post.slug}/`}
                     class="w-32 min-w-32 md:w-96 md:min-w-96"
                   >
                     <Image
-                      class="rounded-none w-32 md:w-80 mx-auto md:group-hover:w-96 transition-all duration-200 ease-in-out"
+                      class="mx-auto w-32 rounded-none transition-all duration-200 ease-in-out md:w-80 md:group-hover:w-96"
                       src={images[
                         `/src/assets/photography/${post.data.heroImage}`
                       ]()}
@@ -50,10 +50,12 @@ const images: Record<string, () => Promise<{ default: ImageMetadata }>> =
                     />
                   </a>
                   <div class="grow" />
-                  <div class="flex flex-col gap-3 mt-5">
-                    <h3 class="text-3xl text-right">{post.data.title}</h3>
-                    <p>{post.data.description}</p>
-                    <p class="text-right text-[color:var(--secondary-color)] group-hover:block hidden transition-all">
+                  <div class="ml-4 mt-1 flex flex-col gap-1 md:mt-5 md:gap-3">
+                    <h3 class="text-right text-xl md:text-2xl">
+                      {post.data.title}
+                    </h3>
+                    <p class="text-xs md:text-sm">{post.data.description}</p>
+                    <p class="hidden text-right text-xs text-[color:var(--secondary-color)] transition-all group-hover:block">
                       <FormattedDate date={post.data.pubDate} />
                     </p>
                   </div>
