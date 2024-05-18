@@ -54,7 +54,9 @@ const images: Record<string, () => Promise<{ default: ImageMetadata }>> =
                     <h3 class="text-right text-xl md:text-2xl">
                       {post.data.title}
                     </h3>
-                    <p class="text-xs md:text-sm">{post.data.description}</p>
+                    <p class="text-right text-xs md:text-sm">
+                      {post.data.description}
+                    </p>
                     <p class="hidden text-right text-xs text-[color:var(--secondary-color)] transition-all group-hover:block">
                       <FormattedDate date={post.data.pubDate} />
                     </p>

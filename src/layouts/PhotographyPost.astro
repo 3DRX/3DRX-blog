@@ -51,7 +51,7 @@ const images: any = import.meta.glob(
         {
           heroImage && (
             <Image
-              class="rounded-none"
+              class="mx-auto my-2 max-w-md rounded-none"
               src={images[`/src/assets/photography/${heroImage}`]()}
               alt=""
               loading="eager"
@@ -61,7 +61,7 @@ const images: any = import.meta.glob(
         }
         <h1 class="text-3xl">{title}</h1>
         <p>{description}</p>
-        <div class="flex my-1 text-[color:var(--secondary-color)]">
+        <div class="my-1 flex text-[color:var(--secondary-color)]">
           <FormattedDate date={pubDate} />
           <div class="grow"></div>
           {
@@ -72,9 +72,9 @@ const images: any = import.meta.glob(
             )
           }
         </div>
-        <hr class="mt-1 mb-3" />
+        <hr class="mb-3 mt-1" />
         <div
-          class="prose max-w-full prose-headings:text-[color:var(--color)] text-[color:var(--color)] prose-strong:text-[color:var(--color)] prose-blockquote:text-[color:var(--color)] prose-h1:font-bold prose-h1:text-xl prose-a:text-[color:var(--link-color)] prose-p:text-justify prose-blockquote:px-5 prose-blockquote:border-[color:var(--secondary-color)] prose-blockquote:border prose-li:my-0 prose-ul:mt-0 prose-img:mx-auto prose-img:max-w-[calc(100%-20px)] prose-img:max-h-[calc(100vh-50px)] prose-img:w-auto prose-img:rounded-none prose-img:shadow-xl prose-img:pt-10"
+          class="prose max-w-full text-[color:var(--color)] prose-headings:text-[color:var(--color)] prose-h1:text-xl prose-h1:font-bold prose-p:text-justify prose-a:text-[color:var(--link-color)] prose-blockquote:border prose-blockquote:border-[color:var(--secondary-color)] prose-blockquote:px-5 prose-blockquote:text-[color:var(--color)] prose-strong:text-[color:var(--color)] prose-ul:mt-0 prose-li:my-0 prose-img:mx-auto prose-img:max-h-[calc(100vh-50px)] prose-img:w-auto prose-img:max-w-[calc(100%-20px)] prose-img:rounded-none prose-img:pt-10 prose-img:shadow-xl"
         >
           <slot />
         </div>
