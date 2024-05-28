@@ -2,10 +2,9 @@
 title: "Switching from Alfred to Raycast"
 description: "my hands on experience"
 pubDate: "02/13/2024"
-updatedDate: "02/14/2024"
+updatedDate: "05/28/2024"
+heroImage: "/src/assets/gagets/raycast.png"
 ---
-
-![Raycast in action](../../../assets/gagets/raycast.png)
 
 [Raycast](https://www.raycast.com/) is a launcher similar to [Alfred](https://www.alfredapp.com/),
 which both functions as a spotlight alternative,

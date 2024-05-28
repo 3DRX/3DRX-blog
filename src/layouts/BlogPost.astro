@@ -6,23 +6,35 @@ import Footer from "../components/Footer.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 import type { ImageMetadata } from "astro";
 
-const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/**/*.{jpeg,jpg,png,gif,svg}");
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
-let heroImageSrc;
-if (heroImage) {
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/**/*.{jpeg,jpg,png,gif,svg}",
+);
+
+function preprocessHeroImage(heroImage: string | undefined) {
+  if (!heroImage) {
+    return { heroImageSrc: undefined, heroImageIsUrl: false };
+  }
+  let heroImageSrc: string | undefined = heroImage;
+  let heroImageIsUrl = false;
   if (heroImage.startsWith("http")) {
-    heroImageSrc = heroImage;
+    if (heroImage.startsWith("https://source.unsplash.com/")) {
+      // Unsplash images from url is not available anymore
+      // TODO: call the Unsplash API to get the image
+      heroImageSrc = undefined;
+    }
+    heroImageIsUrl = true;
   } else {
     if (!images[heroImage]) {
       throw new Error(
         `"${heroImage}" does not exist in glob: "/src/assets/**/*.{jpeg,jpg,png,gif,svg}"`,
       );
-    } else {
-      heroImageSrc = images[heroImage]();
     }
   }
+  return { heroImageSrc, heroImageIsUrl };
 }
-console.log(heroImageSrc);
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { heroImageSrc, heroImageIsUrl } = preprocessHeroImage(heroImage);
 ---
 
 <html lang="en">
@@ -39,14 +51,23 @@ console.log(heroImageSrc);
     <main>
       <article>
         {
-          heroImage && (
-            <Image
-              class="mx-auto w-4/5"
-              src={heroImageSrc}
-              alt=""
-              loading="eager"
-            />
-          )
+          heroImageSrc &&
+            (heroImageIsUrl ? (
+              <Image
+                width={720}
+                height={360}
+                src={heroImageSrc}
+                alt=""
+                loading="eager"
+              />
+            ) : (
+              <Image
+                class="mx-auto w-4/5"
+                src={images[heroImageSrc]()}
+                alt=""
+                loading="eager"
+              />
+            ))
         }
         <h1 class="mt-3 text-3xl">{title}</h1>
         <p>{description}</p>
