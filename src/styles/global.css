@@ -138,7 +138,3 @@ blockquote {
   --light-theme-indicator-color: var(--color);
   --dark-theme-indicator-color: #ffcf00;
 }
-::selection {
-  background-color: var(--background-color);
-  color: var(--background-color);
-}
