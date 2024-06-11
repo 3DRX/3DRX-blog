@@ -163,7 +163,7 @@ $$
 $$
 \begin{aligned}
 C_{pass} &= 7 + 1 + 1 + 3 + 1 + 1 + 4 + 1 + 1 + 2 + 1 = 23 \\
-C_{result} = C_{pass} + 64 - 1 = 86
+C_{result} &= C_{pass} + 64 - 1 = 86
 \end{aligned}
 $$
 
