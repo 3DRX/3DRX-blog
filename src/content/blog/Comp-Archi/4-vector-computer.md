@@ -25,6 +25,12 @@ heroImage: ""
   - [最大性能 $R_{\infty}$](#最大性能-rinfty)
   - [半性能向量长度 $n_{\frac{1}{2}}$](#半性能向量长度-nfrac12)
   - [向量长度临界值 $n_v$](#向量长度临界值-nv)
+- [习题](#习题)
+  - [4.5](#45)
+  - [4.7](#47)
+  - [4.8](#48)
+  - [4.9](#49)
+  - [4.10](#410)
 <!--toc:end-->
 
 ## 向量的处理方式
@@ -147,3 +153,65 @@ $$
 
 向量流水方式处理的速度优于标量串行方式处理速度的最小向量长度。
 计算方式是将 $n_v$ 作为未知数，代入标量方式处理速度与向量方式处理速度相等的方程求解。
+
+## 习题
+
+### 4.5
+
+![](../../../assets/comp_archi/4.5.png)
+
+$$
+\begin{aligned}
+C_{pass} &= 7 + 1 + 1 + 3 + 1 + 1 + 4 + 1 + 1 + 2 + 1 = 23 \\
+C_{result} = C_{pass} + 64 - 1 = 86
+\end{aligned}
+$$
+
+### 4.7
+
+![](../../../assets/comp_archi/4.7.png)
+
+$$
+C_{pass} = 1 + 2 + 1 + 1 + 3 + 1 = 9
+$$
+
+$$
+\begin{aligned}
+T_{all} &= (C_{pass} + (8-1) + 8) \times 50 = 1200ns \\
+TP &= \frac{(4 \times 8)}{T_{all}} \approx 26.67 \; MFLOPS
+\end{aligned}
+$$
+
+### 4.8
+
+![](../../../assets/comp_archi/4.8.png)
+
+执行一次运算：$12 + 12 + 7 + 15$
+
+$$
+n = \lceil \frac{200}{64} \rceil = 4
+$$
+
+$$
+\begin{aligned}
+T_{all} &= n\sum (T_s + T_{loop}) + mT_g \times N \\
+&= 4 \times (12 + 12 + 7 + 15) + 3 \times 1 \times 200 = 784
+\end{aligned}
+$$
+
+### 4.9
+
+![](../../../assets/comp_archi/4.9.png)
+
+$$
+R_{\infty} = \frac{2 \times 8}{6 \times 10^{-9} \times 10^6}
+= 2666.67 \; MFLOPS
+$$
+
+### 4.10
+
+![](../../../assets/comp_archi/4.10.png)
+
+$$
+T_{ADDV} = (2 + 4 + 64 - 1) \times 10 = 690 \; ns
+$$
