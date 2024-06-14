@@ -153,7 +153,7 @@ heroImage: ""
 
 $$
 \begin{aligned}
-S &= = \frac{T_0}{T_n} \\
+S &= \frac{T_0}{T_n} \\
 T_n &= T_0 (1-Fe + \frac{Fe}{Se}) \\
 S &= \frac{T_0}{T_n} = \frac{1}{(1-Fe) + \frac{Fe}{Se}} \\
 \end{aligned}
