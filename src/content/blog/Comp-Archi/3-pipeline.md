@@ -14,6 +14,7 @@ heroImage: ""
   - [加速比](#加速比)
   - [效率](#效率)
 - [相关与冲突](#相关与冲突)
+  - [举例：MIPS 5 段流水线](#举例mips-5-段流水线)
   - [相关](#相关)
   - [流水线冲突](#流水线冲突)
 - [题目](#题目)
@@ -92,12 +93,53 @@ $$
 
 ## 相关与冲突
 
-举例：经典 5 段流水线
+### 举例：MIPS 5 段流水线
 1. 取指 IF
 2. 指令译码 / 读寄存器 ID
 3. 执行 / 有效地址计算 EX
 4. 存储器访问 / 分支完成 MEM
 5. 写回 WB
+
+<table class="MIPS-table">
+    <tr>
+        <td></td> 
+        <td>ALU</td> 
+        <td>Load/Store</td> 
+        <td>Branch</td> 
+    </tr>
+    <tr>
+        <td>IF</td> 
+        <td colspan="3">取指</td>    
+    </tr>
+    <tr>
+        <td>ID</td> 
+        <td colspan="3">译码、读寄存器堆</td>    
+    </tr>
+    <tr>
+        <td>EX</td> 
+        <td>执行</td> 
+        <td>计算访存有效地址</td> 
+        <td>计算目标地址设置条件码</td> 
+    </tr>
+    <tr>
+        <td>MEM</td> 
+        <td></td> 
+        <td>访问存储器</td> 
+        <td>若条件成立<br>转移目标地址送 PC</td> 
+    </tr>
+    <tr>
+        <td>WB</td> 
+        <td>计算结果写回寄存器堆</td> 
+        <td>Load 数据写回寄存器堆</td> 
+        <td></td> 
+    </tr>
+</table>
+<style>
+.MIPS-table td {
+    border: 1px solid var(--secondary-color);
+    text-align: center
+}
+</style>
 
 ### 相关
 
