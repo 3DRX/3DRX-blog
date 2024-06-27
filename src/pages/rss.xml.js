@@ -11,10 +11,11 @@ export async function GET(context) {
       .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
       .map((post) => {
         return {
-          title: post.title,
-          description: post.description,
+          title: post.data.title,
+          description: post.data.description,
           pubDate: post.data.pubDate,
           link: `/blog/${post.slug}`,
+          content: post.body,
         };
       }),
   });
