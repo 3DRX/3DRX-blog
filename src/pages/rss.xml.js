@@ -14,9 +14,16 @@ export async function GET(context) {
     site: context.site,
     items: posts.map((post) => ({
       link: `/blog/${post.slug}`,
-      content: sanitizeHtml(marked.parse(post.body), {
-        allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
-      }),
+      content: sanitizeHtml(
+        marked.parse(
+          `
+<blockquote>
+  <p>The document may have style rendering errors and images that cannot be displayed. To view the complete article, please click on "Read Original".</p>
+</blockquote>
+<br />
+` + post.body,
+        ),
+      ),
       ...post.data,
     })),
   });
