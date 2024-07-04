@@ -1,21 +1,30 @@
 import rss from "@astrojs/rss";
+import sanitizeHtml from "sanitize-html";
+import { marked } from "marked";
 import { getCollection } from "astro:content";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 
 export async function GET(context) {
-  const posts = await getCollection("blog");
+  const posts = (await getCollection("blog")).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  );
   return rss({
-    title: "3DRX’s Blog",
-    description: "A random dude on the internet",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     site: context.site,
-    items: posts
-      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-      .map((post) => {
-        return {
-          title: post.title,
-          description: post.description,
-          pubDate: post.data.pubDate,
-          link: `/blog/${post.slug}`,
-        };
-      }),
+    items: posts.map((post) => ({
+      link: `/blog/${post.slug}`,
+      content: sanitizeHtml(
+        marked.parse(
+          `
+<blockquote>
+  <p>The document may have style rendering errors and images that cannot be displayed. To view the complete article, please click on "Read Original".</p>
+</blockquote>
+<br />
+` + post.body,
+        ),
+      ),
+      ...post.data,
+    })),
   });
 }

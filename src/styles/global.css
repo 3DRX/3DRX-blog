@@ -106,6 +106,10 @@ blockquote {
 .math-display {
   overflow-x: auto;
 }
+.katex-display {
+  padding: 1rem;
+  overflow: scroll;
+}
 :root[data-theme="light"] {
   --invert-value: 0%;
   --img-brightness: 100%;
@@ -133,8 +137,4 @@ blockquote {
   --theme-slider-initial-transform: translateX(20px);
   --light-theme-indicator-color: var(--color);
   --dark-theme-indicator-color: #ffcf00;
-}
-::selection {
-  background-color: var(--background-color);
-  color: var(--background-color);
 }
