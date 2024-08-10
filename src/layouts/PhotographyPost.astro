@@ -51,7 +51,7 @@ const images: any = import.meta.glob(
         {
           heroImage && (
             <Image
-              class="mx-auto my-2 max-w-md rounded-none"
+              class="max-w-[min(28rem, 80vw)] mx-auto my-2 block h-auto max-h-[80vh] w-auto rounded-none"
               src={images[`/src/assets/photography/${heroImage}`]()}
               alt=""
               loading="eager"
