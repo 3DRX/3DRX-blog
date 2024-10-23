@@ -14,6 +14,7 @@ updatedDate: "10/23/2024"
 - [Problem Solving](#problem-solving)
   - [Failed to initialize the ADM](#failed-to-initialize-the-adm)
   - [PulseAudio stuff is somehow unhappy](#pulseaudio-stuff-is-somehow-unhappy)
+- [Deep Dive](#deep-dive)
 <!--toc:end-->
 
 ## Previously
@@ -78,3 +79,50 @@ a non-root PulseAudio as a root user, over the native protocol. Don't do that.)
 ```
 
 The lazy solution: `sudo chown -R $USER /run/user/1001/`
+
+## Deep Dive
+
+The client and server shares signaling information using JSON, as an example shown below.
+
+```json
+{
+   "type":"configure",
+   "actions":[
+      {
+         "type":"add_stream",
+         "id":"webrtc_ros-stream-658559275"
+      },
+      {
+         "type":"add_video_track",
+         "stream_id":"webrtc_ros-stream-658559275",
+         "id":"webrtc_ros-stream-658559275/subscribed_video",
+         "src":"ros_image:/camera/color/image_raw"
+      }
+   ]
+}
+```
+
+```json
+{
+   "sdp":"v=0\r\no=- 5637367399711775237 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=msid-semantic: WMS\r\nm=video 9 UDP/TLS/RTP/SAVPF 96 97 98 99 125 121 124\r\nc=IN IP4 0.0.0.0\r\na=rtcp:9 IN IP4 0.0.0.0\r\na=ice-ufrag:4Iq3\r\na=ice-pwd:nVms1dq4dd2+m9l3zoBHfY6S\r\na=ice-options:trickle\r\na=fingerprint:sha-256 CB:ED:8E:71:68:A8:01:7A:86:12:75:06:C8:73:33:2C:B6:23:8D:CF:D3:EF:B4:C1:A3:AD:4F:69:E5:D5:51:16\r\na=setup:active\r\na=mid:video\r\na=extmap:1 urn:ietf:params:rtp-hdrext:toffset\r\na=extmap:2 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time\r\na=extmap:3 urn:3gpp:video-orientation\r\na=extmap:4 http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01\r\na=extmap:5 http://www.webrtc.org/experiments/rtp-hdrext/playout-delay\r\na=extmap:6 http://www.webrtc.org/experiments/rtp-hdrext/video-content-type\r\na=extmap:7 http://www.webrtc.org/experiments/rtp-hdrext/video-timing\r\na=extmap:8 http://www.webrtc.org/experiments/rtp-hdrext/color-space\r\na=recvonly\r\na=rtcp-mux\r\na=rtcp-rsize\r\na=rtpmap:96 VP8/90000\r\na=rtcp-fb:96 goog-remb\r\na=rtcp-fb:96 transport-cc\r\na=rtcp-fb:96 ccm fir\r\na=rtcp-fb:96 nack\r\na=rtcp-fb:96 nack pli\r\na=rtpmap:97 rtx/90000\r\na=fmtp:97 apt=96\r\na=rtpmap:98 VP9/90000\r\na=rtcp-fb:98 goog-remb\r\na=rtcp-fb:98 transport-cc\r\na=rtcp-fb:98 ccm fir\r\na=rtcp-fb:98 nack\r\na=rtcp-fb:98 nack pli\r\na=fmtp:98 profile-id=0\r\na=rtpmap:99 rtx/90000\r\na=fmtp:99 apt=98\r\na=rtpmap:125 red/90000\r\na=rtpmap:121 rtx/90000\r\na=fmtp:121 apt=125\r\na=rtpmap:124 ulpfec/90000\r\n",
+   "type":"answer"
+}
+```
+
+```json
+{
+   "sdp_mline_index":0,
+   "sdp_mid":"video",
+   "candidate":"candidate:26026609571 udp 2113937151 dc56f0b3-d444-44bd-9d7d-99776b96e816.local 65289 typ host generation 0 ufrag 4Iq3 network-cost 999",
+   "type":"ice_candidate"
+}
+```
+
+```json
+{
+   "sdp_mline_index":0,
+   "sdp_mid":"video",
+   "candidate":"candidate:20369424531 udp 2113939711 7241ff40-ce87-4048-807b-df218db424f3.local 63919 typ host generation 0 ufrag 4Iq3 network-cost 999",
+   "type":"ice_candidate"
+}
+```
