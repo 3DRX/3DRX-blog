@@ -13,6 +13,7 @@ updatedDate: "10/23/2024"
 - [Run](#run)
 - [Problem Solving](#problem-solving)
   - [Failed to initialize the ADM](#failed-to-initialize-the-adm)
+  - [PulseAudio stuff is somehow unhappy](#pulseaudio-stuff-is-somehow-unhappy)
 <!--toc:end-->
 
 ## Previously
