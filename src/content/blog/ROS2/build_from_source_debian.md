@@ -2,7 +2,7 @@
 title: "How to build & install ros2 from source on debian 12"
 description: "A step by step guide."
 pubDate: "10/31/2024"
-updatedDate: "10/31/2024"
+updatedDate: "11/24/2024"
 ---
 
 ## OS
@@ -30,14 +30,14 @@ sudo apt install -y git colcon python3-rosdep2 vcstool wget \
     - `sudo apt upgrade`
     - `sudo rosdep init`
     - `rosdep update`
-    - `rosdep install --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers"`
+    - `rosdep install --from-paths src --ignore-src -y --skip-keys "rti-connext-dds-6.0.1 python3-vcstool"`
 
 Note: when you use rosdep install, you will counter an error about package python3-vcstool just don't care and continue for building.
 This is due to package name change from python3-vcstool to python3-vcstools.
 
 3. Compile!
 ```sh
-colcon build --symlink-install
+sudo colcon build --merge-install
 ```
 
 ## Reference
