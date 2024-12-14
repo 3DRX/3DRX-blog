@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 
 export interface Props {
   title: string;
@@ -67,4 +67,4 @@ const { title, description, image = "/thumbnail.webp" } = Astro.props;
   rel="stylesheet"
 />
 
-<ViewTransitions fallback="animate" />
+<ClientRouter fallback="animate" />
