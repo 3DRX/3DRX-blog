@@ -13,29 +13,29 @@
   "dependencies": {
     "@astrojs/markdown-remark": "^6.0.2",
     "@astrojs/mdx": "^4.0.7",
-    "@astrojs/react": "^4.1.6",
+    "@astrojs/react": "^4.2.0",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^5.1.5",
     "@radix-ui/react-slider": "^1.1.2",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
-    "astro": "^5.1.8",
-    "marked": "^13.0.1",
+    "astro": "^5.1.10",
+    "marked": "^15.0.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "rehype-katex": "^7.0.0",
+    "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
-    "sanitize-html": "^2.13.0",
+    "sanitize-html": "^2.14.0",
     "tailwindcss": "^3.4.3",
-    "three": "^0.161.0",
-    "typescript": "^5.4.5"
+    "three": "^0.172.0"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.13",
-    "@types/three": "^0.161.2",
-    "prettier": "^3.2.5",
-    "prettier-plugin-astro": "^0.13.0",
-    "prettier-plugin-tailwindcss": "^0.5.14"
+    "@types/three": "^0.172.0",
+    "prettier": "^3.4.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "typescript": "^5.7.3"
   }
 }

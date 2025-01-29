@@ -12,7 +12,7 @@ updatedDate: "09/19/2024"
 
 ## The Script
 
-```Makefile
+```make
 MAIN_TEX = main.tex
 NEW_DIR = scripts
 OLD_DIR = scripts-old
