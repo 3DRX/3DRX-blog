@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 /*
 The CSS in this style tag is based off of Bear Blog's default CSS.
@@ -54,12 +55,6 @@ content {
 }
 table {
   width: 100%;
-}
-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 12px;
-  filter: brightness(var(--img-brightness));
 }
 code {
   padding: 2px 5px;
