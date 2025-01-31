@@ -4,11 +4,11 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   site: "https://www.3drx.top/",
-  integrations: [sitemap(), mdx(), react(), tailwind()],
+  integrations: [sitemap(), mdx(), react()],
   markdown: {
     remarkPlugins: [remarkMath],
     rehypePlugins: [
@@ -22,5 +22,8 @@ export default defineConfig({
   },
   prefetch: {
     defaultStrategy: "hover",
+  },
+  vite: {
+    plugins: [tailwindcss()],
   },
 });
