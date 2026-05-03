@@ -13,7 +13,7 @@ export async function GET(context) {
     description: SITE_DESCRIPTION,
     site: context.site,
     items: posts.map((post) => ({
-      link: `/blog/${post.slug}`,
+      link: `/blog/${post.id}`,
       content: sanitizeHtml(
         marked.parse(
           `
