@@ -20,15 +20,14 @@ the site's accent color. This post is about how it works.
 
 The original skyline.github.com site is more or less abandoned, but GitHub
 released an official CLI extension that does the same thing locally:
-[github/gh-skyline](https://github.com/github/gh-skyline). Since I already have
-`gh` authenticated, generating a model is one command:
+[github/gh-skyline](https://github.com/github/gh-skyline). Generating a model
+is one command:
 
 ```bash
 gh extension install github/gh-skyline
 gh skyline -y 2025 -o 3DRX-2025.stl
 ```
 
-It even renders an ASCII preview of your contribution graph in the terminal.
 The output is a binary STL — ~480k triangles, **24MB per year**. Way too heavy
 to ship to a browser.
 
@@ -36,7 +35,8 @@ to ship to a browser.
 
 STL stores every triangle as 3 independent vertices ("triangle soup") — no
 index buffer, so shared corners are duplicated. My converter
-(`scripts/stl2glb.mjs`) welds identical vertices (keyed by their raw float32
+([scripts/stl2glb.mjs](https://github.com/3DRX/3DRX-blog/blob/9ffe525df61a1e7094fac9224d85d6e87af89f9f/scripts/stl2glb.mjs))
+welds identical vertices (keyed by their raw float32
 bit patterns) into an indexed `BufferGeometry`, which alone collapses 483k
 triangles into ~221k unique vertices, and exports GLB via three.js
 `GLTFExporter`. Then [`gltfpack`](https://meshoptimizer.org/gltf/) applies
@@ -150,7 +150,3 @@ That runs `gh skyline` → STL→GLB split → `gltfpack` → drops the file in
 (sorted, deduplicated). The full write-up lives in
 [`docs/skyline.md`](https://github.com/3DRX/3DRX-blog/blob/main/docs/skyline.md)
 of the repo.
-
-The most satisfying part of the whole build was discovering that 80% of the
-model is text. The second most satisfying part: watching the tallest pillars
-of my most procrastination-heavy days light up in gold.

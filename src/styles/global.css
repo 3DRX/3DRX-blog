@@ -133,6 +133,12 @@
     font-size: 0.85em;
   }
 
+  /* shiki dual themes: switch token colors via our data-theme attribute */
+  :root[data-theme="dark"] .astro-code,
+  :root[data-theme="dark"] .astro-code span {
+    color: var(--shiki-dark) !important;
+  }
+
   .code-block-wrapper > copy-code-button {
     z-index: 99;
     position: absolute;
