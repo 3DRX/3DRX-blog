@@ -10,6 +10,12 @@ export default defineConfig({
   site: "https://www.3drx.top/",
   integrations: [sitemap(), mdx(), react()],
   markdown: {
+    shikiConfig: {
+      themes: {
+        light: "solarized-light",
+        dark: "github-dark",
+      },
+    },
     remarkPlugins: [remarkMath],
     rehypePlugins: [
       [
