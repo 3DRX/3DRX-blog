@@ -2,31 +2,28 @@
 const { prev, next } = Astro.props;
 ---
 
-<hr class="mt-1 mb-3" />
-<div class="flex">
-  <div class="flex-1 text-left">
+<nav
+  class="mt-10 grid grid-cols-3 gap-4 border-y border-line py-3 font-mono text-xs tracking-widest"
+>
+  <div class="text-left">
     {
-      prev === null ? (
-        <a />
-      ) : (
-        <a class="left" href={`/blog/${prev.slug}`}>
-          {prev.title}
+      prev !== null && (
+        <a href={`/blog/${prev.slug}`} class="text-faint hover:text-accent">
+          ← {prev.title}
         </a>
       )
     }
   </div>
-  <div class="flex-1 text-center">
-    <a href="/blog">cd ..</a>
+  <div class="text-center">
+    <a href="/blog" class="text-faint hover:text-accent">cd ..</a>
   </div>
-  <div class="flex-1 text-right">
+  <div class="text-right">
     {
-      next === null ? (
-        <a />
-      ) : (
-        <a class="right" href={`/blog/${next.slug}`}>
-          {next.title}
+      next !== null && (
+        <a href={`/blog/${next.slug}`} class="text-faint hover:text-accent">
+          {next.title} →
         </a>
       )
     }
   </div>
-</div>
+</nav>

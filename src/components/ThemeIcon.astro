@@ -3,74 +3,47 @@ const { id } = Astro.props;
 ---
 
 <script src="./ThemeIcon.ts"></script>
-<div class="toggle-container">
-  <span class="light mt-1"> 🌞</span>
-  <label class="switch" aria-label="Switch theme">
-    <input id={id} class="theme-toggle" type="checkbox" />
-    <span class="slider round"></span>
-  </label>
-  <span class="dark mt-1"> 🌑</span>
-</div>
+<label class="theme-switch" aria-label="Switch theme">
+  <input id={id} class="theme-toggle" type="checkbox" />
+  <span class="cell day">日</span>
+  <span class="cell night">夜</span>
+</label>
 <style>
+  .theme-switch {
+    display: inline-flex;
+    border: 1px solid var(--ink);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    line-height: 1;
+    cursor: pointer;
+    user-select: none;
+  }
   .theme-toggle {
-  }
-  .toggle-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.5em;
-  }
-  .toggle-container > span {
-    margin-bottom: 0.2em;
-  }
-  .light {
-    color: var(--light-theme-indicator-color);
-  }
-  .dark {
-    color: var(--dark-theme-indicator-color);
-  }
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 40px;
-    height: 20px;
-  }
-  .switch input {
+    position: absolute;
     opacity: 0;
     width: 0;
     height: 0;
   }
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--link-color);
-    transition: 0.4s;
+  .theme-switch .cell {
+    padding: 4px 7px;
+    color: var(--faint);
+    transition:
+      background-color 0.15s,
+      color 0.15s;
   }
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 14px;
-    width: 14px;
-    left: 3px;
-    bottom: 3px;
-    background-color: var(--color);
-    transform: var(--theme-slider-initial-transform);
-    transition: 0.4s;
+  .theme-toggle:not(:checked) ~ .day {
+    background: var(--ink);
+    color: var(--paper);
   }
-  input:checked + .slider {
-    background-color: var(--link-color);
+  .theme-toggle:checked ~ .night {
+    background: var(--ink);
+    color: var(--paper);
   }
-  input:focus + .slider {
-    box-shadow: 0 0 5px var(--link-color);
+  .theme-switch:hover .cell {
+    color: var(--accent);
   }
-  .slider.round {
-    border-radius: 34px;
-  }
-  .slider.round:before {
-    border-radius: 50%;
+  .theme-toggle:not(:checked):hover ~ .day,
+  .theme-toggle:checked:hover ~ .night {
+    color: var(--paper);
   }
 </style>

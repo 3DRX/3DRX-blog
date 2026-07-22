@@ -1,7 +1,8 @@
 ---
-import { fade, slide } from "astro:transitions";
+import { fade } from "astro:transitions";
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 import { Image } from "astro:assets";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import img3DRX from "../assets/3DRX.jpg";
@@ -13,26 +14,34 @@ import img3DRX from "../assets/3DRX.jpg";
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body>
-    <Header title={SITE_TITLE} />
+    <Header />
     <main transition:animate={fade({ duration: "0.2s" })}>
-      <div class="flex flex-col items-center gap-5 sm:flex-row sm:gap-32">
+      <div class="flex flex-col items-start gap-10 sm:flex-row sm:gap-14">
         <Image
-          class="max-h-52 max-w-52 rounded-full"
+          class="h-44 w-44 border-2 border-ink object-cover shadow-[8px_8px_0_0_var(--accent)]"
           src={img3DRX}
-          alt=""
+          alt="3DRX"
           loading="eager"
           width={img3DRX.width / 4}
         />
-        <div
-          class="flex flex-col gap-4"
-          transition:animate={slide({ duration: "0.2s" })}
-        >
-          <h2 class="font-sans text-2xl">👋 Hello!</h2>
-          <div>
-            <p>I'm 3DRX 欢迎来到我的小窝</p>
-          </div>
+        <div class="flex flex-col gap-3">
+          <p class="font-mono text-xs tracking-widest text-faint">
+            // index.astro — 欢迎
+          </p>
+          <h1
+            class="font-sans text-5xl leading-none font-black tracking-tighter"
+          >
+            HELLO<span class="text-accent">,</span><br />你好<span
+              class="text-accent">。</span
+            >
+          </h1>
+          <p class="max-w-md text-faint">
+            I'm 3DRX. This is my little corner of the internet — notes on
+            computer science, programming, and photography.
+          </p>
         </div>
       </div>
     </main>
+    <Footer />
   </body>
 </html>

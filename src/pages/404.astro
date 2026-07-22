@@ -1,6 +1,7 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
@@ -10,11 +11,19 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body>
-    <Header title={SITE_TITLE} />
+    <Header />
     <main>
-      <h1>oops...</h1>
-      <img src="/404.png" alt="404" />
-      <h2 id="countdown">Redirecting in 5 seconds...</h2>
+      <p class="font-mono text-xs tracking-widest text-faint uppercase">
+        // error — page not found
+      </p>
+      <h1
+        class="font-sans text-[clamp(6rem,30vw,14rem)] leading-none font-black tracking-tighter"
+      >
+        4<span class="text-accent">0</span>4
+      </h1>
+      <p class="mt-2 font-mono text-sm text-faint" id="countdown">
+        Redirecting in 5 seconds...
+      </p>
       <script>
         var count = 5;
         var counter = setInterval(timer, 1000);
@@ -33,17 +42,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
         }
       </script>
     </main>
-    <style>
-      h1 {
-        text-align: center;
-      }
-      img {
-        display: block;
-        margin: 0 auto;
-      }
-      h2 {
-        text-align: center;
-      }
-    </style>
+    <Footer />
   </body>
 </html>
