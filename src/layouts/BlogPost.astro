@@ -62,29 +62,37 @@ const { heroImageSrc, heroImageIsUrl } = preprocessHeroImage(heroImage);
               />
             ) : (
               <Image
-                class="mx-auto w-4/5"
+                class="mx-auto w-4/5 border border-line"
                 src={images[heroImageSrc]()}
                 alt=""
                 loading="eager"
               />
             ))
         }
-        <h1 class="mt-3 text-3xl">{title}</h1>
-        <p>{description}</p>
-        <div class="my-1 flex text-[color:var(--secondary-color)]">
+        <p class="mt-6 font-mono text-xs tracking-widest text-faint uppercase">
+          // post
+        </p>
+        <h1
+          class="mt-1 font-sans text-4xl leading-tight font-black tracking-tighter"
+        >
+          {title}
+        </h1>
+        <p class="mt-1 text-faint">{description}</p>
+        <div
+          class="mt-4 mb-8 flex border-y-2 border-ink py-2 font-mono text-xs tracking-widest text-faint uppercase"
+        >
           <FormattedDate date={pubDate} />
           <div class="grow"></div>
           {
             updatedDate && (
-              <div class="last-updated-on italic">
-                Last updated on <FormattedDate date={updatedDate} />
+              <div>
+                Updated <FormattedDate date={updatedDate} />
               </div>
             )
           }
         </div>
-        <hr class="mb-3 mt-1" />
         <div
-          class="prose-pre:code:bg-transparent prose max-w-full text-[color:var(--color)] prose-headings:text-[color:var(--color)] prose-h1:text-xl prose-h1:font-bold prose-p:text-justify prose-a:text-[color:var(--link-color)] prose-blockquote:border prose-blockquote:border-[color:var(--secondary-color)] prose-blockquote:px-5 prose-blockquote:text-[color:var(--color)] prose-strong:text-[color:var(--color)] prose-code:text-white prose-ul:mt-0 prose-li:my-0 prose-img:mx-auto prose-img:rounded-xl"
+          class="prose max-w-full text-ink prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-ink prose-h1:text-xl prose-p:text-justify prose-a:text-accent prose-a:underline prose-a:underline-offset-4 prose-blockquote:not-italic prose-blockquote:border-l-accent prose-blockquote:text-faint prose-strong:text-ink prose-code:bg-code-bg prose-code:px-1 prose-code:py-0.5 prose-code:font-normal prose-code:text-ink prose-code:before:content-none prose-code:after:content-none prose-pre:border prose-pre:border-line prose-pre:bg-paper-raised prose-ul:mt-0 prose-li:my-0 prose-img:mx-auto prose-img:rounded-none prose-img:border prose-img:border-line prose-hr:border-line"
         >
           <slot />
         </div>

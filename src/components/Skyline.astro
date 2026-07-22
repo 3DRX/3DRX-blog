@@ -2,5 +2,36 @@
 
 ---
 
-<canvas class="w-4/5 mx-auto p-0 block" id="webgl"></canvas>
+<div class="skyline">
+  <div class="relative border border-line bg-paper-raised">
+    <canvas id="webgl" class="block aspect-[16/7] w-full"></canvas>
+    <p
+      id="skyline-loading"
+      class="absolute inset-0 flex items-center justify-center font-mono text-xs tracking-widest text-faint uppercase"
+    >
+      Loading skyline…
+    </p>
+    <div class="absolute right-3 bottom-3 flex items-center gap-2">
+      <button
+        id="skyline-prev"
+        aria-label="Newer year"
+        class="cursor-pointer border border-line bg-paper px-3 py-1 font-mono text-xs tracking-widest text-faint uppercase transition-colors hover:border-accent hover:text-accent"
+      >
+        ←
+      </button>
+      <span
+        id="skyline-year"
+        class="min-w-16 border border-line bg-paper px-3 py-1 text-center font-mono text-xs tracking-widest text-ink"
+        >2025</span
+      >
+      <button
+        id="skyline-next"
+        aria-label="Older year"
+        class="cursor-pointer border border-line bg-paper px-3 py-1 font-mono text-xs tracking-widest text-faint uppercase transition-colors hover:border-accent hover:text-accent"
+      >
+        →
+      </button>
+    </div>
+  </div>
+</div>
 <script src="/src/components/Skyline.js"></script>

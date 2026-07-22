@@ -2,6 +2,7 @@
 import { slide } from "astro:transitions";
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 import Skyline from "../components/Skyline.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
@@ -12,20 +13,35 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body>
-    <Header title={SITE_TITLE} />
+    <Header />
     <main>
-      <Skyline />
+      <div class="mb-10">
+        <Skyline />
+      </div>
       <div transition:animate={slide({ duration: "0.4s" })}>
-        <h2 class="text-2xl font-sans">About Me</h2>
-        <p>
-          I'm an university student studying computer science. I'm interested in
-          web development, machine learning, and computer network.
+        <p class="font-mono text-xs tracking-widest text-faint uppercase">
+          // about
         </p>
-        <p>
-          Looking forward to collab or just chat, find me at GitHub, Instagram,
-          or Email me at 3drxkjy@gmail.com.
-        </p>
+        <h2 class="mt-1 font-sans text-4xl font-black tracking-tighter">
+          ABOUT ME<span class="text-accent">.</span>
+        </h2>
+        <div class="mt-4 max-w-prose space-y-3">
+          <p>
+            I'm an university student studying computer science. I'm interested
+            in web development, machine learning, and computer network.
+          </p>
+          <p>
+            Looking forward to collab or just chat — find me on{" "}
+            <a href="https://github.com/3DRX/" target="_blank" rel="noopener"
+              >GitHub</a
+            >, or email me at{" "}
+            <a href="mailto:3drxkjy@gmail.com" class="font-mono text-sm"
+              >3drxkjy@gmail.com</a
+            >.
+          </p>
+        </div>
       </div>
     </main>
+    <Footer />
   </body>
 </html>

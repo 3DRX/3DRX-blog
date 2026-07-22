@@ -7,7 +7,12 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, "");
 
 <a
   href={href}
-  class={`inline-block ${isActive ? "underline" : ""}`}
+  class:list={[
+    "font-mono text-xs tracking-widest uppercase transition-colors",
+    isActive
+      ? "text-accent underline decoration-2 underline-offset-4"
+      : "text-ink hover:text-accent",
+  ]}
   data-astro-prefetch="viewport"
   {...props}
 >

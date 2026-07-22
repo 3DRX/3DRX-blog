@@ -21,23 +21,32 @@ const posts = (await getCollection("blog")).sort(
     <Header />
     <main transition:animate={fade({ duration: "0.2s" })}>
       <section>
-        <ul>
+        <div class="mb-4 flex items-baseline justify-between">
+          <h2 class="font-sans text-2xl font-black tracking-tighter uppercase">
+            Blog
+          </h2>
+          <span class="font-mono text-xs tracking-widest text-faint">
+            {posts.length} POSTS
+          </span>
+        </div>
+        <ul class="border-t-2 border-ink">
           {
             posts.map((post) => (
-              <li class="flex">
-                <div class="w-24 text-nowrap text-sm text-[color:var(--secondary-color)] min-w-24">
-                  <FormattedDate date={post.data.pubDate} />
-                </div>
-                <div class="w-1" />
+              <li>
                 <a
-                  class="visited:text-[color:var(--link-visited-color)] text-[color:var(--link-color)] w-[calc(70ch-13em)] "
                   href={`/blog/${post.id}/`}
+                  class="group -mx-2 grid grid-cols-[6rem_1fr] items-baseline gap-3 border-b border-line px-2 py-2.5 transition-colors duration-150 hover:bg-ink sm:grid-cols-[6.5rem_1fr_auto]"
                 >
-                  {post.data.title}
+                  <span class="font-mono text-xs text-faint transition-colors group-hover:text-paper/70">
+                    <FormattedDate date={post.data.pubDate} />
+                  </span>
+                  <span class="text-ink transition-colors group-hover:text-paper">
+                    {post.data.title}
+                  </span>
+                  <span class="hidden text-right font-mono text-xs tracking-widest text-faint uppercase transition-colors group-hover:text-paper/70 sm:inline">
+                    {post.id.includes("/") ? post.id.split("/")[0] : "—"}
+                  </span>
                 </a>
-                <div class="text-[color:var(--secondary-color)] ml-auto max-w-[9em] hidden sm:inline-block">
-                  {post.id.search("/") == -1 ? "" : post.id.split("/")[0]}
-                </div>
               </li>
             ))
           }

@@ -2,136 +2,174 @@
 @plugin "@tailwindcss/typography";
 
 /*
-The CSS in this style tag is based off of Bear Blog's default CSS.
-https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
+ * 墨格 / Ink Grid
+ * Swiss brutalist structure in a traditional Chinese palette.
+ * Light: 宣纸 paper, 墨色 ink, 朱砂 vermillion.
+ * Dark:  玄青 indigo-black, 月白 moon-white, bright vermillion.
  */
-body {
-  font-family:
-    "PingFang SC",
-    "Noto Sans CJK SC",
-    "Heiti SC",
-    "DengXian",
-    "Microsoft YaHei",
-    Helvetica,
-    Segoe UI,
-    Arial,
-    sans-serif;
-  margin: auto;
-  padding: 20px;
-  max-width: 80ch;
-  text-align: left;
-  background-color: var(--background-color);
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  line-height: 1.5;
-  color: var(--color);
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-strong,
-b {
-  color: var(--heading-color);
-}
-a {
-  color: var(--link-color);
-}
-nav a {
-  margin-right: 10px;
-}
-textarea {
-  width: 100%;
-  font-size: 16px;
-}
-input {
-  font-size: 16px;
-}
-content {
-  line-height: 1.6;
-}
-table {
-  width: 100%;
-}
-code {
-  padding: 2px 5px;
-  background-color: var(--code-background-color);
-  border-radius: 3px;
-}
-.code-block-wrapper {
-  position: relative;
-}
-pre {
-  padding: 1rem;
-  border-radius: 12px;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  position: relative;
-}
-pre > code {
-  all: unset;
-  overflow: auto;
-}
-.code-block-wrapper > copy-code-button {
-  z-index: 99;
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  overflow: hidden;
-  visibility: hidden;
-}
-.code-block-wrapper:hover > copy-code-button {
-  visibility: visible;
-}
-blockquote {
-  border: 1px solid var(--color);
-  color: var(--color);
-  padding: 2px 0px 2px 20px;
-  margin: 0px;
-  border-radius: 12px;
-  font-style: italic;
-}
-.content-svg {
-  fill: var(--color);
-}
-.math {
-  overflow-x: auto;
-}
-.math-display {
-  overflow-x: auto;
-}
-.katex-display {
-  padding: 1rem;
-  overflow: scroll;
-}
+
 :root[data-theme="light"] {
+  --paper: #f4efe3;
+  --paper-raised: #faf6ea;
+  --ink: #211f1c;
+  --faint: #857e6e;
+  --accent: #c73e3a;
+  --accent-hover: #a02b28;
+  --line: #d8d1bd;
+  --code-bg: #eae3cf;
+  --model-base: #faf6ea;
   --invert-value: 0%;
   --img-brightness: 100%;
-  --background-color: #fff;
-  --color: #111;
-  --secondary-color: #c7c7c7;
-  --heading-color: #111;
-  --link-color: #3273dc;
-  --link-visited-color: #193c75;
-  --code-background-color: #c7c7c7;
-  --theme-slider-initial-transform: 0px;
-  --light-theme-indicator-color: #ffcf00;
-  --dark-theme-indicator-color: var(--color);
 }
+
 :root[data-theme="dark"] {
+  --paper: #101820;
+  --paper-raised: #17222d;
+  --ink: #e6e1d3;
+  --faint: #8490a0;
+  --accent: #e8b23a;
+  --accent-hover: #f2c95e;
+  --line: #28323f;
+  --code-bg: #1a2531;
+  --model-base: #3d4a5c;
   --invert-value: 100%;
   --img-brightness: 90%;
-  --background-color: #000;
-  --color: #eee;
-  --secondary-color: #999;
-  --heading-color: #eee;
-  --link-color: #de9906;
-  --link-visited-color: #966807;
-  --code-background-color: #252525;
-  --theme-slider-initial-transform: translateX(20px);
-  --light-theme-indicator-color: var(--color);
-  --dark-theme-indicator-color: #ffcf00;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-ink: var(--ink);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-line: var(--line);
+  --color-code-bg: var(--code-bg);
+  --font-sans:
+    "Archivo", "Helvetica Neue", Helvetica, "PingFang SC", "Noto Sans CJK SC",
+    "Microsoft YaHei", Arial, sans-serif;
+  --font-mono:
+    "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, "PingFang SC",
+    monospace;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    margin: auto;
+    padding: 20px;
+    max-width: 76ch;
+    text-align: left;
+    background-color: var(--paper);
+    color: var(--ink);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.55;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--paper);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: var(--ink);
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  a:hover {
+    color: var(--accent-hover);
+  }
+
+  textarea,
+  input {
+    font-size: 16px;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    filter: brightness(var(--img-brightness));
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    padding: 1px 5px;
+    background-color: var(--code-bg);
+    color: var(--ink);
+    border-radius: 0;
+  }
+
+  .code-block-wrapper {
+    position: relative;
+  }
+
+  pre {
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 0;
+    position: relative;
+    background-color: var(--paper-raised) !important;
+  }
+
+  pre > code {
+    all: unset;
+    overflow: auto;
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+  }
+
+  .code-block-wrapper > copy-code-button {
+    z-index: 99;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    overflow: hidden;
+    visibility: hidden;
+  }
+
+  .code-block-wrapper:hover > copy-code-button {
+    visibility: visible;
+  }
+
+  blockquote {
+    border-left: 3px solid var(--accent);
+    color: var(--faint);
+    padding: 2px 0 2px 20px;
+    margin: 0;
+    font-style: normal;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--line);
+  }
+
+  .content-svg {
+    fill: var(--ink);
+  }
+
+  .math,
+  .math-display {
+    overflow-x: auto;
+  }
+
+  .katex-display {
+    padding: 1rem;
+    overflow: scroll;
+  }
 }

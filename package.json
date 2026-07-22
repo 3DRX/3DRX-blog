@@ -11,7 +11,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier --write . --plugin=prettier-plugin-astro"
+    "format": "prettier --write . --plugin=prettier-plugin-astro",
+    "skyline": "scripts/generate-skyline.sh"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^7.1.1",
